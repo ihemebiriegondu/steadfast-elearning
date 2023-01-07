@@ -10,6 +10,8 @@ const AllQuestions = () => {
     const [questionsfour, setQuestionsfour] = useState([])
     const [loader, setLoader] = useState(false);
 
+    const allQuestions = []
+
     useEffect(() => {
         const getQuestionsone = async () => {
             setLoader(true);
@@ -169,16 +171,16 @@ const AllQuestions = () => {
 
             firstQuestion.push(questionObject)
         });
-        console.log(firstQuestion)
-        return firstQuestion
+        //console.log(firstQuestion)
+        allQuestions.push(firstQuestion)
     }
 
     const questionTwo = () => {
-        let firstQuestionSample = questionstwo
-        console.log(firstQuestionSample)
+        let secondQuestionSample = questionstwo
+        console.log(secondQuestionSample)
 
-        let firstQuestion = []
-        firstQuestionSample.forEach(question => {
+        let secondQuestion = []
+        secondQuestionSample.forEach(question => {
 
             let questionName = question.question
             let questionId = question.id
@@ -217,18 +219,18 @@ const AllQuestions = () => {
 
             //console.log(questionObject)
 
-            firstQuestion.push(questionObject)
+            secondQuestion.push(questionObject)
         });
-        console.log(firstQuestion)
-        return firstQuestion
+        //console.log(secondQuestion)
+        allQuestions.push(secondQuestion)
     }
 
     const questionThree = () => {
-        let firstQuestionSample = questionsthree
-        console.log(firstQuestionSample)
+        let thirdQuestionSample = questionsthree
+        console.log(thirdQuestionSample)
 
-        let firstQuestion = []
-        firstQuestionSample.forEach(question => {
+        let thirdQuestion = []
+        thirdQuestionSample.forEach(question => {
 
             let questionName = question.question
             let questionId = question.id
@@ -267,18 +269,18 @@ const AllQuestions = () => {
 
             //console.log(questionObject)
 
-            firstQuestion.push(questionObject)
+            thirdQuestion.push(questionObject)
         });
-        console.log(firstQuestion)
-        return firstQuestion
+        //console.log(thirdQuestion)
+        allQuestions.push(thirdQuestion)
     }
 
     const questionFour = () => {
-        let firstQuestionSample = questionsfour
-        console.log(firstQuestionSample)
+        let forthQuestionSample = questionsfour
+        console.log(forthQuestionSample)
 
-        let firstQuestion = []
-        firstQuestionSample.forEach(question => {
+        let forthQuestion = []
+        forthQuestionSample.forEach(question => {
 
             let questionName = question.question
             let questionId = question.id
@@ -317,21 +319,18 @@ const AllQuestions = () => {
 
             //console.log(questionObject)
 
-            firstQuestion.push(questionObject)
+            forthQuestion.push(questionObject)
         });
-        console.log(firstQuestion)
-        return firstQuestion
+        //console.log(forthQuestion)
+        allQuestions.push(forthQuestion)
     }
-
-    const getAllQuestions = () => {
-        
-    }
-
 
     questionOne()
     questionTwo()
     questionThree()
     questionFour()
+
+    console.log(allQuestions)
 
     //setAllQuestions(AllQuestions.push(questionOne))
 
