@@ -19,88 +19,11 @@ export default class QuestionsDisplayTemp extends Component {
   //To keep selected options after pressing the next or previous button
   onAnswer(question, option, event) {
 
-    let quiz = this.props.datas;
-    console.log(quiz)
-
-    quiz.forEach(question => {
-      //console.log(question.option)
-      let newOptions = []
-      let correctOption = question.answer
-      console.log(correctOption)
-
-      for (let x in question.option) {
-        /*console.log(x)
-        console.log(question.option[x])*/
-
-        let newOptionsValue = {}
-        newOptionsValue.id = x
-        newOptionsValue.name = question.option[x]
-        newOptionsValue.isAnswer = x === correctOption? "True" : "False"
-        console.log(newOptionsValue)
-
-        newOptions.push(newOptionsValue)
-      }
-      //console.log(typeof question.option)
-      console.log(newOptions)
-    });
-    //console.log(quiz)
-    
-
-    let q = quiz.find(x => x.id === question.id);
-    console.log(q.option.selectedValue)
-
-    //console.log(q)
-    console.log(q.option)
-
-    /*if (q.examtype === 'utme') {
-      q.option.forEach((x) => { console.log(x) });
-    }*/
-
-    /*for (const key in q.option) {
-      console.log(q.option[key])
-      q.option[key].checked = false
-    }*/
-
-    //console.log(option)
-
-    q.option.selectedValue = option
-    let selectedValueOption = q.option.selectedValue;
-
-    //method for searching theough an object for a key that has a particular value
-
-    /*if (Object.keys(q.option).find(key => q.option[key] === selectedValueOption)) {
-      document.getElementById(selectedValueOption).value = true
-    }*/
-    //console.log(q.option[newOp])
-
-    //console.log(selectedValueOption)
-
-    console.log(event.target)
-
-    /*console.log(document.getElementById(selectedValueOption).value)
-    document.getElementById(selectedValueOption).checked = true;*/
-
-    console.log(option === selectedValueOption)
+    //let quiz = this.props.datas;
 
 
-    //console.log(q.option[newOp])
-    //document.getElementById(q.option[newOp]).selected = true;
-    //console.log(document.getElementById(q.option[newOp]).selected);
-    //console.log(q.option[newOp].selected)
+    //let q = quiz.find(x => x.id === question.id);
 
-
-    //q.option.a.selected
-    //console.log(q.option)
-    //console.log(typeof newOp)
-
-    /*newOp.selected = true
-    q.option.a.selected = true;
-    console.log(q.option.newOp.selected)*/
-
-    //option.selected = true;
-    //console.log(option.selected)
-    //Object.keys(q.option).find(key => q.option[key] === option).selected = true;
-    //this.props.onAnswer(quiz);
   }
 
 

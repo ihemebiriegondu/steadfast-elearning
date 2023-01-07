@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 //import { useUserAuth } from "../context/UserAuthContext";
 
 import { Tabs, Tab } from 'react-bootstrap';
@@ -13,7 +13,7 @@ const JambExam = () => {
 
   const [key, setKey] = useState('firstPaper');
   //const { logOut, user } = useUserAuth();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   /*const handleLogout = async () => {
     try {
