@@ -47,7 +47,7 @@ const JambExam = () => {
               <AllQuestions />
             </Tab>
             <Tab eventKey="secondPaper" title="Mathematics">
-
+              <div></div>
             </Tab>
             <Tab eventKey="thirdPaper" title="Physics">
 

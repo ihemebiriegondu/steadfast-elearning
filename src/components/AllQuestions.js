@@ -3,7 +3,6 @@ import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
 
 const AllQuestions = () => {
 
-    const [AllQuestions, setAllQuestions] = useState([])
     const [questionsone, setQuestionsone] = useState([])
     const [questionstwo, setQuestionstwo] = useState([])
     const [questionsthree, setQuestionsthree] = useState([])
@@ -123,11 +122,11 @@ const AllQuestions = () => {
         getQuestionsthree()
         getQuestionsfour()
 
-    }, [setQuestionsone, setQuestionstwo, setQuestionsthree, setAllQuestions])
+    }, [setQuestionsone, setQuestionstwo, setQuestionsthree])
 
     const questionOne = () => {
         let firstQuestionSample = questionsone
-        console.log(firstQuestionSample)
+        //console.log(firstQuestionSample)
 
         let firstQuestion = []
         firstQuestionSample.forEach(question => {
@@ -177,7 +176,7 @@ const AllQuestions = () => {
 
     const questionTwo = () => {
         let secondQuestionSample = questionstwo
-        console.log(secondQuestionSample)
+        //console.log(secondQuestionSample)
 
         let secondQuestion = []
         secondQuestionSample.forEach(question => {
@@ -227,7 +226,7 @@ const AllQuestions = () => {
 
     const questionThree = () => {
         let thirdQuestionSample = questionsthree
-        console.log(thirdQuestionSample)
+        //console.log(thirdQuestionSample)
 
         let thirdQuestion = []
         thirdQuestionSample.forEach(question => {
@@ -277,7 +276,7 @@ const AllQuestions = () => {
 
     const questionFour = () => {
         let forthQuestionSample = questionsfour
-        console.log(forthQuestionSample)
+        //console.log(forthQuestionSample)
 
         let forthQuestion = []
         forthQuestionSample.forEach(question => {
@@ -330,13 +329,13 @@ const AllQuestions = () => {
     questionThree()
     questionFour()
 
-    console.log(allQuestions)
+    //console.log(allQuestions)
 
     //setAllQuestions(AllQuestions.push(questionOne))
 
     return (
         <div>
-            <QuestionsDisplayTemp datas={questionsone} />
+            <QuestionsDisplayTemp datas={allQuestions} />
             {
                 loader && (
                     <div className="">Loading...</div>
