@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 //import { useNavigate } from "react-router-dom";
 //import { useUserAuth } from "../context/UserAuthContext";
 
-import { Tabs, Tab } from 'react-bootstrap';
 import { BsCalculator, BsAlarm } from 'react-icons/bs'
 import { CgLogOut } from 'react-icons/cg'
 
@@ -11,7 +10,6 @@ import AllQuestions from '../components/AllQuestions';
 
 const JambExam = () => {
 
-  const [key, setKey] = useState('firstPaper');
   //const { logOut, user } = useUserAuth();
   //const navigate = useNavigate();
 
@@ -42,20 +40,7 @@ const JambExam = () => {
           </div>
         </div>
         <div>
-          <Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
-            <Tab eventKey="firstPaper" title="English Language">
-              <AllQuestions />
-            </Tab>
-            <Tab eventKey="secondPaper" title="Mathematics">
-              <div></div>
-            </Tab> 
-            <Tab eventKey="thirdPaper" title="Physics">
-
-            </Tab>
-            <Tab eventKey="forthPaper" title="Chemistry">
-
-            </Tab>
-          </Tabs>
+          <AllQuestions />
         </div >
       </div>
     </div>

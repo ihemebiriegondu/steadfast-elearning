@@ -19,11 +19,11 @@ export default class QuestionsDisplayTemp extends Component {
   //To keep selected options after pressing the next or previous button
   onAnswer(question, option) {
 
-    let quiz = this.props.datas;
+    let quiz1 = this.props.datas;
     //console.log(quiz)
 
-    let quiz1 = quiz[0]
-    //console.log(quiz1)
+    //let quiz1 = quiz[0]
+    console.log(quiz1)
 
     let q = quiz1.find(x => x.id === question.id);
     //console.log(q)
@@ -45,9 +45,9 @@ export default class QuestionsDisplayTemp extends Component {
 
   render() {
 
-    let allQuestions = this.props.datas
+    let questionOne = this.props.datas
     //console.log(allQuestions)
-    let questionOne = allQuestions[0]
+    //let questionOne = allQuestions[0]
     //console.log(questionOne)
 
     //For showing the questions one after the other instead of together on a page
@@ -90,7 +90,7 @@ export default class QuestionsDisplayTemp extends Component {
           <div className='reviewbtns-div row g-2'>
             {questionOne.map((q, index) =>
               <div key={q.id} className="cursor-pointer col">
-                <div id={index} onClick={(e) => { (this.setState({ index: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index + 1}{/*. {this.isAnswered(q)}*/}</div>
+                <div id={index} onClick={(e) => { (this.setState({ index: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index + 1}{this.isAnswered(q)}</div>
               </div>
             )}
           </div>

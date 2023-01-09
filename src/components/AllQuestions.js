@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
 
+import { Tabs, Tab } from 'react-bootstrap';
+
 const AllQuestions = () => {
 
     const [questionsone, setQuestionsone] = useState([])
@@ -10,6 +12,10 @@ const AllQuestions = () => {
     const [loader, setLoader] = useState(false);
 
     const allQuestions = []
+    let firstQuestion = []
+    let secondQuestion = []
+    let thirdQuestion = []
+    let forthQuestion = []
 
     useEffect(() => {
         const getQuestionsone = async () => {
@@ -62,7 +68,7 @@ const AllQuestions = () => {
             .catch(function (res) { console.log(res) })*/
             return questionstwo
         }
-       
+
 
         const getQuestionsthree = async () => {
             setLoader(true);
@@ -88,7 +94,7 @@ const AllQuestions = () => {
             .catch(function (res) { console.log(res) })*/
             return questionsthree
         }
-        
+
 
         const getQuestionsfour = async () => {
             setLoader(true);
@@ -128,7 +134,6 @@ const AllQuestions = () => {
         let firstQuestionSample = questionsone
         //console.log(firstQuestionSample)
 
-        let firstQuestion = []
         firstQuestionSample.forEach(question => {
 
             let questionName = question.question
@@ -178,7 +183,6 @@ const AllQuestions = () => {
         let secondQuestionSample = questionstwo
         //console.log(secondQuestionSample)
 
-        let secondQuestion = []
         secondQuestionSample.forEach(question => {
 
             let questionName = question.question
@@ -228,7 +232,6 @@ const AllQuestions = () => {
         let thirdQuestionSample = questionsthree
         //console.log(thirdQuestionSample)
 
-        let thirdQuestion = []
         thirdQuestionSample.forEach(question => {
 
             let questionName = question.question
@@ -278,7 +281,6 @@ const AllQuestions = () => {
         let forthQuestionSample = questionsfour
         //console.log(forthQuestionSample)
 
-        let forthQuestion = []
         forthQuestionSample.forEach(question => {
 
             let questionName = question.question
@@ -326,16 +328,35 @@ const AllQuestions = () => {
 
     questionOne()
     questionTwo()
-    questionThree() 
+    questionThree()
     questionFour()
 
     //console.log(allQuestions)
 
     //setAllQuestions(AllQuestions.push(questionOne))
+    const [key, setKey] = useState('firstPaper');
+
 
     return (
         <div>
-            <QuestionsDisplayTemp datas={allQuestions} />
+
+            <div>
+                <Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
+                    <Tab eventKey="firstPaper" title="English Language">
+                        <QuestionsDisplayTemp datas={firstQuestion} />
+                    </Tab>
+                    <Tab eventKey="secondPaper" title="Mathematics">
+                        <QuestionsDisplayTemp datas={secondQuestion} />
+                    </Tab>
+                    <Tab eventKey="thirdPaper" title="Physics">
+
+                    </Tab>
+                    <Tab eventKey="forthPaper" title="Chemistry">
+
+                    </Tab>
+                </Tabs>
+            </div>
+            
             {
                 loader && (
                     <div className="">Loading...</div>
