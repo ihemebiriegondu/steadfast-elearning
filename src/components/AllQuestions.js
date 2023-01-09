@@ -326,7 +326,7 @@ const AllQuestions = () => {
 
     questionOne()
     questionTwo()
-    questionThree()
+    questionThree() 
     questionFour()
 
     //console.log(allQuestions)
