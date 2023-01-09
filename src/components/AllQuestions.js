@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
 
-import { Tabs, Tab } from 'react-bootstrap';
-
 const AllQuestions = () => {
 
     const [questionsone, setQuestionsone] = useState([])
@@ -155,6 +153,7 @@ const AllQuestions = () => {
 
                 let optionsValue = {}
                 optionsValue.id = x
+                optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
                 optionsValue.isAnswer = x === correctOption ? "True" : "False"
                 //console.log(optionsValue)
@@ -164,6 +163,7 @@ const AllQuestions = () => {
             //console.log(typeof question.option)
             //console.log(options)
 
+            questionObject.type = "chemistry"
             questionObject.id = questionId
             questionObject.section = questionSection
             questionObject.name = questionName
@@ -204,6 +204,7 @@ const AllQuestions = () => {
 
                 let optionsValue = {}
                 optionsValue.id = x
+                optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
                 optionsValue.isAnswer = x === correctOption ? "True" : "False"
                 //console.log(optionsValue)
@@ -213,6 +214,7 @@ const AllQuestions = () => {
             //console.log(typeof question.option)
             //console.log(options)
 
+            questionObject.type = "english"
             questionObject.id = questionId
             questionObject.section = questionSection
             questionObject.name = questionName
@@ -253,6 +255,7 @@ const AllQuestions = () => {
 
                 let optionsValue = {}
                 optionsValue.id = x
+                optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
                 optionsValue.isAnswer = x === correctOption ? "True" : "False"
                 //console.log(optionsValue)
@@ -262,6 +265,7 @@ const AllQuestions = () => {
             //console.log(typeof question.option)
             //console.log(options)
 
+            questionObject.type = "maths"
             questionObject.id = questionId
             questionObject.section = questionSection
             questionObject.name = questionName
@@ -302,6 +306,7 @@ const AllQuestions = () => {
 
                 let optionsValue = {}
                 optionsValue.id = x
+                optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
                 optionsValue.isAnswer = x === correctOption ? "True" : "False"
                 //console.log(optionsValue)
@@ -311,6 +316,7 @@ const AllQuestions = () => {
             //console.log(typeof question.option)
             //console.log(options)
 
+            questionObject.type = "biology"
             questionObject.id = questionId
             questionObject.section = questionSection
             questionObject.name = questionName
@@ -334,27 +340,12 @@ const AllQuestions = () => {
     //console.log(allQuestions)
 
     //setAllQuestions(AllQuestions.push(questionOne))
-    const [key, setKey] = useState('firstPaper');
-
 
     return (
         <div>
 
             <div>
-                <Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
-                    <Tab eventKey="firstPaper" title="English Language">
-                        <QuestionsDisplayTemp datas={firstQuestion} />
-                    </Tab>
-                    <Tab eventKey="secondPaper" title="Mathematics">
-                        <QuestionsDisplayTemp datas={secondQuestion} />
-                    </Tab>
-                    <Tab eventKey="thirdPaper" title="Physics">
-
-                    </Tab>
-                    <Tab eventKey="forthPaper" title="Chemistry">
-
-                    </Tab>
-                </Tabs>
+                <QuestionsDisplayTemp datas={allQuestions} />
             </div>
             
             {
