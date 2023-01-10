@@ -3,6 +3,9 @@ import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
 
 const AllQuestions = () => {
 
+    //console.log(subjects)
+    //console.log(subjects[0])
+
     const [questionsone, setQuestionsone] = useState([])
     const [questionstwo, setQuestionstwo] = useState([])
     const [questionsthree, setQuestionsthree] = useState([])
@@ -16,11 +19,14 @@ const AllQuestions = () => {
     let forthQuestion = []
 
     useEffect(() => {
+        const subjects = JSON.parse(localStorage.getItem("subjects"));
+        localStorage.removeItem("subjects")
+
         const getQuestionsone = async () => {
             setLoader(true);
 
             let questionsone;
-            questionsone = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=chemistry",
+            questionsone = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[0],
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -46,7 +52,7 @@ const AllQuestions = () => {
             setLoader(true);
 
             let questionstwo;
-            questionstwo = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=english",
+            questionstwo = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[1],
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -72,7 +78,7 @@ const AllQuestions = () => {
             setLoader(true);
 
             let questionsthree;
-            questionsthree = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=biology",
+            questionsthree = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[2],
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -98,7 +104,7 @@ const AllQuestions = () => {
             setLoader(true);
 
             let questionsfour;
-            questionsfour = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=physics",
+            questionsfour = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[3],
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -343,16 +349,14 @@ const AllQuestions = () => {
 
     return (
         <div>
-
-            <div>
-                <QuestionsDisplayTemp datas={allQuestions} />
-            </div>
-            
             {
                 loader && (
                     <div className="">Loading...</div>
                 )
             }
+            <div>
+                <QuestionsDisplayTemp datas={allQuestions} />
+            </div>
         </div>
     )
 }

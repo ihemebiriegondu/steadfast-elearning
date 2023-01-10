@@ -122,10 +122,13 @@ export default class QuestionsDisplayTemp extends Component {
     let questions3 = (questionThree) ? questionThree.slice(this.state.index3, this.state.index3 + this.state.size3) : [];
     let questions4 = (questionFour) ? questionFour.slice(this.state.index4, this.state.index4 + this.state.size4) : [];
 
+    const subjectNames = JSON.parse(localStorage.getItem("subjectNames"));
+    //localStorage.removeItem("subjectNames")
+
     return (
       <div>
         <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">
-          <Tab eventKey="firstPaper" title="English Language">
+          <Tab eventKey="firstPaper" title="Use of English">
             <div className='quesTemp px-3'>
               <div>
                 <div className='ps-4'>
@@ -174,7 +177,7 @@ export default class QuestionsDisplayTemp extends Component {
               </div>
             </div>
           </Tab>
-          <Tab eventKey="secondPaper" title="Mathematics">
+          <Tab eventKey="secondPaper" title={subjectNames[1]}>
             <div className='quesTemp px-3'>
               <div>
                 <div className='ps-4'>
@@ -226,7 +229,7 @@ export default class QuestionsDisplayTemp extends Component {
 
 
 
-          <Tab eventKey="thirdPaper" title="Physics">
+          <Tab eventKey="thirdPaper" title={subjectNames[2]}>
             <div className='quesTemp px-3'>
               <div>
                 <div className='ps-4'>
@@ -278,7 +281,7 @@ export default class QuestionsDisplayTemp extends Component {
 
 
 
-          <Tab eventKey="forthPaper" title="Chemistry">
+          <Tab eventKey="forthPaper" title={subjectNames[3]}>
             <div className='quesTemp px-3'>
               <div>
                 <div className='ps-4'>
