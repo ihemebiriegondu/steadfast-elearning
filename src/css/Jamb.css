@@ -23,7 +23,7 @@
 }
 
 .question-header {
-    background: #d01c1fff;
+    background: rgb(98, 23, 23);
     color: white;
     font-family: 'Mulish';
 }
@@ -33,14 +33,14 @@
 }
 
 .questions-page .info-div {
-    background-color: #FFDB04;
+    background-color: rgb(250, 193, 193);
     margin-bottom: 50px;
 }
 
 .questions-page .info-div #user-img {
     width: 60px;
     height: 60px;
-    background-color: yellow;
+    background-color: rgb(250, 193, 193);
     border-radius: 10px;
     margin-left: 18px;
     margin-right: 11px;
@@ -87,9 +87,9 @@
 }
 
 .questions-page .nav-link.active {
-    background: #FFDB04 !important;
-    color: #d01c1fff;
-    border-color: #FFDB04 !important;
+    background: rgb(250, 193, 193) !important;
+    color: rgb(98, 23, 23);
+    border-color: rgb(250, 193, 193) !important;
 }
 
 .questions-page .tab-content {

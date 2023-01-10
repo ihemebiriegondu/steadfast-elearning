@@ -28,12 +28,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 40px !important;
 }
 
 .quesTemp .actionbtn {
     border: none !important;
     outline: none !important;
-    background: #FFDB04 !important;
+    background: rgb(250, 193, 193) !important;
     font-size: 17px !important;
     font-weight: 500;
     border-radius: 5px;
@@ -64,8 +65,8 @@
 }
 
 .submitbtn-div button {
-    background-color: #d01c1fff;
-    color: #FFDB04;
+    background-color: rgb(98, 23, 23);
+    color: rgb(250, 193, 193);
     border: none !important;
     outline: none !important;
     border-radius: 5px;

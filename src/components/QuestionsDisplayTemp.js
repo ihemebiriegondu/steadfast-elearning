@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../css/QuesTemp.css'
 import { Tabs, Tab } from 'react-bootstrap';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
 export default class QuestionsDisplayTemp extends Component {
@@ -8,7 +9,9 @@ export default class QuestionsDisplayTemp extends Component {
     super(props);
     this.state = {
       key: "firstPaper",
+      show: false,
       //const [key, setKey] = useState('firstPaper');
+      //const [show, setShow] = useState(false);
       index1: 0,
       size1: 1,
 
@@ -125,6 +128,9 @@ export default class QuestionsDisplayTemp extends Component {
     const subjectNames = JSON.parse(localStorage.getItem("subjectNames"));
     //localStorage.removeItem("subjectNames")
 
+    const handleClose = () => this.setState({ show: false });
+    const handleShow = () => this.setState({ show: true });
+
     return (
       <div>
         <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">
@@ -159,17 +165,20 @@ export default class QuestionsDisplayTemp extends Component {
                 <div className='btns-div'>
                   <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index1 > 0) { this.setState({ index1: this.state.index1 - 1 }) } }}>Previous</button>
                   <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) } }}>Next</button>
+                  <button onClick={handleShow} >show</button>
                 </div>
 
-                <div className='reviewbtns-div row g-2'>
-                  {questionOne.map((q, index1) =>
-                    <div key={q.id} className="cursor-pointer col">
-                      <div id={index1} onClick={(e) => { (this.setState({ index1: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index1 + 1}{this.isAnsweredOne(q)}</div>
-                    </div>
-                  )}
-                </div>
+                <Offcanvas show={this.state.show} onHide={handleClose}>
+                  <div className='reviewbtns-div row g-2'>
+                    {questionOne.map((q, index1) =>
+                      <div key={q.id} className="cursor-pointer col">
+                        <div id={index1} onClick={(e) => { (this.setState({ index1: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index1 + 1}{this.isAnsweredOne(q)}</div>
+                      </div>
+                    )}
+                  </div>
+                </Offcanvas>
 
-                <hr className='mt-4 w-75 m-auto' />
+                <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='submitbtn-div'>
                   <button className='py-3 px-5'>Submit Exam</button>
@@ -218,7 +227,7 @@ export default class QuestionsDisplayTemp extends Component {
                   )}
                 </div>
 
-                <hr className='mt-4 w-75 m-auto' />
+                <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='submitbtn-div'>
                   <button className='py-3 px-5'>Submit Exam</button>
@@ -270,7 +279,7 @@ export default class QuestionsDisplayTemp extends Component {
                   )}
                 </div>
 
-                <hr className='mt-4 w-75 m-auto' />
+                <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='submitbtn-div'>
                   <button className='py-3 px-5'>Submit Exam</button>
@@ -322,7 +331,7 @@ export default class QuestionsDisplayTemp extends Component {
                   )}
                 </div>
 
-                <hr className='mt-4 w-75 m-auto' />
+                <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='submitbtn-div'>
                   <button className='py-3 px-5'>Submit Exam</button>
