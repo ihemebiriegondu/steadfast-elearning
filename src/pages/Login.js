@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BsFillExclamationCircleFill } from 'react-icons/bs'
 import { Alert } from 'react-bootstrap';
 import logo from '../assets/logo-removebg-preview.png'
@@ -9,7 +9,7 @@ import { useUserAuth } from '../context/UserAuthContext';
 
 const Login = () => {
 
-    const [username, setUsername] = useState('');
+    //const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -21,30 +21,26 @@ const Login = () => {
         e.preventDefault()
         setError("");
 
-        if (username === "") {
-            setError("Invalid Username")
-        } else {
-            try {
-                await logIn(email, password);
-                navigate("/dashboard");
-            } catch (err) {
-                if (err.code === 'auth/invalid-email') {
-                    setError('Invalid email address')
-                } else if (err.code === 'auth/user-disabled') {
-                    setError('User disabled')
-                } else if (err.code === 'auth/user-not-found') {
-                    setError('User not found')
-                } else if (err.code === 'auth/internal-error') {
-                    setError('Invalid Student ID')
-                } else if (err.code === "auth/missing-email") {
-                    setError('Missing email address')
-                } else if (err.code === 'auth/wrong-password') {
-                    setError('Wrong Student ID')
-                } else if (err.code === 'auth/operation-not-allowed') {
-                    setError('Operation not allowed')
-                } else {
-                    setError(err.message);
-                }
+        try {
+            await logIn(email, password);
+            navigate("/dashboard");
+        } catch (err) {
+            if (err.code === 'auth/invalid-email') {
+                setError('Invalid email address')
+            } else if (err.code === 'auth/user-disabled') {
+                setError('User disabled')
+            } else if (err.code === 'auth/user-not-found') {
+                setError('User not found')
+            } else if (err.code === 'auth/internal-error') {
+                setError('Invalid Student ID')
+            } else if (err.code === "auth/missing-email") {
+                setError('Missing email address')
+            } else if (err.code === 'auth/wrong-password') {
+                setError('Wrong Student ID')
+            } else if (err.code === 'auth/operation-not-allowed') {
+                setError('Operation not allowed')
+            } else {
+                setError(err.message);
             }
         }
     }
@@ -61,10 +57,10 @@ const Login = () => {
                 <h1 className='mx-auto text-center mb-5'>Student Login</h1>
                 <div className='login-intro-div d-flex justify-content-center mx-auto'>
                     <form className='pb-4' onSubmit={(e) => { handleSubmit(e) }} id='signup-form'>
-                        <div className='d-flex flex-column'>
+                        {/*<div className='d-flex flex-column'>
                             <label htmlFor='username'>Username: </label>
                             <input id='username' name='username' type='text' placeholder='username' onChange={(e) => { setUsername(e.target.value) }}></input>
-                        </div>
+    </div>*/}
                         <div className='d-flex flex-column'>
                             <label htmlFor='email'>Email Address: </label>
                             <input id='email' name='email' type='email' placeholder='example@gmail.com' onChange={(e) => { setEmail(e.target.value) }}></input>
@@ -75,6 +71,9 @@ const Login = () => {
                         </div>
                         <button>Log in</button>
                     </form>
+                </div>
+                <div className='copyright'>
+                    <a href='https://steadfast-private-school.netlify.app/' target='_blank' rel="noreferrer" className='mx-auto text-center w-100'>© Steadfast Private Schools</a>
                 </div>
             </div>
             <div className='error-div'>

@@ -18,7 +18,10 @@ export function UserAuthContextProvider({ children }) {
     const [user, setUser] = useState({});
 
     function logIn(email, password) {
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            console.log(auth.currentUser)
+        })
     }
     function signUp(email, name, password) {
 

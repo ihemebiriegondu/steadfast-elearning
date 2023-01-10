@@ -185,7 +185,7 @@ body,
     transition: all 0.5s ease-in-out;
 }
 
-.intro-page .login-intro form button:hover{
+.intro-page .login-intro form button:hover {
     background: rgb(250, 193, 193);
     color: rgb(98, 23, 23);
     transition: all 0.5s ease-in-out;
@@ -202,6 +202,21 @@ body,
 .intro-page .error-div .alert.alert-danger {
     width: 100% !important;
     margin-bottom: 0 !important;
+}
+
+.intro-page .copyright {
+    margin-top: 40px;
+    align-content: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.intro-page .copyright a {
+    color: rgb(255, 236, 236);
+    font-size: 12px;
+    text-align: center !important;
+    display: inline-block !important;
+    text-decoration: none;
 }
 
 
