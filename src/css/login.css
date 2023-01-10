@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Vesper+Libre:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap');
+
+
+
+/* $primary: rgb(98, 23, 23);
+$secondary: rgb(250, 193, 193);
+$light: rgb(255, 236, 236);*/
+
+body,
+#root {
+    height: fit-content !important;
+    background: rgb(255, 236, 236);
+}
+
+.intro-page {
+    position: absolute;
+    overflow-x: hidden;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+    overflow-y: scroll;
+    animation-name: overflow;
+    animation-duration: 10s;
+    height: 100%;
+}
+
+@keyframes overflow {
+    from {
+        overflow-y: hidden;
+    }
+
+    to {
+        overflow-y: scroll;
+    }
+}
+
+.intro-page::-webkit-scrollbar {
+    display: none !important;
+}
+
+.intro-page .logo-intro {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    transform: scale(0);
+    animation-name: logoSize, logoMove;
+    animation-duration: 1s, 3s;
+    animation-delay: 0.1s, 1.1s;
+    animation-iteration-count: 1, 1;
+}
+
+@keyframes logoSize {
+    from {
+        transition: transform 1s;
+        transform: scale(1.05);
+        height: 100%;
+    }
+
+    to {
+        transition: transform 2s;
+        transform: scale(1.05);
+        height: 100%;
+    }
+}
+
+@keyframes logoMove {
+    from {
+        height: 100%;
+        transform: scale(1.05);
+    }
+
+    to {
+        height: 0%;
+        transform: scale(0);
+    }
+}
+
+.intro-page .logo-intro div {
+    height: 100%;
+}
+
+.intro-page .logo-intro div img {
+    object-fit: contain;
+    width: 160px;
+    height: 160px;
+}
+
+.intro-page .login-intro {
+    position: absolute;
+    background: rgb(98, 23, 23);
+    height: 100%;
+    bottom: 0;
+    z-index: 4;
+    width: 100%;
+    visibility: visible;
+    display: block !important;
+    animation-name: showLogin, slideInLogin;
+    animation-delay: 0.1s, 1.1s;
+    animation-duration: 1.1s, 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes showLogin {
+    from {
+        visibility: hidden;
+        height: 0;
+        display: none !important;
+    }
+
+    to {
+        visibility: visible;
+        height: 0;
+        display: block !important;
+    }
+}
+
+@keyframes slideInLogin {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+.intro-page .login-intro .login-intro-div {
+    background: rgb(98, 23, 23);
+}
+
+.intro-page .login-intro h1 {
+    font-family: 'Charm', cursive !important;
+    color: rgb(255, 236, 236);
+    margin-top: 4rem;
+}
+
+.intro-page .login-intro form {
+    width: 30%;
+}
+
+.intro-page .login-intro form div {
+    margin-bottom: 40px;
+}
+
+.intro-page .login-intro form label {
+    font-family: 'Vesper Libre', serif !important;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgb(255, 236, 236);
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.intro-page .login-intro form input {
+    font-family: 'Vesper Libre', serif !important;
+    background: #F9F9F9;
+    border-radius: 8px !important;
+    outline: none;
+    border: none;
+    padding: 10px 15px;
+    gap: 10px;
+}
+
+.intro-page .login-intro form button {
+    border: solid 3px rgb(250, 193, 193);
+    outline: none;
+    font-family: 'Vesper Libre', serif !important;
+    font-weight: 700;
+    background: transparent;
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 15px;
+    color: rgb(255, 236, 236);
+    margin-bottom: 40px;
+    margin-top: 2rem;
+    transition: all 0.5s ease-in-out;
+}
+
+.intro-page .login-intro form button:hover{
+    background: rgb(250, 193, 193);
+    color: rgb(98, 23, 23);
+    transition: all 0.5s ease-in-out;
+}
+
+.intro-page .error-div {
+    position: absolute;
+    width: auto !important;
+    right: 20px !important;
+    top: 20px !important;
+    z-index: 2000;
+}
+
+.intro-page .error-div .alert.alert-danger {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+}
+
+
+@media (max-width: 1200px) {
+    .intro-page .login-intro form {
+        width: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .intro-page .login-intro form label {
+        font-size: 14px;
+        line-height: 15px;
+        margin-bottom: 5px;
+    }
+
+    .intro-page .login-intro form input {
+        padding: 10px;
+    }
+
+    .intro-page .login-intro form {
+        width: 70%;
+    }
+
+    .intro-page .login-intro form p {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .intro-page .login-intro form button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-page .login-intro form {
+        width: 100%;
+        padding: 0 24px;
+    }
+}

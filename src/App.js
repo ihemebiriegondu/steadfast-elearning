@@ -3,18 +3,25 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 
 import JambExam from "./pages/JambExam"
+import Login from './pages/Login';
 import SelectSubjects from './pages/SelectSubjects';
+
+import ProtectedRoute from './components/ProtectedRoute'
+import { UserAuthContextProvider } from "./context/UserAuthContext";
 
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/jamb exam' element={<JambExam />} />
-          <Route path='select subjects' element={<SelectSubjects />} />
-        </Routes>
+        <UserAuthContextProvider>
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/dashboard' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path='/jamb exam' element={<ProtectedRoute><JambExam /></ProtectedRoute>} />
+            <Route path='/select subjects' element={<ProtectedRoute><SelectSubjects /></ProtectedRoute>} />
+          </Routes>
+        </UserAuthContextProvider>
       </Router>
     </div>
   );
