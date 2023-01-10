@@ -19,9 +19,9 @@ export function UserAuthContextProvider({ children }) {
 
     function logIn(email, password) {
         return signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        /*.then(() => {
             console.log(auth.currentUser)
-        })
+        })*/
     }
     function signUp(email, name, password) {
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import userImg from '../assets/user-icon.png'
 import MyCards from '../components/MyCards'
 import '../css/home.css'
@@ -13,7 +14,7 @@ const Home = () => {
       <div className='middle-div'>
         <div className='row row-cols-lg-3 row-cols-md-2 row-cols-1 justify-content-center g-4'>
           <MyCards cardTitle="Practice Questions" />
-          <MyCards cardTitle="Take an Exam"  />
+          <Link className='text-decoration-none' to='/select subjects'><MyCards cardTitle="Take an Exam" /></Link>
         </div>
       </div>
     </div>

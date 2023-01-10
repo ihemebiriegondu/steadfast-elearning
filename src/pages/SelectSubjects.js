@@ -1,5 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { IoArrowBackSharp, IoArrowForwardSharp } from 'react-icons/io5'
+import "../css/selectSubject.css"
 
 
 const SelectSubjects = () => {
@@ -48,57 +51,60 @@ const SelectSubjects = () => {
 
 
     return (
-        <div>
-            <h5>Select subjects</h5>
-            <div>
-                <form onSubmit={(event) => handleFormSubmit(event)}>
-                    <div>
-                        <label htmlFor='English'> <input type='checkbox' className="subject" id='English' value="english" name='subjects' checked disabled /> Use of English</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Mathematics'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Mathematics' value="mathematics" name='subjects' /> Mathematics</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Physics'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Physics' value="physics" name='subjects' /> Physics</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Chemistry'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Chemistry' value="chemistry" name='subjects' /> Chemistry</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Biology'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Biology' value="biology" name='subjects' /> Biology</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Geography'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Geography' value="geography" name='subjects' /> Geography</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Government'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Government' value="government" name='subjects' /> Government</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Economics'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Economics' value="economics" name='subjects' /> Economics</label>
-                    </div>
-                    <div>
-                        <label htmlFor='History'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='History' value="history" name='subjects' /> History</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Literature in English'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Literature in English' value="literature" name='subjects' /> Literature in English</label>
-                    </div>
-                    <div>
-                        <label htmlFor='French'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='French' value="french" name='subjects' /> French</label>
-                    </div>
-                    <div>
-                        <label htmlFor='CRK'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='CRK' value="crk" name='subjects' /> CRK</label>
-                    </div>
-                    <div>
-                        <label htmlFor='IRK'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='IRK' value="irk" name='subjects' /> IRK</label>
-                    </div>
-                    <div>
-                        <label htmlFor='Agricultural Science'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Agricultural Science' value="agric" name='subjects' /> Agricultural Science</label>
-                    </div>
-                    <div>
-                        <button>Back</button>
-                        <button type='submit'>Next</button>
-                    </div>
-                </form>
+        <div className='selectSubjectDiv'>
+            <div className='selectSubjectsubDiv'>
+                <h5>Select subjects</h5>
+                <div className=''>
+                    <form onSubmit={(event) => handleFormSubmit(event)}>
+                        <p>Select any 3 subjects to start the exam, (Use of English is compulsory)</p>
+                        <div>
+                            <label htmlFor='English'> <input type='checkbox' className="subject" id='English' value="english" name='subjects' checked disabled /> Use of English</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Mathematics'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Mathematics' value="mathematics" name='subjects' /> Mathematics</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Physics'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Physics' value="physics" name='subjects' /> Physics</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Chemistry'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Chemistry' value="chemistry" name='subjects' /> Chemistry</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Biology'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Biology' value="biology" name='subjects' /> Biology</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Geography'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Geography' value="geography" name='subjects' /> Geography</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Government'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Government' value="government" name='subjects' /> Government</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Economics'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Economics' value="economics" name='subjects' /> Economics</label>
+                        </div>
+                        <div>
+                            <label htmlFor='History'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='History' value="history" name='subjects' /> History</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Literature in English'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Literature in English' value="literature" name='subjects' /> Literature in English</label>
+                        </div>
+                        <div>
+                            <label htmlFor='French'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='French' value="french" name='subjects' /> French</label>
+                        </div>
+                        <div>
+                            <label htmlFor='CRK'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='CRK' value="crk" name='subjects' /> CRK</label>
+                        </div>
+                        <div>
+                            <label htmlFor='IRK'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='IRK' value="irk" name='subjects' /> IRK</label>
+                        </div>
+                        <div>
+                            <label htmlFor='Agricultural Science'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Agricultural Science' value="agric" name='subjects' /> Agricultural Science</label>
+                        </div>
+                        <div className='btn-div d-flex justify-content-between'>
+                            <Link className='text-decoration-none' to='/dashboard'><button><IoArrowBackSharp className='mb-1 me-2' /> Back</button></Link>
+                            <button type='submit'>Next <IoArrowForwardSharp className='mb-1 me-2' /></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     )
