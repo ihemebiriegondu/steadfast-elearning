@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap');
 
 
-.selectSubjectDiv {
+.instructions {
     background: rgb(255, 236, 236);
     position: absolute;
     top: 0;
@@ -10,35 +10,26 @@
     width: 100%;
     height: auto;
     font-family: 'Vesper Libre', serif !important;
+    color: rgb(98, 23, 23);
 }
 
-.selectSubjectDiv h5 {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-.selectSubjectDiv form {
-    padding: 2rem;
+.instructions .insruction-subdiv {
+    height: fit-content;
     background: rgb(255, 236, 236);
+    width: 100%;
+    padding: 2rem 1.5rem;
 }
 
-.selectSubjectDiv form p {
-    font-size: 17px;
-    font-weight: 500;
+.instructions .instuction-title {
+    margin-bottom: 2rem;
 }
 
-.selectSubjectDiv form input {
-    margin-left: 1rem;
-    margin-right: 0.5rem;
-    accent-color: rgb(98, 23, 23);
-}
-
-.selectSubjectDiv form .btn-div {
+.instructions .btn-div, .instructions .btn-div2 {
     margin-top: 3rem;
     padding: 0 1rem;
 }
 
-.selectSubjectDiv form .btn-div button {
+.instructions .btn-div button, .instructions .btn-div2 button {
     background: rgb(98, 23, 23);
     color: rgb(255, 236, 236);
     padding: 10px 40px;
@@ -47,12 +38,32 @@
     border: none;
 }
 
+.btn-div2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5rem;
+}
+
+.btn-div2 a {
+    width: 50%;
+    display: inline-block;
+}
+
+.instructions .btn-div2 button {
+    width: 100%;
+    padding: 15px 0 !important;
+}
+
+
 @media (max-width: 768px) {
-    .selectSubjectDiv form {
+    .instructions .insruction-subdiv {
         padding: 2rem 1rem;
     }
+}
 
-    .selectSubjectDiv form .btn-div button {
-        padding: 10px 20px;
+@media (max-width: 576px) {
+    .btn-div2 a {
+        width: 70%;
     }
 }

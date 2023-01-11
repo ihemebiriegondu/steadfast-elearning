@@ -44,7 +44,7 @@ const SelectSubjects = () => {
             //console.log(subjectArray)
             localStorage.setItem("subjects", JSON.stringify(subjectArray))
             localStorage.setItem("subjectNames", JSON.stringify(subjectNames))
-            navigate('/jamb exam');
+            navigate('/exam instruction');
         }
     }
 
@@ -100,8 +100,8 @@ const SelectSubjects = () => {
                             <label htmlFor='Agricultural Science'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Agricultural Science' value="agric" name='subjects' /> Agricultural Science</label>
                         </div>
                         <div className='btn-div d-flex justify-content-between'>
-                            <Link className='text-decoration-none' to='/dashboard'><button><IoArrowBackSharp className='mb-1 me-2' /> Back</button></Link>
-                            <button type='submit'>Next <IoArrowForwardSharp className='mb-1 me-2' /></button>
+                            <Link className='text-decoration-none' to='/dashboard'><button><IoArrowBackSharp className='mb-1' /> Back</button></Link>
+                            <button type='submit'>Next <IoArrowForwardSharp className='mb-1' /></button>
                         </div>
                     </form>
                 </div>
