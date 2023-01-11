@@ -1,0 +1,21 @@
+.display-score {
+    background: rgb(255, 236, 236);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    color: rgb(98, 23, 23);
+}
+
+.display-score.active {
+    top: 0;
+    visibility: visible;
+}
+
+.display-score .display-scorediv {
+    width: 100%;
+    background: rgb(255, 236, 236);
+    height: 100%;
+    padding-bottom: 100px;
+}

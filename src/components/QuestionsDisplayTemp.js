@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../css/QuesTemp.css'
 import { Tabs, Tab, Modal } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import DisplayScore from './DisplayScore';
 
 
 export default class QuestionsDisplayTemp extends Component {
@@ -27,6 +28,9 @@ export default class QuestionsDisplayTemp extends Component {
 
       index4: 0,
       size4: 1,
+
+      newtotalScoreArray: [],
+      totalScore: 0
       //time: {},
       //seconds: 1800
     };
@@ -147,19 +151,20 @@ export default class QuestionsDisplayTemp extends Component {
     const handleCloseModal = () => this.setState({ showModal: false })
     const handleShowModal = () => this.setState({ showModal: true })
 
+
     const submitExamFunction = () => {
 
       //console.log("fdj")
+      let totalScoreArray = []
       let firstPaperScore = 0
       let secondPaperScore = 0
       let thirdPaperScore = 0
       let forthPaperScore = 0
-      let totalScore = 0
 
       questionOne.forEach(question => {
         //console.log(question)
         //console.log(question.options.every(x => x.selected === x.isAnswer))
-        
+
         //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
         question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
 
@@ -175,7 +180,7 @@ export default class QuestionsDisplayTemp extends Component {
       questionTwo.forEach(question => {
         //console.log(question)
         //console.log(question.options.every(x => x.selected === x.isAnswer))
-        
+
         //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
         question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
 
@@ -191,7 +196,7 @@ export default class QuestionsDisplayTemp extends Component {
       questionThree.forEach(question => {
         //console.log(question)
         //console.log(question.options.every(x => x.selected === x.isAnswer))
-        
+
         //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
         question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
 
@@ -207,7 +212,7 @@ export default class QuestionsDisplayTemp extends Component {
       questionFour.forEach(question => {
         //console.log(question)
         //console.log(question.options.every(x => x.selected === x.isAnswer))
-        
+
         //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
         question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
 
@@ -220,13 +225,26 @@ export default class QuestionsDisplayTemp extends Component {
         }
       })
 
+      const newfirstPaper = parseFloat(firstPaperScore / 40 * 100).toFixed(0);
+      const newsecondPaper = parseFloat(secondPaperScore / 20 * 100).toFixed(0);
+      const newthirdPaper = parseFloat(thirdPaperScore / 20 * 100).toFixed(0);
+      const newforthPaper = parseFloat(forthPaperScore / 20 * 100).toFixed(0);
 
-      /*console.log(firstPaperScore)
-      console.log(secondPaperScore)
-      console.log(thirdPaperScore)
-      console.log(forthPaperScore)*/
-      totalScore = firstPaperScore + secondPaperScore + thirdPaperScore + forthPaperScore
-      console.log(totalScore)
+
+      totalScoreArray.push(newfirstPaper)
+      totalScoreArray.push(newsecondPaper)
+      totalScoreArray.push(newthirdPaper)
+      totalScoreArray.push(newforthPaper)
+
+      let newtotalScore = parseInt(newfirstPaper) + parseInt(newsecondPaper) + parseInt(newthirdPaper) + parseInt(newforthPaper)
+      //console.log(totalScore)
+      //console.log(totalScoreArray)
+
+      this.setState({ totalScore: newtotalScore });
+      this.setState({ newtotalScoreArray: totalScoreArray });
+
+      let scoreOffcanvas = document.querySelector(".display-score")
+      scoreOffcanvas.classList.add("active")
 
       handleCloseModal()
     }
@@ -480,6 +498,10 @@ export default class QuestionsDisplayTemp extends Component {
           </Modal.Body>
         </Modal>
 
+
+        <div className='display-score'>
+          <DisplayScore scores={this.state.newtotalScoreArray} total={this.state.totalScore} subjects={subjectNames} />
+        </div>
       </div>
     )
   }
