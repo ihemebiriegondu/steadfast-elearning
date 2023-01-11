@@ -137,7 +137,7 @@ export default class QuestionsDisplayTemp extends Component {
           <Tab eventKey="firstPaper" title="Use of English">
             <div className='quesTemp px-3'>
               <div>
-                <div className='ps-4'>
+                <div className='ps-md-4 ps-0'>
                   {
                     questions1.map(q =>
                       <div key={q.id}>
@@ -163,9 +163,8 @@ export default class QuestionsDisplayTemp extends Component {
                 </div>
 
                 <div className='btns-div'>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index1 > 0) { this.setState({ index1: this.state.index1 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) } }}>Next</button>
-                  <button onClick={handleShow} >show</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index1 > 0) { this.setState({ index1: this.state.index1 - 1 }) } }}>Previous</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) } }}>Next</button>
                 </div>
 
                 <Offcanvas show={this.state.show} onHide={handleClose}>
@@ -180,8 +179,11 @@ export default class QuestionsDisplayTemp extends Component {
 
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
-                <div className='submitbtn-div'>
-                  <button className='py-3 px-5'>Submit Exam</button>
+                <div className='d-flex justify-content-between other-action-div'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow}>Review</button>
+                  <div className='submitbtn-div'>
+                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -189,7 +191,7 @@ export default class QuestionsDisplayTemp extends Component {
           <Tab eventKey="secondPaper" title={subjectNames[1]}>
             <div className='quesTemp px-3'>
               <div>
-                <div className='ps-4'>
+                <div className='ps-md-4 ps-0'>
                   {
                     questions2.map(q =>
                       <div key={q.id}>
@@ -215,8 +217,8 @@ export default class QuestionsDisplayTemp extends Component {
                 </div>
 
                 <div className='btns-div'>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index2 > 0) { this.setState({ index2: this.state.index2 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index2 < (questionTwo.length - 1)) { this.setState({ index2: this.state.index2 + 1 }) } }}>Next</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index2 > 0) { this.setState({ index2: this.state.index2 - 1 }) } }}>Previous</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index2 < (questionTwo.length - 1)) { this.setState({ index2: this.state.index2 + 1 }) } }}>Next</button>
                 </div>
 
                 <div className='reviewbtns-div row g-2'>
@@ -230,7 +232,7 @@ export default class QuestionsDisplayTemp extends Component {
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='submitbtn-div'>
-                  <button className='py-3 px-5'>Submit Exam</button>
+                  <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
                 </div>
               </div>
             </div>
@@ -241,7 +243,7 @@ export default class QuestionsDisplayTemp extends Component {
           <Tab eventKey="thirdPaper" title={subjectNames[2]}>
             <div className='quesTemp px-3'>
               <div>
-                <div className='ps-4'>
+                <div className='ps-md-4 ps-0'>
                   {
                     questions3.map(q =>
                       <div key={q.id}>
@@ -267,8 +269,8 @@ export default class QuestionsDisplayTemp extends Component {
                 </div>
 
                 <div className='btns-div'>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index3 > 0) { this.setState({ index3: this.state.index3 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index3 < (questionThree.length - 1)) { this.setState({ index3: this.state.index3 + 1 }) } }}>Next</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index3 > 0) { this.setState({ index3: this.state.index3 - 1 }) } }}>Previous</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index3 < (questionThree.length - 1)) { this.setState({ index3: this.state.index3 + 1 }) } }}>Next</button>
                 </div>
 
                 <div className='reviewbtns-div row g-2'>
@@ -282,7 +284,7 @@ export default class QuestionsDisplayTemp extends Component {
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='submitbtn-div'>
-                  <button className='py-3 px-5'>Submit Exam</button>
+                  <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
                 </div>
               </div>
             </div>
@@ -293,7 +295,7 @@ export default class QuestionsDisplayTemp extends Component {
           <Tab eventKey="forthPaper" title={subjectNames[3]}>
             <div className='quesTemp px-3'>
               <div>
-                <div className='ps-4'>
+                <div className='ps-md-4 ps-0'>
                   {
                     questions4.map(q =>
                       <div key={q.id}>
@@ -319,8 +321,8 @@ export default class QuestionsDisplayTemp extends Component {
                 </div>
 
                 <div className='btns-div'>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index4 > 0) { this.setState({ index4: this.state.index4 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-5 me-5' onClick={() => { if (this.state.index4 < (questionFour.length - 1)) { this.setState({ index4: this.state.index4 + 1 }) } }}>Next</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index4 > 0) { this.setState({ index4: this.state.index4 - 1 }) } }}>Previous</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index4 < (questionFour.length - 1)) { this.setState({ index4: this.state.index4 + 1 }) } }}>Next</button>
                 </div>
 
                 <div className='reviewbtns-div row g-2'>
@@ -334,7 +336,7 @@ export default class QuestionsDisplayTemp extends Component {
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='submitbtn-div'>
-                  <button className='py-3 px-5'>Submit Exam</button>
+                  <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
                 </div>
               </div>
             </div>

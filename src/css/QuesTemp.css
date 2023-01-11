@@ -9,22 +9,36 @@
     background: #F5F5F5;
 }
 
+.quesTemp .question-instruction {
+    font-size: 23px !important;
+}
+
 .quesTemp .question {
-    font-size: 22px !important;
+    font-size: 20px !important;
     font-weight: 500;
     font-family: 'Poppins';
 }
 
 .quesTemp .options {
-    font-size: 20px !important;
+    font-size: 18px !important;
     font-weight: 400;
     font-family: 'Poppins';
     margin-bottom: 8px !important;
 }
 
+.quesTemp .options input {
+    outline: none !important;
+    accent-color: rgb(98, 23, 23);
+    margin-left: 3px;
+    margin-top: 1px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 .quesTemp .btns-div {
     margin-top: 90px !important;
     padding-left: 60px !important;
+    padding-right: 60px !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,6 +62,10 @@
     transition: all 0.3s ease-in-out;
 }
 
+.quesTemp .other-action-div {
+    margin-top: 40px;
+}
+
 .quesTemp .reviewbtns-div {
     width: 75%;
     margin: auto;
@@ -60,7 +78,6 @@
 }
 
 .submitbtn-div {
-    margin-top: 40px;
     padding-left: 60px;
 }
 
@@ -73,4 +90,35 @@
     font-weight: 500;
     font-family: 'Mulish';
     font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+    .quesTemp .question-instruction {
+        font-size: 18px !important;
+    }
+
+    .quesTemp .question {
+        font-size: 17px !important;
+    }
+
+    .quesTemp .option-div {
+        margin-left: 1rem !important;
+    }
+
+    .quesTemp .options {
+        font-size: 16px !important;
+    }
+
+    .quesTemp .btns-div {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        margin-top: 60px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .quesTemp .btns-div {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
 }
