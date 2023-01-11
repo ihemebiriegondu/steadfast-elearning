@@ -118,6 +118,20 @@
     background: rgb(98, 23, 23);
 }
 
+.submitModal {
+    background: rgb(255, 236, 236);
+    border-radius: 10px;
+}
+
+.submitModal .modal-submit-btns button {
+    background: rgb(98, 23, 23);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none !important;
+    outline: none !important;
+}
+
 
 @media (max-width: 1024px) {
     .quesTemp .question-instruction {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../css/QuesTemp.css'
-import { Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab, Modal } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
@@ -15,6 +15,7 @@ export default class QuestionsDisplayTemp extends Component {
       show4: false,
       //const [key, setKey] = useState('firstPaper');
       //const [show, setShow] = useState(false);
+      showModal: false,
       index1: 0,
       size1: 1,
 
@@ -143,6 +144,9 @@ export default class QuestionsDisplayTemp extends Component {
     const handleClose4 = () => this.setState({ show4: false });
     const handleShow4 = () => this.setState({ show4: true });
 
+    const handleCloseModal = () => this.setState({ showModal: false })
+    const handleShowModal = () => this.setState({ showModal: true })
+
     return (
       <div>
         <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">
@@ -197,7 +201,7 @@ export default class QuestionsDisplayTemp extends Component {
                 <div className='d-flex justify-content-between other-action-div'>
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow1}>Review</button>
                   <div className='submitbtn-div'>
-                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                    <button className='py-3 px-sm-5 px-3' onClick={handleShowModal}>Submit Exam</button>
                   </div>
                 </div>
               </div>
@@ -254,7 +258,7 @@ export default class QuestionsDisplayTemp extends Component {
                 <div className='d-flex justify-content-between other-action-div'>
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow2}>Review</button>
                   <div className='submitbtn-div'>
-                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                    <button className='py-3 px-sm-5 px-3' onClick={handleShowModal}>Submit Exam</button>
                   </div>
                 </div>
               </div>
@@ -314,7 +318,7 @@ export default class QuestionsDisplayTemp extends Component {
                 <div className='d-flex justify-content-between other-action-div'>
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow3}>Review</button>
                   <div className='submitbtn-div'>
-                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                    <button className='py-3 px-sm-5 px-3' onClick={handleShowModal}>Submit Exam</button>
                   </div>
                 </div>
               </div>
@@ -374,13 +378,24 @@ export default class QuestionsDisplayTemp extends Component {
                 <div className='d-flex justify-content-between other-action-div'>
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow4}>Review</button>
                   <div className='submitbtn-div'>
-                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                    <button className='py-3 px-sm-5 px-3' onClick={handleShowModal}>Submit Exam</button>
                   </div>
                 </div>
               </div>
             </div>
           </Tab>
         </Tabs>
+
+        <Modal aria-labelledby="contained-modal-title-vcenter" centered show={this.state.showModal} onHide={handleCloseModal} className="">
+          <Modal.Body className="submitModal">
+            <h6 className='text-center'>Are you sure you want to submit?</h6>
+            <div className='d-flex justify-content-between mt-4 px-5 modal-submit-btns'>
+              <button onClick={handleCloseModal}>No</button>
+              <button onClick={handleCloseModal}>Yes</button>
+            </div>
+          </Modal.Body>
+        </Modal>
+
       </div>
     )
   }
