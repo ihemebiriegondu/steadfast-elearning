@@ -66,17 +66,6 @@
     margin-top: 40px;
 }
 
-.quesTemp .reviewbtns-div {
-    width: 75%;
-    margin: auto;
-    margin-top: 30px;
-}
-
-.quesTemp .reviewbtns-div .reviewbtn {
-    background-color: #4b878bff;
-    color: white;
-}
-
 .submitbtn-div {
     padding-left: 60px;
 }
@@ -91,6 +80,44 @@
     font-family: 'Mulish';
     font-size: 18px;
 }
+
+
+.review-offcanvas {
+    background: rgb(255, 236, 236) !important;
+    font-family: 'Vesper Libre', serif !important;
+}
+
+.review-offcanvas h5 {
+    color: rgb(98, 23, 23);
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+}
+
+.review-offcanvas .reviewbtns-div {
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 0 10px;
+}
+
+.review-offcanvas .reviewbtns-div .reviewbtn {
+    color: white;
+}
+
+.review-offcanvas .reviewbtns-div .reviewbtn:hover {
+    cursor: pointer;
+}
+
+.review-offcanvas .reviewbtns-div .reviewbtn.answered-review {
+    background: #4b878bff;
+}
+
+.review-offcanvas .reviewbtns-div .reviewbtn.warning-review {
+    background: rgb(98, 23, 23);
+}
+
 
 @media (max-width: 1024px) {
     .quesTemp .question-instruction {

@@ -9,7 +9,10 @@ export default class QuestionsDisplayTemp extends Component {
     super(props);
     this.state = {
       key: "firstPaper",
-      show: false,
+      show1: false,
+      show2: false,
+      show3: false,
+      show4: false,
       //const [key, setKey] = useState('firstPaper');
       //const [show, setShow] = useState(false);
       index1: 0,
@@ -128,13 +131,22 @@ export default class QuestionsDisplayTemp extends Component {
     const subjectNames = JSON.parse(localStorage.getItem("subjectNames"));
     //localStorage.removeItem("subjectNames")
 
-    const handleClose = () => this.setState({ show: false });
-    const handleShow = () => this.setState({ show: true });
+    const handleClose1 = () => this.setState({ show1: false });
+    const handleShow1 = () => this.setState({ show1: true });
+
+    const handleClose2 = () => this.setState({ show2: false });
+    const handleShow2 = () => this.setState({ show2: true });
+
+    const handleClose3 = () => this.setState({ show3: false });
+    const handleShow3 = () => this.setState({ show3: true });
+
+    const handleClose4 = () => this.setState({ show4: false });
+    const handleShow4 = () => this.setState({ show4: true });
 
     return (
       <div>
         <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">
-          <Tab eventKey="firstPaper" title="Use of English">
+          <Tab eventKey="firstPaper" title="English">
             <div className='quesTemp px-3'>
               <div>
                 <div className='ps-md-4 ps-0'>
@@ -167,11 +179,14 @@ export default class QuestionsDisplayTemp extends Component {
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) } }}>Next</button>
                 </div>
 
-                <Offcanvas show={this.state.show} onHide={handleClose}>
+                <Offcanvas className='review-offcanvas' show={this.state.show1} onHide={handleClose1}>
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title><h5>{subjectNames[0]} Review</h5></Offcanvas.Title>
+                  </Offcanvas.Header>
                   <div className='reviewbtns-div row g-2'>
                     {questionOne.map((q, index1) =>
                       <div key={q.id} className="cursor-pointer col">
-                        <div id={index1} onClick={(e) => { (this.setState({ index1: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index1 + 1}{this.isAnsweredOne(q)}</div>
+                        <div id={index1} onClick={(e) => { (this.setState({ index1: parseInt(e.target.id, q.length) })); handleClose1() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredOne(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index1 + 1}</div>
                       </div>
                     )}
                   </div>
@@ -180,7 +195,7 @@ export default class QuestionsDisplayTemp extends Component {
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
                 <div className='d-flex justify-content-between other-action-div'>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow}>Review</button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow1}>Review</button>
                   <div className='submitbtn-div'>
                     <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
                   </div>
@@ -221,18 +236,26 @@ export default class QuestionsDisplayTemp extends Component {
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index2 < (questionTwo.length - 1)) { this.setState({ index2: this.state.index2 + 1 }) } }}>Next</button>
                 </div>
 
-                <div className='reviewbtns-div row g-2'>
-                  {questionTwo.map((q, index2) =>
-                    <div key={q.id} className="cursor-pointer col">
-                      <div id={index2} onClick={(e) => { (this.setState({ index2: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index2 + 1}{this.isAnsweredTwo(q)}</div>
-                    </div>
-                  )}
-                </div>
+                <Offcanvas className='review-offcanvas' show={this.state.show2} onHide={handleClose2}>
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title><h5>{subjectNames[1]} Review</h5></Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <div className='reviewbtns-div row g-2'>
+                    {questionTwo.map((q, index2) =>
+                      <div key={q.id} className="cursor-pointer col">
+                        <div id={index2} onClick={(e) => { (this.setState({ index2: parseInt(e.target.id, q.length) })); handleClose2() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredTwo(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index2 + 1}</div>
+                      </div>
+                    )}
+                  </div>
+                </Offcanvas>
 
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
-                <div className='submitbtn-div'>
-                  <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                <div className='d-flex justify-content-between other-action-div'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow2}>Review</button>
+                  <div className='submitbtn-div'>
+                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -273,18 +296,26 @@ export default class QuestionsDisplayTemp extends Component {
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index3 < (questionThree.length - 1)) { this.setState({ index3: this.state.index3 + 1 }) } }}>Next</button>
                 </div>
 
-                <div className='reviewbtns-div row g-2'>
-                  {questionThree.map((q, index3) =>
-                    <div key={q.id} className="cursor-pointer col">
-                      <div id={index3} onClick={(e) => { (this.setState({ index3: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index3 + 1}{this.isAnsweredThree(q)}</div>
-                    </div>
-                  )}
-                </div>
+                <Offcanvas className='review-offcanvas' show={this.state.show3} onHide={handleClose3}>
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title><h5>{subjectNames[2]} Review</h5></Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <div className='reviewbtns-div row g-2'>
+                    {questionThree.map((q, index3) =>
+                      <div key={q.id} className="cursor-pointer col">
+                        <div id={index3} onClick={(e) => { (this.setState({ index3: parseInt(e.target.id, q.length) })); handleClose3() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredThree(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index3 + 1}</div>
+                      </div>
+                    )}
+                  </div>
+                </Offcanvas>
 
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
-                <div className='submitbtn-div'>
-                  <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                <div className='d-flex justify-content-between other-action-div'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow3}>Review</button>
+                  <div className='submitbtn-div'>
+                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -325,18 +356,26 @@ export default class QuestionsDisplayTemp extends Component {
                   <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index4 < (questionFour.length - 1)) { this.setState({ index4: this.state.index4 + 1 }) } }}>Next</button>
                 </div>
 
-                <div className='reviewbtns-div row g-2'>
-                  {questionFour.map((q, index4) =>
-                    <div key={q.id} className="cursor-pointer col">
-                      <div id={index4} onClick={(e) => { (this.setState({ index4: parseInt(e.target.id, q.length) })); }} className={`reviewbtn px-3 text-center py-2 rounded`}>{index4 + 1}{this.isAnsweredFour(q)}</div>
-                    </div>
-                  )}
-                </div>
+                <Offcanvas className='review-offcanvas' show={this.state.show4} onHide={handleClose4}>
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title><h5>{subjectNames[3]} Review</h5></Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <div className='reviewbtns-div row g-2'>
+                    {questionFour.map((q, index4) =>
+                      <div key={q.id} className="cursor-pointer col">
+                        <div id={index4} onClick={(e) => { (this.setState({ index4: parseInt(e.target.id, q.length) })); handleClose4() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredFour(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index4 + 1}</div>
+                      </div>
+                    )}
+                  </div>
+                </Offcanvas>
 
                 <hr className='mt-4 w-75 m-auto text-danger' />
 
-                <div className='submitbtn-div'>
-                  <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                <div className='d-flex justify-content-between other-action-div'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow4}>Review</button>
+                  <div className='submitbtn-div'>
+                    <button className='py-3 px-sm-5 px-3'>Submit Exam</button>
+                  </div>
                 </div>
               </div>
             </div>
