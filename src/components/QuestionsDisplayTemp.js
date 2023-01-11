@@ -147,6 +147,90 @@ export default class QuestionsDisplayTemp extends Component {
     const handleCloseModal = () => this.setState({ showModal: false })
     const handleShowModal = () => this.setState({ showModal: true })
 
+    const submitExamFunction = () => {
+
+      //console.log("fdj")
+      let firstPaperScore = 0
+      let secondPaperScore = 0
+      let thirdPaperScore = 0
+      let forthPaperScore = 0
+      let totalScore = 0
+
+      questionOne.forEach(question => {
+        //console.log(question)
+        //console.log(question.options.every(x => x.selected === x.isAnswer))
+        
+        //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
+        question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
+
+        //checking if the selected options is true
+        if (question.isCorrect === true) {
+
+          //console.log("corect")
+          //adding to the total score
+          firstPaperScore += 1;
+        }
+      })
+
+      questionTwo.forEach(question => {
+        //console.log(question)
+        //console.log(question.options.every(x => x.selected === x.isAnswer))
+        
+        //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
+        question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
+
+        //checking if the selected options is true
+        if (question.isCorrect === true) {
+
+          //console.log("corect")
+          //adding to the total score
+          secondPaperScore += 1;
+        }
+      })
+
+      questionThree.forEach(question => {
+        //console.log(question)
+        //console.log(question.options.every(x => x.selected === x.isAnswer))
+        
+        //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
+        question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
+
+        //checking if the selected options is true
+        if (question.isCorrect === true) {
+
+          //console.log("corect")
+          //adding to the total score
+          thirdPaperScore += 1;
+        }
+      })
+
+      questionFour.forEach(question => {
+        //console.log(question)
+        //console.log(question.options.every(x => x.selected === x.isAnswer))
+        
+        //checking thorugh the displayed questions for the selected options and assigning them to a variable question.isCorrect
+        question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
+
+        //checking if the selected options is true
+        if (question.isCorrect === true) {
+
+          //console.log("corect")
+          //adding to the total score
+          forthPaperScore += 1;
+        }
+      })
+
+
+      /*console.log(firstPaperScore)
+      console.log(secondPaperScore)
+      console.log(thirdPaperScore)
+      console.log(forthPaperScore)*/
+      totalScore = firstPaperScore + secondPaperScore + thirdPaperScore + forthPaperScore
+      console.log(totalScore)
+
+      handleCloseModal()
+    }
+
     return (
       <div>
         <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">
@@ -391,7 +475,7 @@ export default class QuestionsDisplayTemp extends Component {
             <h6 className='text-center'>Are you sure you want to submit?</h6>
             <div className='d-flex justify-content-between mt-4 px-5 modal-submit-btns'>
               <button onClick={handleCloseModal}>No</button>
-              <button onClick={handleCloseModal}>Yes</button>
+              <button onClick={() => { submitExamFunction(); }}>Yes</button>
             </div>
           </Modal.Body>
         </Modal>

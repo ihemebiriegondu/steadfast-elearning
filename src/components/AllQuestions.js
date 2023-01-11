@@ -161,7 +161,7 @@ const AllQuestions = () => {
                 optionsValue.id = x
                 optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
-                optionsValue.isAnswer = x === correctOption ? "True" : "False"
+                optionsValue.isAnswer = x === correctOption ? true : false
                 //console.log(optionsValue)
 
                 options.push(optionsValue)
@@ -212,7 +212,7 @@ const AllQuestions = () => {
                 optionsValue.id = x
                 optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
-                optionsValue.isAnswer = x === correctOption ? "True" : "False"
+                optionsValue.isAnswer = x === correctOption ? true : false
                 //console.log(optionsValue)
 
                 options.push(optionsValue)
@@ -263,7 +263,7 @@ const AllQuestions = () => {
                 optionsValue.id = x
                 optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
-                optionsValue.isAnswer = x === correctOption ? "True" : "False"
+                optionsValue.isAnswer = x === correctOption ? true : false
                 //console.log(optionsValue)
 
                 options.push(optionsValue)
@@ -314,7 +314,7 @@ const AllQuestions = () => {
                 optionsValue.id = x
                 optionsValue.checkId = questionId + x
                 optionsValue.name = question.option[x]
-                optionsValue.isAnswer = x === correctOption ? "True" : "False"
+                optionsValue.isAnswer = x === correctOption ? true : false
                 //console.log(optionsValue)
 
                 options.push(optionsValue)
