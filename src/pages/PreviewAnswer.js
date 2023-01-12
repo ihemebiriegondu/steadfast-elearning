@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Tabs, Tab } from 'react-bootstrap';
 import '../css/previewanswers.css'
 
@@ -56,7 +56,6 @@ function PreviewAnswer() {
                     )
                   }
                 </div>
-                <div className={`m-1 p-1 text-bold ${q.isCorrect ? 'answerCorrectText' : 'answerWrongText'}`}>Your answer was {q.isCorrect ? 'Correct' : 'Wrong'}. <span>The correct answer is {q.correctAnswer}</span></div>
               </div>
             </div>
           )}
@@ -77,7 +76,6 @@ function PreviewAnswer() {
                     )
                   }
                 </div>
-                <div className={`m-1 p-1 text-bold ${q.isCorrect ? 'answerCorrectText' : 'answerWrongText'}`}>Your answer was {q.isCorrect ? 'Correct' : 'Wrong'}. <span>The correct answer is {q.correctAnswer}</span></div>
               </div>
             </div>
           )}
@@ -98,7 +96,6 @@ function PreviewAnswer() {
                     )
                   }
                 </div>
-                <div className={`m-1 p-1 text-bold ${q.isCorrect ? 'answerCorrectText' : 'answerWrongText'}`}>Your answer was {q.isCorrect ? 'Correct' : 'Wrong'}. <span>The correct answer is {q.correctAnswer}</span></div>
               </div>
             </div>
           )}
@@ -119,12 +116,16 @@ function PreviewAnswer() {
                     )
                   }
                 </div>
-                <div className={`m-1 p-1 text-bold ${q.isCorrect ? 'answerCorrectText' : 'answerWrongText'}`}>Your answer was {q.isCorrect ? 'Correct' : 'Wrong'}. <span>The correct answer is {q.correctAnswer}</span></div>
               </div>
             </div>
           )}
         </Tab>
       </Tabs>
+
+
+      <div className='submitbtn-div'>
+        <button className=''><Link to="/dashboard" className='text-decoration-none w-100 h-100 d-inline-block py-3 px-sm-5 px-3 text-white'>Back home</Link></button>
+      </div>
     </div>
   )
 }

@@ -26,7 +26,7 @@ const AllQuestions = () => {
             setLoader(true);
 
             let questionsone;
-            questionsone = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[0],
+            questionsone = await fetch("https://questions.aloc.com.ng/api/v2/m?subject=" + subjects[0],
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -52,7 +52,7 @@ const AllQuestions = () => {
             setLoader(true);
 
             let questionstwo;
-            questionstwo = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[1],
+            questionstwo = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[1],
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -78,7 +78,7 @@ const AllQuestions = () => {
             setLoader(true);
 
             let questionsthree;
-            questionsthree = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[2],
+            questionsthree = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[2],
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -104,7 +104,7 @@ const AllQuestions = () => {
             setLoader(true);
 
             let questionsfour;
-            questionsfour = await fetch("https://questions.aloc.com.ng/api/v2/q/7?subject=" + subjects[3],
+            questionsfour = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[3],
                 {
                     headers: {
                         'Accept': 'application/json',

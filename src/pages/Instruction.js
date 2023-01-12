@@ -37,6 +37,7 @@ const Instruction = () => {
                         <p className='mb-0 pb-1'>Use the <span className='fw-bold'>Review</span> button to check for unanswered questions.</p>
                         <p className='mb-0 pb-1'>Click the question numbers in the Review page to jump to a certain question.</p>
                         <p className='mb-0 pb-1'>Click the <span className='fw-bold'>"Submit"</span> button when you are <span className='fw-bold'>done</span> with the exam.</p>
+                        <p className='mb-0 pb-1'><span className='fw-bold'>Note: </span>Do not refresh the page after the exam has started</p>
                     </div>
                 </div>
                 <div className='btn-div2'>
