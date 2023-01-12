@@ -1,0 +1,114 @@
+.preview-answer {
+    padding: 2rem 1.5rem;
+    background: rgb(247, 237, 237);
+}
+
+.preview-answer .nav {
+    width: 80%;
+    margin: auto !important;
+}
+
+.preview-answer .nav-tabs {
+    border-bottom: none !important;
+    margin-bottom: 60px !important;
+}
+
+.preview-answer .nav-link {
+    background: none !important;
+    color: black;
+    font-size: 19px;
+    border: none !important;
+    outline: none !important;
+    font-weight: 600;
+    margin-right: 40px !important;
+    border-radius: 6px !important;
+}
+
+.preview-answer .nav-link:hover {
+    background: #ffd9041a;
+    border-color: transparent !important;
+}
+
+.preview-answer .nav-link.active {
+    background: rgb(250, 193, 193) !important;
+    color: rgb(98, 23, 23);
+    border-color: rgb(250, 193, 193) !important;
+}
+
+.preview-answer .tab-content {
+    padding-bottom: 100px !important;
+}
+
+.preview-answer .previewQuestionsBorder {
+    border-radius: 10px;
+    margin-bottom: 20px !important;
+}
+
+.preview-answer .previewQuestionsBorder.answerCorrectBorder {
+    border: 2px solid green;
+}
+
+.preview-answer .previewQuestionsBorder.answerWrongBorder {
+    border: 2px solid rgb(198, 5, 5);
+}
+
+.preview-answer .options {
+
+}
+
+.preview-answer .options .option {
+    padding: 3px 4px;
+    border-radius: 5px;
+}
+
+.preview-answer .options .option.isAnswer {
+    background: rgb(193, 240, 193);
+    border: 2px solid green;
+}
+
+.preview-answer .options .option.isAnswer .form-check-input:checked {
+    background-color: green !important;
+    border-color: green !important;
+}
+
+.preview-answer .options .option.notAnswer {
+    background: transparent;
+}
+
+.preview-answer .options .option.notCorrect {
+    background: rgb(237, 179, 179);
+    border: 2px solid rgb(198, 5, 5);
+}
+
+.preview-answer .options .option.notCorrect .form-check-input:checked {
+    background-color: rgb(198, 5, 5) !important;
+    border-color: rgb(198, 5, 5) !important;
+}
+
+
+@media (max-width: 1024px) {
+    .preview-answer {
+        padding: 2rem 1rem;
+    }
+
+    .preview-answer .nav {
+        width: 90%;
+        justify-content: center;
+    }
+
+    .preview-answer .nav-link {
+        font-size: 16px;
+        margin-right: 20px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .preview-answer .nav {
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .preview-answer .nav-link {
+        margin-right: 0 !important;
+    }
+}

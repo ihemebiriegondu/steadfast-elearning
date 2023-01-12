@@ -500,7 +500,7 @@ export default class QuestionsDisplayTemp extends Component {
 
 
         <div className='display-score'>
-          <DisplayScore scores={this.state.newtotalScoreArray} total={this.state.totalScore} subjects={subjectNames} />
+          <DisplayScore scores={this.state.newtotalScoreArray} total={this.state.totalScore} subjects={subjectNames} newdatas={this.props.datas} />
         </div>
       </div>
     )

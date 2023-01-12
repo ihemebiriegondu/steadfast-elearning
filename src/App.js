@@ -9,6 +9,7 @@ import SelectSubjects from './pages/SelectSubjects';
 import ProtectedRoute from './components/ProtectedRoute'
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Instruction from './pages/Instruction';
+import PreviewAnswer from './pages/PreviewAnswer';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path='/select subjects' element={<ProtectedRoute><SelectSubjects /></ProtectedRoute>} />
             <Route path='/exam instruction' element={<ProtectedRoute><Instruction /></ProtectedRoute>} />
             <Route path='/jamb exam' element={<ProtectedRoute><JambExam /></ProtectedRoute>} />
+            <Route path='/preview answers' element={<ProtectedRoute><PreviewAnswer /></ProtectedRoute>} />
           </Routes>
         </UserAuthContextProvider>
       </Router>

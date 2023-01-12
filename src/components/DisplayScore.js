@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import '../css/displayscore.css'
 
@@ -8,6 +9,7 @@ export class DisplayScore extends Component {
         let scoresArray = this.props.scores
         let totalScore = this.props.total
         let allSubjects = this.props.subjects
+
 
         return (
             <div className=''>
@@ -48,6 +50,9 @@ export class DisplayScore extends Component {
                         <div className='py-5'>
                             <p className='text-center'><span className='fw-semibold'>Total Score: </span> <span className='fw-bold fs-5'> {totalScore}</span></p>
                         </div>
+                    </div>
+                    <div className='submitbtn-div'>
+                        <button className=''><Link to="/preview answers" state= {{questions: this.props.newdatas}} className='text-decoration-none w-100 h-100 d-inline-block py-3 px-sm-5 px-3 text-white'>Preview Answers</Link></button>
                     </div>
                 </div>
             </div>
