@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Instruction from './pages/Instruction';
 import PreviewAnswer from './pages/PreviewAnswer';
+import Settings from './pages/Settings';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/dashboard' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path='/settings' element={<ProtectedRoute><Settings /></ProtectedRoute>} />
             <Route path='/select subjects' element={<ProtectedRoute><SelectSubjects /></ProtectedRoute>} />
             <Route path='/exam instruction' element={<ProtectedRoute><Instruction /></ProtectedRoute>} />
             <Route path='/jamb exam' element={<ProtectedRoute><JambExam /></ProtectedRoute>} />
