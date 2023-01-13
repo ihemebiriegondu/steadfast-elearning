@@ -25,23 +25,26 @@ $light: rgb(255, 236, 236);*/
     animation-name: overflow;
     animation-duration: 8s;
     height: 100%;
-    background: rgb(98, 23, 23);
+    background: rgb(255, 236, 236);
 }
 
 @keyframes overflow {
     from {
         overflow-y: hidden;
-        background: rgb(255, 236, 236);
     }
 
     to {
         overflow-y: scroll;
-        background: rgb(98, 23, 23);
     }
 }
 
 .intro-page::-webkit-scrollbar {
     display: none !important;
+}
+
+.intro-page .intro-page-div {
+    width: 100%;
+    height: fit-content;
 }
 
 .intro-page .logo-intro {
@@ -102,12 +105,10 @@ $light: rgb(255, 236, 236);*/
     width: 100%;
     visibility: visible;
     display: block !important;
-    padding-top: 4rem;
     animation-name: showLogin, slideInLogin;
     animation-delay: 0.1s, 1.1s;
     animation-duration: 1.1s, 2s;
     animation-iteration-count: 1;
-    margin-bottom: 4rem;
 }
 
 @keyframes showLogin {
@@ -213,7 +214,6 @@ $light: rgb(255, 236, 236);*/
     align-content: center;
     width: 100%;
     padding-bottom: 4rem;
-    margin-bottom: 40px;
 }
 
 .intro-page .copyright a {

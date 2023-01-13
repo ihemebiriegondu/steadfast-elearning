@@ -18,7 +18,7 @@
 
 .dashboard .top-nav {
     background: rgb(250, 193, 193);
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.5rem;
 }
 
 .dashboard .top-nav h5 {
@@ -34,17 +34,49 @@
     font-weight: 700;
 }
 
-.dashboard .top-nav img {
-    width: 60px;
-    height: 60px;
+.dashboard .top-nav .menubar {
+    color: rgb(75, 5, 5);
+}
+
+.dashboard .top-nav .menubar:hover {
+    cursor: pointer !important;
+}
+
+.offcanvas {
+    background: white;
+}
+
+.offcanvas-header {
+    background: rgb(250, 193, 193);
+}
+
+.offcanvasinfo {
+    font-size: 12px;
+    color: #373737;
+}
+
+.user-img {
+    width: 60px !important;
+    height: 60px !important; 
     border-radius: 50%;
     border: 1px solid rgb(255, 236, 236);
     margin: 0;
     padding: 0;
 }
 
+.btn-close {
+    outline: none !important;
+    border: none !important;
+    color: rgb(75, 5, 5) !important;
+    opacity: 1 !important;
+}
+
+button {
+    outline: none !important;
+}
+
 .dashboard .middle-div {
-    padding: 5rem 1.5rem;
+    padding: 3rem 1.5rem;
     background: rgb(255, 236, 236);
 }
 
@@ -71,6 +103,16 @@
     color: rgb(75, 5, 5) !important;
 }
 
+.offcanvas .nav .nav-item .nav-link {
+    color: rgb(105, 102, 102) !important;
+    text-decoration: none !important;
+}
+
+.offcanvas .nav .nav-item .nav-link.active {
+    color: rgb(138, 25, 25) !important;
+}
+
+
 @media (max-width: 768px) {
     .dashboard .top-nav h5 {
         font-size: 20px;
@@ -81,9 +123,9 @@
         letter-spacing: 2px;
     }
 
-    .dashboard .top-nav img {
-        width: 50px;
-        height: 50px;
+    .user-img {
+        width: 50px !important;
+        height: 50px !important;
     }
 
     .footer .nav .nav-item .nav-link {
