@@ -50,7 +50,7 @@ const Home = () => {
 
             <Nav.Item>
               <Nav.Link eventKey="settings" className='p-0'>
-                <p className='d-flex flex-column align-items-center m-0'><GrUserSettings className='fs-5 tab-icon' /> <span>Home</span></p>
+                <p className='d-flex flex-column align-items-center m-0'><GrUserSettings className='fs-5 tab-icon' /> <span>Settings</span></p>
               </Nav.Link>
             </Nav.Item>
           </Nav>

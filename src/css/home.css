@@ -38,6 +38,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    border: 1px solid rgb(255, 236, 236);
     margin: 0;
     padding: 0;
 }
@@ -47,11 +48,34 @@
     background: rgb(255, 236, 236);
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(255, 236, 236);
+}
+
+.footer .nav .nav-item .nav-link {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 153.69%;
+    color: #373737;
+}
+
+.footer .nav .nav-item .nav-link.active {
+    color: rgb(75, 5, 5);
+}
+
+.footer .nav .nav-item .nav-link.active p .tab-icon {
+    color: rgb(75, 5, 5) !important;
+}
+
 @media (max-width: 768px) {
     .dashboard .top-nav h5 {
         font-size: 20px;
     }
-    
+
     .dashboard .top-nav h5 span {
         font-size: 30px;
         letter-spacing: 2px;
@@ -60,5 +84,9 @@
     .dashboard .top-nav img {
         width: 50px;
         height: 50px;
+    }
+
+    .footer .nav .nav-item .nav-link {
+        font-size: 12px;
     }
 }
