@@ -7,7 +7,6 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { IoBookSharp } from 'react-icons/io5'
 import { MdHomeFilled, MdMenu, MdSettings } from 'react-icons/md'
 import { BiLogOutCircle } from 'react-icons/bi'
-import userImg from '../assets/user.png'
 import '../css/home.css'
 
 const Home = () => {
@@ -17,7 +16,7 @@ const Home = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { logOut } = useUserAuth();
+  const { logOut, user } = useUserAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -36,7 +35,7 @@ const Home = () => {
         <Tab.Content>
           <Tab.Pane eventKey="home">
             <div className='top-nav d-flex justify-content-between align-items-center'>
-              <h5 className='mb-0'>Hello, <span>Egondu</span></h5>
+              <h5 className='mb-0'>Hello, <span>{user.displayName}</span></h5>
               <MdMenu className='menubar fs-1' onClick={handleShow} />
             </div>
             <div className='middle-div'>
@@ -87,10 +86,10 @@ const Home = () => {
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
             <div className='d-flex align-items-center'>
-              <img src={userImg} className='user-img' alt='' />
+              <img src={user.imageURL} className='user-img' alt='' />
               <div className='ms-3'>
-                <p className='m-0 offcanvasinfo'>Egondu</p>
-                <p className='m-0 offcanvasinfo'>ihemebiriegondu@gmail.com</p>
+                <p className='m-0 offcanvasinfo'>{user.displayName}</p>
+                <p className='m-0 offcanvasinfo'>{user.email}</p>
               </div>
             </div>
           </Offcanvas.Header>
