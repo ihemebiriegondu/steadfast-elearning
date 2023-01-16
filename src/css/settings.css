@@ -32,7 +32,7 @@
     color: #373737;
 }
 
-.settings .top-setting .btn-div button {
+.settings .top-setting .btn-div label {
     background: rgb(98, 23, 23);
     color: rgb(255, 236, 236);
     border: none !important;
@@ -40,4 +40,12 @@
     padding: 10px 17px;
     font-size: 15px;
     border-radius: 30px;
+}
+
+.settings .error-div {
+    position: absolute;
+    width: auto !important;
+    right: 20px !important;
+    top: 20px !important;
+    z-index: 2000;
 }
