@@ -8,6 +8,7 @@ import { IoBookSharp } from 'react-icons/io5'
 import { MdHomeFilled, MdMenu, MdSettings } from 'react-icons/md'
 import { BiLogOutCircle } from 'react-icons/bi'
 import '../css/home.css'
+import Settings from '../components/Settings';
 
 const Home = () => {
 
@@ -56,8 +57,17 @@ const Home = () => {
           <Tab.Pane eventKey="exams">
           </Tab.Pane>
 
-          <Tab.Pane eventKey="settings">
+          <Tab.Pane eventKey="history">
 
+          </Tab.Pane>
+
+          <Tab.Pane eventKey="settings">
+            <div>
+              <div className='top-nav d-flex justify-content-end align-items-center'>
+                <MdMenu className='menubar fs-1' onClick={handleShow} />
+              </div>
+              <Settings />
+            </div>
           </Tab.Pane>
         </Tab.Content>
 
@@ -110,6 +120,12 @@ const Home = () => {
               <Nav.Item className='mb-3'>
                 <Nav.Link className='p-0'>
                   <p className='d-flex flex-column align-items-center m-0'><span>Study past questions</span></p>
+                </Nav.Link>
+              </Nav.Item>
+
+              <Nav.Item className='mb-3'>
+                <Nav.Link eventKey="history" className='p-0' onClick={handleClose}>
+                  <p className='d-flex flex-column align-items-center m-0'><span>Exam History</span></p>
                 </Nav.Link>
               </Nav.Item>
 

@@ -1,0 +1,43 @@
+.settings {
+
+}
+
+.settings .top-setting {
+
+}
+
+.settings .top-setting .img-div {
+    width: 70px !important;
+    height: 70px !important; 
+    border-radius: 50%;
+    border: 1px solid rgb(255, 236, 236);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: pink;
+}
+
+.settings .top-setting .img-div img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.settings .top-setting .user-info-div h5 {
+    color: #373737;
+}
+
+.settings .top-setting .user-info-div p {
+    font-size: 14px;
+    color: #373737;
+}
+
+.settings .top-setting .btn-div button {
+    background: rgb(98, 23, 23);
+    color: rgb(255, 236, 236);
+    border: none !important;
+    outline: none !important;
+    padding: 10px 17px;
+    font-size: 15px;
+    border-radius: 30px;
+}
