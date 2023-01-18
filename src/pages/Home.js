@@ -29,14 +29,14 @@ const Home = () => {
     }
   };
 
-/*{user.displayName.split(" ")[0]} */
+/* */
   return (
     <div className='dashboard'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="home">
         <Tab.Content>
           <Tab.Pane eventKey="home">
             <div className='top-nav d-flex justify-content-between align-items-center'>
-              <h5 className='mb-0'>Hello, <span></span></h5>
+              <h5 className='mb-0'>Hello, <span>{user.displayName.split(" ")[0]}</span></h5>
               <MdMenu className='menubar fs-1' onClick={handleShow} />
             </div>
             <div className='middle-div'>

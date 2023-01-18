@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+//import { useUserAuth } from "../context/UserAuthContext";
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import '../css/displayscore.css'
@@ -6,6 +7,7 @@ import '../css/displayscore.css'
 export class DisplayScore extends Component {
     render() {
 
+        //const { user } = useUserAuth();
         let scoresArray = this.props.scores
         let totalScore = this.props.total
         let allSubjects = this.props.subjects
