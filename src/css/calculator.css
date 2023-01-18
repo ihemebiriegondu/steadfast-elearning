@@ -1,0 +1,52 @@
+.calculator-body {
+    border: 5px solid rgb(98, 23, 23);
+    width: 400px;
+    border-radius: 10px;
+}
+
+.calculator-body .calculator-display {
+    border: 2px solid rgb(98, 23, 23);
+    padding: 0 5px;
+}
+
+.calculator-body .calculator-display .prevValue {}
+
+.calculator-body .calculator-display .currentValue {
+    font-size: 30px;
+    text-align: right;
+}
+
+.calculator-body .calculator-btnsdiv {
+   
+}
+
+.calculator-body .calculator-btnsdiv .calculator-btndivs button {
+    border: 1px solid rgb(98, 23, 23);
+    background: transparent;
+    padding: 5px 28px;
+    margin-bottom: 2px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.calculator-body .calculator-btnsdiv .calculator-btndivs button {
+    border: 1px solid rgb(98, 23, 23);
+    background: transparent;
+    padding: 5px 28px;
+    margin-bottom: 2px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.calculator-body .calculator-btnsdiv .calculator-btndivs button:active {
+    background: rgb(250, 193, 193);
+}
+
+.calculator-body .calculator-btnsdiv .calculator-btndivs .last-btn {
+    background: rgb(98, 23, 23);
+    color: white;
+}
+
+.calculator-body .calculator-btnsdiv .calculator-btndivs .last-btn:active {
+    background: rgb(250, 159, 159);
+}

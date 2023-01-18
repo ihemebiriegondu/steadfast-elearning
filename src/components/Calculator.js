@@ -1,0 +1,77 @@
+import React, { useState } from 'react'
+import '../css/calculator.css'
+
+
+const Calculator = () => {
+
+    const [prevValue, setprevValue] = useState()
+    const [currentValue, setcurrentValue] = useState('0')
+
+    const joinInteger = (e) => {
+        let button = e.target
+
+        if (button.value === "." && currentValue.includes(".")) return;
+        if (currentValue === '0') {
+            setcurrentValue('8')
+            setcurrentValue(currentValue.slice(0, -1) + button.value)
+        } else {
+            setcurrentValue(currentValue + button.value)
+        }
+        //console.log(typeof currentValue)
+    }
+
+    const joinOperator = () => {
+
+    }
+
+    const clearAllEntries = () => {
+        setcurrentValue('0')
+        setprevValue()
+    }
+
+
+    return (
+        <div className='calculator-body mx-auto'>
+            <div className='calculator-subdiv px-3 py-4'>
+                <h6 className=''>Calculator</h6>
+                <div className='calculator-display mb-3'>
+                    <p className='prevValue m-0'></p>
+                    <p className='currentValue m-0'>{currentValue}</p>
+                </div>
+                <div className='calculator-btnsdiv d-flex justify-content-between'>
+                    <div className='calculator-btndivs d-flex flex-column'>
+                        <button value='7' onClick={(e) => { joinInteger(e) }}>7</button>
+                        <button value='4' onClick={(e) => { joinInteger(e) }}>4</button>
+                        <button value='1' onClick={(e) => { joinInteger(e) }}>1</button>
+                        <button value='0' onClick={(e) => { joinInteger(e) }}>0</button>
+                    </div>
+                    <div className='calculator-btndivs d-flex flex-column'>
+                        <button value='8' onClick={(e) => { joinInteger(e) }}>8</button>
+                        <button value='5' onClick={(e) => { joinInteger(e) }}>5</button>
+                        <button value='2' onClick={(e) => { joinInteger(e) }}>2</button>
+                        <button value='.' onClick={(e) => { joinInteger(e) }}>.</button>
+                    </div>
+                    <div className='calculator-btndivs d-flex flex-column'>
+                        <button value='9' onClick={(e) => { joinInteger(e) }}>9</button>
+                        <button value='6' onClick={(e) => { joinInteger(e) }}>6</button>
+                        <button value='3' onClick={(e) => { joinInteger(e) }}>3</button>
+                        <button value='-' onClick={(e) => { joinOperator(e) }}>-</button>
+                    </div>
+                    <div className='calculator-btndivs d-flex flex-column'>
+                        <button value='/' onClick={(e) => { joinOperator(e) }}>/</button>
+                        <button value='*' onClick={(e) => { joinOperator(e) }}>x</button>
+                        <button value=''>x&#179;</button>
+                        <button value='' onClick={(e) => { joinOperator(e) }}>√</button>
+                    </div>
+                    <div className='calculator-btndivs d-flex flex-column'>
+                        <button value='C' onClick={() => { clearAllEntries() }}>C</button>
+                        <button value='+' onClick={(e) => { joinOperator(e) }}>+</button>
+                        <button value='=' className='flex-fill fs-4 last-btn'>=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Calculator
