@@ -9,7 +9,6 @@ import { MdHomeFilled, MdMenu, MdSettings } from 'react-icons/md'
 import { BiLogOutCircle } from 'react-icons/bi'
 import '../css/home.css'
 import Settings from '../components/Settings';
-import Calculator from '../components/Calculator';
 
 const Home = () => {
 
@@ -52,8 +51,6 @@ const Home = () => {
                 </ul>
               </div>
             </div>
-
-            <Calculator />
 
           </Tab.Pane>
 
