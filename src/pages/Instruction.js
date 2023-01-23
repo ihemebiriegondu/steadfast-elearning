@@ -1,4 +1,5 @@
 import React from 'react'
+import { TiArrowLeftThick, TiArrowRightThick } from 'react-icons/ti'
 import { Link } from 'react-router-dom';
 import '../css/instruction.css'
 import { IoArrowBackSharp, IoArrowForwardSharp } from 'react-icons/io5'
@@ -33,7 +34,7 @@ const Instruction = () => {
                     <div className='cbt-instructions ms-2'>
                         <p className='mb-0 pb-1'>You would be given 40 questions in English Language and 20 questions each in the other 3 subjects (which gives a total of 100 questions).</p>
                         <p className='mb-0 pb-1'>Carefully read each questions before choosing the correct answer.</p>
-                        <p className='mb-0 pb-1'>Use the <span className='fw-bold'>"Next"</span> and <span className='fw-bold'>"Prev"</span> buttons to navigate between questions.</p>
+                        <p className='mb-0 pb-1'>Use the <span className='fw-bold'><TiArrowLeftThick className='mb-1' /></span> and <span className='fw-bold'><TiArrowRightThick className='mb-1' /></span> buttons to navigate between questions.</p>
                         <p className='mb-0 pb-1'>Use the <span className='fw-bold'>Review</span> button to check for unanswered questions.</p>
                         <p className='mb-0 pb-1'>Click the question numbers in the Review page to jump to a certain question.</p>
                         <p className='mb-0 pb-1'>Click the <span className='fw-bold'>"Submit"</span> button when you are <span className='fw-bold'>done</span> with the exam.</p>

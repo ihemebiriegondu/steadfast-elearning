@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//import { useUserAuth } from "../context/UserAuthContext";
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import '../css/displayscore.css'
@@ -16,8 +15,8 @@ export class DisplayScore extends Component {
         return (
             <div className=''>
                 <div className='display-scorediv'>
-                    <div className='py-5'>
-                        <h2 className='text-center'>Result</h2>
+                    <div className='pt-4 pb-3'>
+                        <h2 className='text-center mb-0'>Result</h2>
                     </div>
                     <div className='px-4 mb-4'>
                         <p className='fw-semibold h5'><span className='score-info'>Name: </span><span className='score-info-info'>Egondu</span></p>

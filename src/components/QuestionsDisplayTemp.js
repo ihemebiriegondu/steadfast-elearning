@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { TiArrowLeftThick, TiArrowRightThick } from 'react-icons/ti'
 import '../css/QuesTemp.css'
 import { Tabs, Tab, Modal } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -245,10 +246,10 @@ export default class QuestionsDisplayTemp extends Component {
     }
 
     return (
-      <div>
+      <div className='quesTemp'>
         <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">
           <Tab eventKey="firstPaper" title="English">
-            <div className='quesTemp px-3'>
+            <div className=' px-3'>
               <div>
                 <div className='ps-md-4 ps-0'>
                   {
@@ -275,9 +276,9 @@ export default class QuestionsDisplayTemp extends Component {
                   }
                 </div>
 
-                <div className='btns-div'>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index1 > 0) { this.setState({ index1: this.state.index1 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) } }}>Next</button>
+                <div className='directionbtns'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index1 > 0) { this.setState({ index1: this.state.index1 - 1 }) } }}><TiArrowLeftThick /></button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) } }}><TiArrowRightThick /></button>
                 </div>
 
                 <Offcanvas className='review-offcanvas' show={this.state.show1} onHide={handleClose1}>
@@ -332,9 +333,9 @@ export default class QuestionsDisplayTemp extends Component {
                   }
                 </div>
 
-                <div className='btns-div'>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index2 > 0) { this.setState({ index2: this.state.index2 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index2 < (questionTwo.length - 1)) { this.setState({ index2: this.state.index2 + 1 }) } }}>Next</button>
+                <div className='directionbtns'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index2 > 0) { this.setState({ index2: this.state.index2 - 1 }) } }}><TiArrowLeftThick /></button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index2 < (questionTwo.length - 1)) { this.setState({ index2: this.state.index2 + 1 }) } }}><TiArrowRightThick /></button>
                 </div>
 
                 <Offcanvas className='review-offcanvas' show={this.state.show2} onHide={handleClose2}>
@@ -392,9 +393,9 @@ export default class QuestionsDisplayTemp extends Component {
                   }
                 </div>
 
-                <div className='btns-div'>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index3 > 0) { this.setState({ index3: this.state.index3 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index3 < (questionThree.length - 1)) { this.setState({ index3: this.state.index3 + 1 }) } }}>Next</button>
+                <div className='directionbtns'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index3 > 0) { this.setState({ index3: this.state.index3 - 1 }) } }}><TiArrowLeftThick /></button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index3 < (questionThree.length - 1)) { this.setState({ index3: this.state.index3 + 1 }) } }}><TiArrowRightThick /></button>
                 </div>
 
                 <Offcanvas className='review-offcanvas' show={this.state.show3} onHide={handleClose3}>
@@ -452,9 +453,9 @@ export default class QuestionsDisplayTemp extends Component {
                   }
                 </div>
 
-                <div className='btns-div'>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index4 > 0) { this.setState({ index4: this.state.index4 - 1 }) } }}>Previous</button>
-                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index4 < (questionFour.length - 1)) { this.setState({ index4: this.state.index4 + 1 }) } }}>Next</button>
+                <div className='directionbtns'>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index4 > 0) { this.setState({ index4: this.state.index4 - 1 }) } }}><TiArrowLeftThick /></button>
+                  <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index4 < (questionFour.length - 1)) { this.setState({ index4: this.state.index4 + 1 }) } }}><TiArrowRightThick /></button>
                 </div>
 
                 <Offcanvas className='review-offcanvas' show={this.state.show4} onHide={handleClose4}>

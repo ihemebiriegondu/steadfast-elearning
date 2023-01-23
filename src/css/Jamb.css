@@ -1,17 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Vesper+Libre:wght@400;500;700;900&display=swap');
 
 .questions-page {
-    background: #F5F5F5;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+    background: white;
+    height: auto;
     font-family: 'Vesper Libre', serif !important;
 }
 
 .questions-subdiv {
-    height: 100% !important;
+    height: fit-content !important;
 }
 
 .question-header {
@@ -89,8 +85,8 @@
 }
 
 .questions-page .tab-content {
-    padding-bottom: 100px !important;
-    background: #F5F5F5;
+    padding-bottom: 40px !important;
+    background: white;
 }
 
 @media (max-width: 1024px) {

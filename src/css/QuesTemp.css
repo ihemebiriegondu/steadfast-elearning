@@ -5,8 +5,8 @@
 
 
 .quesTemp {
-    height: 100%;
-    background: #F5F5F5;
+    height: fit-content;
+    background: white;
 }
 
 .quesTemp .question-instruction {
@@ -45,6 +45,16 @@
     margin-bottom: 40px !important;
 }
 
+.quesTemp .directionbtns {
+    margin-top: 90px !important;
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px !important;
+}
+
 .quesTemp .actionbtn {
     border: none !important;
     outline: none !important;
@@ -56,14 +66,21 @@
     transition: all 0.3s ease-in-out;
 }
 
-.quesTemp .actionbtn:hover {
-    background: #4b878bff !important;
+.quesTemp .directionbtns .actionbtn {
+    font-size: 19px !important;
+    border-radius: 50%;
+    padding: 11px 16px 14px 16px !important;
+    color: rgb(98, 23, 23);
+}
+
+.quesTemp .actionbtn:active {
+    background: rgb(139, 75, 83) !important;
     color: white;
     transition: all 0.3s ease-in-out;
 }
 
 .quesTemp .other-action-div {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .submitbtn-div {
@@ -90,8 +107,8 @@
 .review-offcanvas h5 {
     color: rgb(98, 23, 23);
     text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 2px;
+    margin-bottom: 2px;
 
 }
 
@@ -150,7 +167,7 @@
         font-size: 16px !important;
     }
 
-    .quesTemp .btns-div {
+    .quesTemp .btns-div, .quesTemp .directionbtns {
         padding-left: 40px !important;
         padding-right: 40px !important;
         margin-top: 60px !important;
@@ -158,7 +175,7 @@
 }
 
 @media (max-width: 576px) {
-    .quesTemp .btns-div {
+    .quesTemp .btns-div, .quesTemp .directionbtns {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
