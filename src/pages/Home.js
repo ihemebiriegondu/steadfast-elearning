@@ -4,8 +4,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import Nav from 'react-bootstrap/Nav';
 import Tab from 'react-bootstrap/Tab';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { IoBookSharp } from 'react-icons/io5'
-import { MdHomeFilled, MdMenu, MdSettings } from 'react-icons/md'
+import { MdMenu } from 'react-icons/md'
 import { BiLogOutCircle } from 'react-icons/bi'
 import '../css/home.css'
 import Settings from '../components/Settings';
@@ -29,7 +28,7 @@ const Home = () => {
     }
   };
 
-/*{user.displayName.split(" ")[0]} */
+  /*{user.displayName.split(" ")[0]} */
   return (
     <div className='dashboard'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="home">
@@ -71,32 +70,12 @@ const Home = () => {
           </Tab.Pane>
         </Tab.Content>
 
-        <div className="footer shadow-sm d-block d-md-none">
-          <Nav className='d-flex justify-content-between align-items-center px-4 py-2'>
-            <Nav.Item className='mx-2'>
-              <Nav.Link eventKey="home" className='p-0'>
-                <p className='d-flex flex-column align-items-center m-0'><MdHomeFilled className='fs-2 tab-icon' /> <span>Home</span></p>
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item className='mx-2'>
-              <Nav.Link eventKey="exams" className='p-0'>
-                <p className='d-flex flex-column align-items-center m-0'><IoBookSharp className='fs-5 tab-icon' /> <span>Exams</span></p>
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item className='mx-2'>
-              <Nav.Link eventKey="settings" className='p-0'>
-                <p className='d-flex flex-column align-items-center m-0'><MdSettings className='fs-5 tab-icon' /> <span>Settings</span></p>
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </div>
-
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
             <div className='d-flex align-items-center'>
-              <img src={user.photoURL} className='user-img' alt='' />
+              <div className='user-img'>
+                <img src={user.photoURL} alt='' />
+              </div>
               <div className='ms-3'>
                 <p className='m-0 offcanvasinfo'>{user.displayName}</p>
                 <p className='m-0 offcanvasinfo'>{user.email}</p>

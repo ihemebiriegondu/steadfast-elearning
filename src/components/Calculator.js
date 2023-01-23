@@ -6,6 +6,7 @@ const Calculator = () => {
     let [prevValue, setPrevValue] = useState('');
     let [currentValue, setCurrentValue] = useState("0");
     const [operator, setOperator] = useState('');
+    const [isEquals, setIsEquals] = useState(false);
 
     const joinInteger = (e) => {
         let button = e.target
@@ -54,7 +55,7 @@ const Calculator = () => {
                 default:
                     return
             }
-            //console.log(computation)
+            console.log(computation)
             //document.querySelector(".prevValue").innerHTML = computation + button.value
             setPrevValue(computation + button.value)
             return computation;
@@ -73,7 +74,9 @@ const Calculator = () => {
         if (currentValue === '0') return;
         setPrevValue(currentValue + button.value);
         setCurrentValue('0');
-        //currentValue = '0'
+        if (isEquals === true) {
+            currentValue = '0'
+        }
         setOperator(button.value);
 
         compute(e)
@@ -95,6 +98,8 @@ const Calculator = () => {
             document.querySelector(".prevValue").innerHTML = ''
             document.querySelector(".prevValue").classList.add("d-none")
         }
+        setIsEquals(true)
+
         prevValue = ''
         currentValue = '0'
     }
@@ -106,6 +111,7 @@ const Calculator = () => {
         if (document.querySelector(".prevValue").classList.contains("d-none")) {
             document.querySelector(".prevValue").classList.remove("d-none")
         }
+        setIsEquals(false)
     }
 
     return (

@@ -56,3 +56,18 @@
 .calculator-body .calculator-btnsdiv .calculator-btndivs .last-btn:active {
     background: rgb(250, 159, 159);
 }
+
+@media (max-width: 420px) {
+    .calculator-body {
+        width: 100%;
+    }
+    .calculator-body .calculator-btnsdiv .calculator-btndivs button {
+        padding: 5px 26px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .calculator-body .calculator-btnsdiv .calculator-btndivs button {
+        padding: 5px 24px !important;
+    }
+}
