@@ -31,12 +31,7 @@ export default class QuestionsDisplayTemp extends Component {
 
       newtotalScoreArray: [],
       totalScore: 0
-      //time: {},
-      //seconds: 1800
     };
-    //this.timer = 0;
-    //this.startTimer = this.startTimer.bind(this);
-    //this.countDown = this.countDown.bind(this);
   }
 
   //To keep selected options after pressing the next or previous button

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 import { Modal } from 'react-bootstrap';
@@ -10,6 +10,9 @@ import AllQuestions from '../components/AllQuestions';
 import Calculator from '../components/Calculator';
 
 const JambExam = () => {
+
+  const Ref = useRef(null);
+  const [timer, setTimer] = useState('00:00:00')
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -27,6 +30,54 @@ const JambExam = () => {
     }
   };
 
+  const getTimeRemaining = (e) => {
+    const total = Date.parse(e) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    return {
+      total, hours, minutes, seconds
+    };
+  }
+
+
+  const startTimer = useCallback((e) => {
+    let { total, hours, minutes, seconds }
+      = getTimeRemaining(e);
+    if (total >= 0) {
+
+      setTimer(
+        (hours > 9 ? hours : '0' + hours) + ':' +
+        (minutes > 9 ? minutes : '0' + minutes) + ':'
+        + (seconds > 9 ? seconds : '0' + seconds)
+      )
+    }
+  }, [])
+
+
+  const clearTimer = useCallback((e) => {
+
+    setTimer('01:00:00');
+
+    if (Ref.current) clearInterval(Ref.current);
+    const id = setInterval(() => {
+      startTimer(e);
+    }, 1000)
+    Ref.current = id;
+  }, [startTimer])
+
+
+  const getDeadTime = () => {
+    let deadline = new Date();
+
+    deadline.setSeconds(deadline.getSeconds() + 3600);
+    return deadline;
+  }
+
+  useEffect(() => {
+    clearTimer(getDeadTime());
+  }, [clearTimer]);
+
 
   return (
     <div className='questions-page'>
@@ -36,12 +87,12 @@ const JambExam = () => {
           <p className='mb-0 me-2' onClick={handleShow}><BsCalculator className='me-2' />Calculator</p>
         </div>
         <div className='info-div d-flex justify-content-between align-items-center py-2'>
-          <div className=''>
-            <img id='user-img' src={user.photoURL} alt='' />
+          <div className='' id='user-img'>
+            <img src={user.photoURL} alt='' />
           </div>
           <div className='d-flex align-items-center'>
-            <BsAlarm className='me-3 timer-icon' />
-            <p className='timer'>00:40:00</p>
+            <BsAlarm className='me-3 timer-icon mb-1' />
+            <p className='timer'>{timer}</p>
           </div>
         </div>
         <div>

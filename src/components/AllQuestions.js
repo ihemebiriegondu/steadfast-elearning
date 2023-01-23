@@ -49,7 +49,6 @@ const AllQuestions = () => {
 
 
         const getQuestionstwo = async () => {
-            setLoader(true);
 
             let questionstwo;
             questionstwo = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[1],
@@ -66,8 +65,6 @@ const AllQuestions = () => {
             //console.log(quesJSONtwo.data)
             setQuestionstwo(quesJSONtwo.data)
 
-            setLoader(false);
-
             /*.then(function (res) { console.log(res) })
             .catch(function (res) { console.log(res) })*/
             return questionstwo
@@ -75,7 +72,6 @@ const AllQuestions = () => {
 
 
         const getQuestionsthree = async () => {
-            setLoader(true);
 
             let questionsthree;
             questionsthree = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[2],
@@ -92,8 +88,6 @@ const AllQuestions = () => {
             //console.log(quesJSONthree.data)
             setQuestionsthree(quesJSONthree.data)
 
-            setLoader(false);
-
             /*.then(function (res) { console.log(res) })
             .catch(function (res) { console.log(res) })*/
             return questionsthree
@@ -101,7 +95,6 @@ const AllQuestions = () => {
 
 
         const getQuestionsfour = async () => {
-            setLoader(true);
 
             let questionsfour;
             questionsfour = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[3],
@@ -117,8 +110,6 @@ const AllQuestions = () => {
 
             //console.log(quesJSONfour.data)
             setQuestionsfour(quesJSONfour.data)
-
-            setLoader(false);
 
             /*.then(function (res) { console.log(res) })
             .catch(function (res) { console.log(res) })*/
@@ -351,10 +342,10 @@ const AllQuestions = () => {
         <div>
             {
                 loader && (
-                    <div className="">Loading...</div>
+                    <div className="text-center">Loading...</div>
                 )
             }
-            <div>
+            <div className={`${loader === true ? 'd-none' : 'd-block'}`}>
                 <QuestionsDisplayTemp datas={allQuestions} />
             </div>
         </div>
