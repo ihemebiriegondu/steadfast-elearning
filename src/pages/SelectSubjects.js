@@ -85,7 +85,7 @@ const SelectSubjects = () => {
                             <label htmlFor='History'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='History' value="history" name='subjects' /> History</label>
                         </div>
                         <div>
-                            <label htmlFor='Literature in English'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Literature in English' value="englishlit" name='subjects' /> Literature in English</label>
+                            <label htmlFor='Literature in English'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Lit in English' value="englishlit" name='subjects' /> Literature in English</label>
                         </div>
                         <div>
                             <label htmlFor='CRK'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='CRK' value="crk" name='subjects' /> CRK</label>

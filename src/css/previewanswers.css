@@ -1,6 +1,6 @@
 .preview-answer {
     padding: 2rem 1.5rem;
-    background: rgb(247, 237, 237);
+    background: white;
 }
 
 .preview-answer .nav {
@@ -46,10 +46,12 @@
 
 .preview-answer .previewQuestionsBorder.answerCorrectBorder {
     border: 2px solid green;
+    background: rgb(237, 251, 237);
 }
 
 .preview-answer .previewQuestionsBorder.answerWrongBorder {
     border: 2px solid rgb(198, 5, 5);
+    background: rgba(251, 237, 237, 0.737);
 }
 
 .preview-answer .options {
@@ -110,5 +112,13 @@
 
     .preview-answer .nav-link {
         margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 426px) {
+    .preview-answer .nav-link {
+        font-size: 14px;
+        padding: 5px;
+        margin-right: 10px !important;
     }
 }

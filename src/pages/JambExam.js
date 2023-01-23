@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState } from 'react'
+//, useEffect, useRef
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 import { Modal } from 'react-bootstrap';
@@ -11,8 +12,8 @@ import Calculator from '../components/Calculator';
 
 const JambExam = () => {
 
-  const Ref = useRef(null);
-  const [timer, setTimer] = useState('00:00:00')
+  /*const Ref = useRef(null);
+  const [timer, setTimer] = useState('00:00:00')*/
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -30,7 +31,7 @@ const JambExam = () => {
     }
   };
 
-  const getTimeRemaining = (e) => {
+  /*const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
@@ -41,7 +42,7 @@ const JambExam = () => {
   }
 
 
-  const startTimer = useCallback((e) => {
+  const startTimer = (e) => {
     let { total, hours, minutes, seconds }
       = getTimeRemaining(e);
     if (total >= 0) {
@@ -52,10 +53,10 @@ const JambExam = () => {
         + (seconds > 9 ? seconds : '0' + seconds)
       )
     }
-  }, [])
+  }
 
 
-  const clearTimer = useCallback((e) => {
+  const clearTimer = (e) => {
 
     setTimer('01:00:00');
 
@@ -64,7 +65,7 @@ const JambExam = () => {
       startTimer(e);
     }, 1000)
     Ref.current = id;
-  }, [startTimer])
+  }
 
 
   const getDeadTime = () => {
@@ -76,7 +77,7 @@ const JambExam = () => {
 
   useEffect(() => {
     clearTimer(getDeadTime());
-  }, [clearTimer]);
+  }, []);*/
 
 
   return (
@@ -92,7 +93,7 @@ const JambExam = () => {
           </div>
           <div className='d-flex align-items-center'>
             <BsAlarm className='me-3 timer-icon mb-1' />
-            <p className='timer'>{timer}</p>
+            <p className='timer'>00:00:00</p>
           </div>
         </div>
         <div>
