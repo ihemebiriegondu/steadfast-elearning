@@ -5,32 +5,35 @@ const Timer = () => {
     const [timer, setTimer] = useState('00:00:00')
 
     useEffect(() => {
-        let startTime = new Date(new Date().setHours(new Date().getHours() + 1));
 
-        const startTimer = () => {
-            const total = Date.parse(startTime) - Date.parse(new Date());
-            const seconds = Math.floor((total / 1000) % 60);
-            const minutes = Math.floor((total / 1000 / 60) % 60);
-            const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+        setTimeout(() => {
+            let startTime = new Date(new Date().setHours(new Date().getHours() + 1));
 
-            if (total >= 0) {
+            const startTimer = () => {
+                const total = Date.parse(startTime) - Date.parse(new Date());
+                const seconds = Math.floor((total / 1000) % 60);
+                const minutes = Math.floor((total / 1000 / 60) % 60);
+                const hours = Math.floor((total / 1000 / 60 / 60) % 24);
 
-                let newTime = (hours > 9 ? hours : '0' + hours) + ':' +
-                    (minutes > 9 ? minutes : '0' + minutes) + ':' +
-                    (seconds > 9 ? seconds : '0' + seconds)
+                if (total >= 0) {
 
-                setTimer(newTime)
+                    let newTime = (hours > 9 ? hours : '0' + hours) + ':' +
+                        (minutes > 9 ? minutes : '0' + minutes) + ':' +
+                        (seconds > 9 ? seconds : '0' + seconds)
 
-                /*setTimer(
-                  
-                )*/
+                    setTimer(newTime)
+
+                    /*setTimer(
+                      
+                    )*/
+                }
             }
-        }
 
-        setTimer('01:00:00');
-        setInterval(() => {
-            startTimer();
-        }, 1000)
+            setTimer('01:00:00');
+            setInterval(() => {
+                startTimer();
+            }, 1000)
+        }, 50000);
 
     }, [])
 

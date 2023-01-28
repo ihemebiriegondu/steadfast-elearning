@@ -121,6 +121,9 @@
 
 .review-offcanvas .reviewbtns-div .reviewbtn {
     color: white;
+    width: 50px;
+    height: 40px;
+    margin-bottom: 7px;
 }
 
 .review-offcanvas .reviewbtns-div .reviewbtn:hover {

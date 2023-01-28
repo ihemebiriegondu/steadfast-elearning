@@ -285,7 +285,7 @@ export default class QuestionsDisplayTemp extends Component {
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title><h5>{subjectNames[0]} Review</h5></Offcanvas.Title>
                   </Offcanvas.Header>
-                  <div className='reviewbtns-div row g-2'>
+                  <div className='reviewbtns-div row'>
                     {questionOne.map((q, index1) =>
                       <div key={q.id} className="cursor-pointer col">
                         <div id={index1} onClick={(e) => { (this.setState({ index1: parseInt(e.target.id, q.length) })); handleClose1() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredOne(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index1 + 1}</div>
@@ -342,7 +342,7 @@ export default class QuestionsDisplayTemp extends Component {
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title><h5>{subjectNames[1]} Review</h5></Offcanvas.Title>
                   </Offcanvas.Header>
-                  <div className='reviewbtns-div row g-2'>
+                  <div className='reviewbtns-div row'>
                     {questionTwo.map((q, index2) =>
                       <div key={q.id} className="cursor-pointer col">
                         <div id={index2} onClick={(e) => { (this.setState({ index2: parseInt(e.target.id, q.length) })); handleClose2() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredTwo(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index2 + 1}</div>
@@ -402,7 +402,7 @@ export default class QuestionsDisplayTemp extends Component {
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title><h5>{subjectNames[2]} Review</h5></Offcanvas.Title>
                   </Offcanvas.Header>
-                  <div className='reviewbtns-div row g-2'>
+                  <div className='reviewbtns-div row'>
                     {questionThree.map((q, index3) =>
                       <div key={q.id} className="cursor-pointer col">
                         <div id={index3} onClick={(e) => { (this.setState({ index3: parseInt(e.target.id, q.length) })); handleClose3() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredThree(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index3 + 1}</div>
@@ -462,7 +462,7 @@ export default class QuestionsDisplayTemp extends Component {
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title><h5>{subjectNames[3]} Review</h5></Offcanvas.Title>
                   </Offcanvas.Header>
-                  <div className='reviewbtns-div row g-2'>
+                  <div className='reviewbtns-div row'>
                     {questionFour.map((q, index4) =>
                       <div key={q.id} className="cursor-pointer col">
                         <div id={index4} onClick={(e) => { (this.setState({ index4: parseInt(e.target.id, q.length) })); handleClose4() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredFour(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index4 + 1}</div>
