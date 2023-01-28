@@ -65,7 +65,7 @@ export default class QuestionsDisplayTemp extends Component {
 
     q.options.forEach((x) => { x.selected = false; });
     q.options.find(x => x.checkId === option.checkId).selected = true;
-    console.log(q.options.find(x => x.checkId === option.checkId))
+    //console.log(q.options.find(x => x.checkId === option.checkId))
   }
 
   onAnswerThree(question, option) {

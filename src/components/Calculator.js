@@ -55,7 +55,7 @@ const Calculator = () => {
                 default:
                     return
             }
-            console.log(computation)
+            //console.log(computation)
             //document.querySelector(".prevValue").innerHTML = computation + button.value
             setPrevValue(computation + button.value)
             return computation;
