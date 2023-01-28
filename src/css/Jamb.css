@@ -52,14 +52,7 @@
     margin-right: 18px;
 }
 
-.questions-page .info-div .alertTime .timer-icon {
-    animation-name: alert;
-    animation-iteration-count: infinite;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-}
-
-.questions-page .info-div .alertTime .timer {
+.questions-page .info-div .alertTime .timer-icon, .questions-page .info-div .alertTime .timer {
     animation-name: alert;
     animation-iteration-count: infinite;
     animation-duration: 2s;

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { BsAlarm } from 'react-icons/bs'
 
-const Timer = () => {
+const Timer = (props) => {
     const [timer, setTimer] = useState('00:00:00')
     const [alertTimer, setAlertTimer] = useState(false)
+
+    //console.log(props.submitValue)
 
     useEffect(() => {
 
@@ -24,13 +26,15 @@ const Timer = () => {
 
                     setTimer(newTime)
                     //console.log(total)
-
-                    if (total <= 60000) {
+                    
+                    if (total <= 3520000) {
                         setAlertTimer(true)
+                        props.onClick(true)
                     }
                 } else if (total === 0) {
                     console.log("end")
                     setAlertTimer(false)
+                    //props.onClick(true)
                 }
             }
 

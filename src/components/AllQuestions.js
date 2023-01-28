@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
 
-const AllQuestions = () => {
+const AllQuestions = (props) => {
 
+    let isSubmitted = props.submitValue
+    //console.log(isSubmitted)
     //console.log(subjects)
     //console.log(subjects[0])
 
@@ -346,7 +348,7 @@ const AllQuestions = () => {
                 )
             }
             <div className={`${loader === true ? 'd-none' : 'd-block'}`}>
-                <QuestionsDisplayTemp datas={allQuestions} />
+                <QuestionsDisplayTemp datas={allQuestions} submitValue={isSubmitted} />
             </div>
         </div>
     )

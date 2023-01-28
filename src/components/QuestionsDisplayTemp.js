@@ -114,6 +114,7 @@ export default class QuestionsDisplayTemp extends Component {
 
   render() {
 
+    //let isSubmit = this.props.submitValue
     let allQuestions = this.props.datas
     //console.log(allQuestions)
     let questionOne = allQuestions[0]
@@ -245,6 +246,13 @@ export default class QuestionsDisplayTemp extends Component {
       handleCloseModal()
     }
 
+    //console.log(isSubmit)
+
+   /* if (isSubmit === true) {
+        //submitExamFunction();
+        handleShowModal()
+    }
+*/
     return (
       <div className='quesTemp'>
         <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">

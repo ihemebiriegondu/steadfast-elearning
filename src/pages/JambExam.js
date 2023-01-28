@@ -12,6 +12,8 @@ import Timer from '../components/Timer';
 
 const JambExam = () => {
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -28,6 +30,10 @@ const JambExam = () => {
     }
   };
 
+  function changeSubmitValue(value) {
+    setIsSubmitted(value)
+  }
+
 
   return (
     <div className='questions-page'>
@@ -40,10 +46,10 @@ const JambExam = () => {
           <div className='' id='user-img'>
             <img src={user.photoURL} alt='' />
           </div>
-          <Timer />
+          <Timer submitValue={isSubmitted} onClick={changeSubmitValue} />
         </div>
         <div>
-          <AllQuestions />
+          <AllQuestions submitValue={isSubmitted} />
         </div >
       </div>
 
