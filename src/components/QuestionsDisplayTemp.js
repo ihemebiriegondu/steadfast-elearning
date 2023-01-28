@@ -257,7 +257,7 @@ export default class QuestionsDisplayTemp extends Component {
                       <div key={q.id}>
                         <h4 className='question-instruction text-capitalize'>{q.section}</h4>
                         <img src={q.image} alt='' />
-                        <p className='question'><span>{this.state.index1 + 1}. </span>{q.name}</p>
+                        <p className='question'><span>{this.state.index1 + 1}. </span> <span dangerouslySetInnerHTML={{ __html: q.name }} /></p>
                         <div className='option-div ms-5'>
                           {
                             q.options.slice(0, -1).map(option =>

@@ -33,7 +33,7 @@ const Timer = () => {
             setInterval(() => {
                 startTimer();
             }, 1000)
-        }, 50000);
+        }, 30000);
 
     }, [])
 
