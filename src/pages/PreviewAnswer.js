@@ -45,7 +45,7 @@ function PreviewAnswer() {
           {questionOne.map((q, index) =>
             <div key={q.id} className={`mb-2 previewQuestionsBorder ${q.isCorrect ? 'answerCorrectBorder' : 'answerWrongBorder'}`}>
               <div className="result-question px-md-5 px-3 py-3">
-                <h6 className='mb-4'>{index + 1}. {q.name}</h6>
+                <h6 className='mb-4'>{index + 1}. <span dangerouslySetInnerHTML={{ __html: q.name }} /></h6>
                 <div className="row row-cols-2 options">
                   {
                     q.options.map(option =>
@@ -124,7 +124,7 @@ function PreviewAnswer() {
 
 
       <div className='submitbtn-div'>
-        <button className=''><Link to="/dashboard" className='text-decoration-none w-100 h-100 d-inline-block py-3 px-sm-5 px-3 text-white'>Back home</Link></button>
+        <button className=''><Link to="/dashboard" className='text-decoration-none w-100 h-100 d-inline-block py-md-3 py-2 px-sm-5 px-3 text-white'>Back home</Link></button>
       </div>
     </div>
   )

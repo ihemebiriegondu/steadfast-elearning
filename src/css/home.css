@@ -31,7 +31,8 @@
     font-family: 'Italianno', cursive !important;
     font-size: 35px;
     letter-spacing: 3px;
-    font-weight: 700;
+    font-weight: 600;
+    color: rgb(138, 25, 25);
 }
 
 .dashboard .top-nav .menubar {
@@ -139,5 +140,16 @@ button, .btn {
 
     .footer .nav .nav-item .nav-link {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 567px) {
+    .dashboard .top-nav h5 {
+        font-size: 17px;
+    }
+
+    .dashboard .top-nav h5 span {
+        font-size: 25px;
+        letter-spacing: 2px;
     }
 }

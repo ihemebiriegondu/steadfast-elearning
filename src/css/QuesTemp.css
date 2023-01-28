@@ -175,11 +175,28 @@
         padding-right: 40px !important;
         margin-top: 60px !important;
     }
+
+    .quesTemp .directionbtns .actionbtn {
+        font-size: 19px !important;
+        padding: 8px 13px 11px 13px !important;
+    }
+
+    .submitbtn-div button {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 576px) {
     .quesTemp .btns-div, .quesTemp .directionbtns {
         padding-left: 15px !important;
         padding-right: 15px !important;
+    }
+
+    .submitbtn-div button {
+        font-size: 14px;
+    }
+
+    .quesTemp .actionbtn {
+        font-size: 15px !important;
     }
 }

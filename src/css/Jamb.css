@@ -52,6 +52,28 @@
     margin-right: 18px;
 }
 
+.questions-page .info-div .alertTime .timer-icon {
+    animation-name: alert;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+.questions-page .info-div .alertTime .timer {
+    animation-name: alert;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes alert {
+    from {
+        color: white;
+    } to {
+        color: red;
+    }
+}
+
 .questions-page .nav {
     width: 80%;
     margin: auto !important;

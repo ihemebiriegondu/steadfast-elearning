@@ -3,6 +3,7 @@ import { BsAlarm } from 'react-icons/bs'
 
 const Timer = () => {
     const [timer, setTimer] = useState('00:00:00')
+    const [alertTimer, setAlertTimer] = useState(false)
 
     useEffect(() => {
 
@@ -15,17 +16,21 @@ const Timer = () => {
                 const minutes = Math.floor((total / 1000 / 60) % 60);
                 const hours = Math.floor((total / 1000 / 60 / 60) % 24);
 
-                if (total >= 0) {
+                if (total > 0) {
 
                     let newTime = (hours > 9 ? hours : '0' + hours) + ':' +
                         (minutes > 9 ? minutes : '0' + minutes) + ':' +
                         (seconds > 9 ? seconds : '0' + seconds)
 
                     setTimer(newTime)
+                    //console.log(total)
 
-                    /*setTimer(
-                      
-                    )*/
+                    if (total <= 60000) {
+                        setAlertTimer(true)
+                    }
+                } else if (total === 0) {
+                    console.log("end")
+                    setAlertTimer(false)
                 }
             }
 
@@ -38,7 +43,7 @@ const Timer = () => {
     }, [])
 
     return (
-        <div className='d-flex align-items-center'>
+        <div className={`d-flex align-items-center ${alertTimer === true ? 'alertTime' : 'normalTime'}`}>
             <BsAlarm className='me-3 timer-icon mb-1' />
             <p className='timer'>{timer}</p>
         </div>
