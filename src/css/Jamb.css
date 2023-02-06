@@ -24,7 +24,7 @@
     margin-bottom: 50px;
 }
 
-.questions-page .info-div #user-img {
+ #user-img {
     width: 50px;
     height: 50px;
     background-color: rgb(250, 193, 193);
@@ -34,25 +34,26 @@
     overflow: hidden;
 }
 
-.questions-page .info-div #user-img img {
+ #user-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.questions-page .info-div .timer-icon {
+.info-div .timer-icon {
     color: white;
     font-size: 25px;
 }
 
-.questions-page .info-div .timer {
+.info-div .timer {
     font-size: 30px;
     color: white;
     margin-bottom: 0 !important;
     margin-right: 18px;
 }
 
-.questions-page .info-div .alertTime .timer-icon, .questions-page .info-div .alertTime .timer {
+.info-div .alertTime .timer-icon,
+.info-div .alertTime .timer {
     animation-name: alert;
     animation-iteration-count: infinite;
     animation-duration: 2s;
@@ -62,7 +63,9 @@
 @keyframes alert {
     from {
         color: white;
-    } to {
+    }
+
+    to {
         color: red;
     }
 }
@@ -105,12 +108,12 @@
 }
 
 @media (max-width: 1024px) {
-    .questions-page .info-div .timer-icon {
+    .info-div .timer-icon {
         color: white;
         font-size: 20px;
     }
-    
-    .questions-page .info-div .timer {
+
+    .info-div .timer {
         font-size: 25px;
         color: white;
         margin-bottom: 0 !important;
@@ -139,7 +142,7 @@
     }
 }
 
-@media (max-width: 426px) {
+@media (max-width: 576px) {
     .questions-page .nav-link {
         font-size: 14px;
         padding: 5px;

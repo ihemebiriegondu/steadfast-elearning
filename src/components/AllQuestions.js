@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
 
-const AllQuestions = (props) => {
+const AllQuestions = () => {
 
-    let isSubmitted = props.submitValue
     //console.log(isSubmitted)
     //console.log(subjects)
     //console.log(subjects[0])
@@ -344,11 +343,11 @@ const AllQuestions = (props) => {
         <div>
             {
                 loader && (
-                    <div className="text-center">Loading...</div>
+                    <div className="text-center pt-5">Loading...</div>
                 )
             }
             <div className={`${loader === true ? 'd-none' : 'd-block'}`}>
-                <QuestionsDisplayTemp datas={allQuestions} submitValue={isSubmitted} />
+                <QuestionsDisplayTemp datas={allQuestions} loading={loader} />
             </div>
         </div>
     )

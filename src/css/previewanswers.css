@@ -115,7 +115,7 @@
     }
 }
 
-@media (max-width: 441px) {
+@media (max-width: 576px) {
     .preview-answer .nav-link {
         font-size: 14px;
         padding: 5px;

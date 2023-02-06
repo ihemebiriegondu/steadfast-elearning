@@ -8,11 +8,8 @@ import { CgLogOut } from 'react-icons/cg'
 import '../css/Jamb.css'
 import AllQuestions from '../components/AllQuestions';
 import Calculator from '../components/Calculator';
-import Timer from '../components/Timer';
 
 const JambExam = () => {
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -30,26 +27,21 @@ const JambExam = () => {
     }
   };
 
-  function changeSubmitValue(value) {
-    setIsSubmitted(value)
-  }
+  //console.log(isSubmitted)
 
 
   return (
     <div className='questions-page'>
       <div className='questions-subdiv'>
         <div className='d-flex justify-content-between align-items-center question-header py-2 px-3'>
-          <p className='mb-0 ms-2' onClick={() => handleLogout()}><CgLogOut className='me-2' />Logout</p>
-          <p className='mb-0 me-2' onClick={handleShow}><BsCalculator className='me-2' />Calculator</p>
-        </div>
-        <div className='info-div d-flex justify-content-between align-items-center py-2'>
           <div className='' id='user-img'>
             <img src={user.photoURL} alt='' />
           </div>
-          <Timer submitValue={isSubmitted} onClick={changeSubmitValue} />
+          <p className='mb-0 me-2' onClick={handleShow}><BsCalculator className='me-2' />Calculator</p>
         </div>
+
         <div>
-          <AllQuestions submitValue={isSubmitted} />
+          <AllQuestions />
         </div >
       </div>
 
