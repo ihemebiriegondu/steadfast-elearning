@@ -34,7 +34,7 @@ const JambExam = () => {
       </div>
 
 
-      <Modal show={show} onHide={handleClose} className='calc'>
+      <Modal show={show} onHide={handleClose} className='calc mx-auto'>
         <div className='calculator-body mx-auto'>
           <div className='calculator-subdiv px-3 py-4'>
             <Modal.Header closeButton className='pt-0 px-0'>

@@ -97,9 +97,9 @@ const Home = () => {
               </Nav.Item>
 
               <Nav.Item className='mb-3'>
-                <Nav.Link className='p-0'>
+                <Link to='/select subject' className='text-decoration-none p-0 nav-link'>
                   <p className='d-flex flex-column align-items-center m-0'><span>Study past questions</span></p>
-                </Nav.Link>
+                </Link>
               </Nav.Item>
 
               <Nav.Item className='mb-3'>

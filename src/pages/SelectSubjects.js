@@ -85,7 +85,7 @@ const SelectSubjects = () => {
                             <label htmlFor='History'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='History' value="history" name='subjects' /> History</label>
                         </div>
                         <div>
-                            <label htmlFor='Literature in English'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Lit in English' value="englishlit" name='subjects' /> Literature in English</label>
+                            <label htmlFor='Lit-in-English'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Lit-in-English' value="englishlit" name='subjects' /> Literature in English</label>
                         </div>
                         <div>
                             <label htmlFor='CRK'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='CRK' value="crk" name='subjects' /> CRK</label>
@@ -94,16 +94,16 @@ const SelectSubjects = () => {
                             <label htmlFor='IRK'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='IRK' value="irk" name='subjects' /> IRK</label>
                         </div>
                         <div>
-                            <label htmlFor='commerce'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Commerce' value="commerce" name='subjects' /> Commerce</label>
+                            <label htmlFor='Commerce'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Commerce' value="commerce" name='subjects' /> Commerce</label>
                         </div>
                         <div>
-                            <label htmlFor='accounting'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Accounting' value="accounting" name='subjects' /> Accounting</label>
+                            <label htmlFor='Accounting'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Accounting' value="accounting" name='subjects' /> Accounting</label>
                         </div>
                         <div>
                             <label htmlFor='Civic-Education'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Civic-Education' value="civiledu" name='subjects' /> Civic Education</label>
                         </div>
                         <div>
-                            <label htmlFor='insurance'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Insurance' value="insurance" name='subjects' /> Insurance</label>
+                            <label htmlFor='Insurance'> <input type='checkbox' className="subject" onClick={() => { addLimit() }} id='Insurance' value="insurance" name='subjects' /> Insurance</label>
                         </div>
 
                         <div className='btn-div d-flex justify-content-between'>

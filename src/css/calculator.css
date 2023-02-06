@@ -1,10 +1,17 @@
+.calc.show .modal-dialog {
+    width: 400px;
+    margin: auto;
+}
+
 .calc.show .modal-dialog .modal-content {
     background: transparent !important;
+    border: none !important;
+    width: 100%;
 }
 
 .calculator-body {
     border: 5px solid rgb(98, 23, 23);
-    width: 400px;
+    width: 100%;
     border-radius: 10px;
     background: white;
     margin-top: 2rem;

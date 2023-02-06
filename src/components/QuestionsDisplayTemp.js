@@ -60,12 +60,12 @@ export default class QuestionsDisplayTemp extends Component {
         this.setState({ timer: newTime })
         //console.log(total)
 
-        if (total <= 3540000) {
+        if (total <= 60000) {
           this.setState({ alertTimer: true })
-          this.isSubmitted()
         }
       } else if (total === 0) {
         this.setState({ alertTimer: false })
+        this.isSubmitted()
       }
     }
 
