@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import { BsCalculator, BsAlarm } from 'react-icons/bs'
 import { TiArrowLeftThick, TiArrowRightThick } from 'react-icons/ti'
 import Calculator from '../components/Calculator';
 
 import '../css/Jamb.css'
+import '../css/QuesTemp.css'
 
 export default class Pastquestions extends Component {
 
@@ -12,6 +16,7 @@ export default class Pastquestions extends Component {
         super(props);
         this.state = {
             show: false,
+            showOffcanvas: false,
             showModal: false,
             index: 0,
             size: 1,
@@ -20,8 +25,8 @@ export default class Pastquestions extends Component {
             questions: [],
             updatedQuestions: [],
 
-            newtotalScoreArray: [],
             totalScore: 0,
+            cummulativeScore: 0,
 
             timer: '00:00:00',
             alertTimer: false,
@@ -45,7 +50,6 @@ export default class Pastquestions extends Component {
             const JSONquestion = await question.json();
 
             this.setState({ questions: JSONquestion.data });
-            this.setState({ loader: false });
 
             //console.log(this.state.questions)
 
@@ -93,48 +97,83 @@ export default class Pastquestions extends Component {
 
                 questionArray.push(questionObject)
                 this.state.updatedQuestions.push(questionObject)
+                this.setState({ loader: false });
+
+                let startTime = new Date(new Date().setMinutes(new Date().getMinutes() + 20));
+
+                const startTimer = () => {
+                    const total = Date.parse(startTime) - Date.parse(new Date());
+                    const seconds = Math.floor((total / 1000) % 60);
+                    const minutes = Math.floor((total / 1000 / 60) % 60);
+                    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+
+                    if (total > 0) {
+
+                        let newTime = (hours > 9 ? hours : '0' + hours) + ':' +
+                            (minutes > 9 ? minutes : '0' + minutes) + ':' +
+                            (seconds > 9 ? seconds : '0' + seconds)
+
+                        this.setState({ timer: newTime })
+                        //console.log(total)
+
+                        if (total <= 60000) {
+                            this.setState({ alertTimer: true })
+                        }
+                    } else if (total === 0) {
+                        this.setState({ alertTimer: false })
+                        this.isSubmitted()
+                    }
+                }
+
+                this.setState({ timer: '00:20:00' });
+
+                setInterval(() => {
+                    startTimer();
+                }, 1000)
             });
 
             //console.log(questionArray)
-            console.log(this.state.updatedQuestions)
+            //console.log(this.state.updatedQuestions)
         }
 
         getQuestions();
 
-        let startTime = new Date(new Date().setHours(new Date().getHours() + 1));
-
-        const startTimer = () => {
-            const total = Date.parse(startTime) - Date.parse(new Date());
-            const seconds = Math.floor((total / 1000) % 60);
-            const minutes = Math.floor((total / 1000 / 60) % 60);
-            const hours = Math.floor((total / 1000 / 60 / 60) % 24);
-
-            if (total > 0) {
-
-                let newTime = (hours > 9 ? hours : '0' + hours) + ':' +
-                    (minutes > 9 ? minutes : '0' + minutes) + ':' +
-                    (seconds > 9 ? seconds : '0' + seconds)
-
-                this.setState({ timer: newTime })
-                //console.log(total)
-
-                if (total <= 60000) {
-                    this.setState({ alertTimer: true })
-                }
-            } else if (total === 0) {
-                this.setState({ alertTimer: false })
-                this.isSubmitted()
-            }
-        }
-
-        this.setState({ timer: '01:00:00' });
-
-        if (this.props.loader === false) {
-            setInterval(() => {
-                startTimer();
-            }, 1000)
-        }
     }
+
+    onAnswerOne(question, option) {
+        let quiz = this.state.updatedQuestions;
+        let q = quiz.find(x => x.id === question.id);
+        q.options.forEach((x) => { x.selected = false; });
+        q.options.find(x => x.checkId === option.checkId).selected = true;
+    }
+
+    //checking if an option is selected for the review
+    isAnsweredOne = (q) => {
+        return q.options.some(x => x.selected) ? 'Answered' : 'Not Answered';
+    }
+
+    isSubmitted = () => {
+        let allQuestions = this.state.updatedQuestions
+
+        let totalScore = ''
+
+        allQuestions.forEach(question => {
+            question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
+
+            if (question.isCorrect === true) {
+                totalScore += 1;
+            }
+        })
+        
+        const cummulativeScore = parseFloat(totalScore / 30 * 100).toFixed(0);
+        this.setState({ cummulativeScore: cummulativeScore })
+
+        this.setState({ totalScore: totalScore });
+
+        let scoreOffcanvas = document.querySelector(".display-score")
+        scoreOffcanvas.classList.add("active")
+    }
+
 
     render() {
 
@@ -143,8 +182,32 @@ export default class Pastquestions extends Component {
 
         const handleClose = () => this.setState({ show: false });
         const handleShow = () => this.setState({ show: true });
+        const handleCloseOffcanvas = () => this.setState({ showOffcanvas: false });
+        const handleShowOffcanvas = () => this.setState({ showOffcanvas: true });
+        const handleCloseModal = () => this.setState({ showModal: false });
+        const handleShowModal = () => this.setState({ showModal: true });
 
+        const submitExamFunction = () => {
+            let totalScore = 0
 
+            allQuestions.forEach(question => {
+                question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
+
+                if (question.isCorrect === true) {
+                    totalScore += 1;
+                }
+            })
+            //console.log(totalScore)
+            const cummulativeScore = parseFloat(totalScore / 30 * 100).toFixed(0);
+            this.setState({ cummulativeScore: cummulativeScore })
+
+            this.setState({ totalScore: totalScore });
+
+            let scoreOffcanvas = document.querySelector(".display-score")
+            scoreOffcanvas.classList.add("active")
+
+            handleCloseModal()
+        }
 
         return (
             <div className='questions-page'>
@@ -165,7 +228,9 @@ export default class Pastquestions extends Component {
                         }
                         <div className={`${this.state.loader === true ? 'd-none' : 'd-block'}`}>
                             <div className='quesTemp'>
-
+                                <div>
+                                    <h5 className='text-center mt-5'>{localStorage.getItem('subjectTitle')}</h5>
+                                </div>
                                 <div className=' px-3'>
                                     <div>
                                         <div className='ps-md-4 ps-0'>
@@ -198,27 +263,27 @@ export default class Pastquestions extends Component {
                                             <button className='actionbtn py-3 px-sm-5 px-3' onClick={() => { if (this.state.index < (allQuestions.length - 1)) { this.setState({ index: this.state.index + 1 }) } }}><TiArrowRightThick /></button>
                                         </div>
 
-                                        {/*<Offcanvas className='review-offcanvas' show={this.state.show} onHide={handleClose}>
+                                        <Offcanvas className='review-offcanvas' show={this.state.showOffcanvas} onHide={handleCloseOffcanvas}>
                                             <Offcanvas.Header closeButton>
-                                                <Offcanvas.Title><h5>{subjectNames[0]} Review</h5></Offcanvas.Title>
+                                                <Offcanvas.Title><h5>{localStorage.getItem('subjectTitle')} Review</h5></Offcanvas.Title>
                                             </Offcanvas.Header>
                                             <div className='reviewbtns-div row'>
-                                                {questionOne.map((q, index1) =>
+                                                {allQuestions.map((q, index) =>
                                                     <div key={q.id} className="cursor-pointer col">
-                                                        <div id={index1} onClick={(e) => { (this.setState({ index1: parseInt(e.target.id, q.length) })); handleClose1() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredOne(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index1 + 1}</div>
+                                                        <div id={index} onClick={(e) => { (this.setState({ index: parseInt(e.target.id, q.length) })); handleCloseOffcanvas() }} className={`reviewbtn px-3 text-center py-2 rounded ${this.isAnsweredOne(q) === 'Answered' ? 'answered-review' : 'warning-review'}`}>{index + 1}</div>
                                                     </div>
                                                 )}
                                             </div>
-                                        </Offcanvas> */}
+                                        </Offcanvas>
 
-                                        {/*<hr className='mt-4 w-75 m-auto text-danger' />
+                                        <hr className='mt-4 w-75 m-auto text-danger' />
 
                                         <div className='d-flex justify-content-between other-action-div'>
-                                            <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShow1}>Review</button>
+                                            <button className='actionbtn py-3 px-sm-5 px-3' onClick={handleShowOffcanvas}>Review</button>
                                             <div className='submitbtn-div'>
                                                 <button id='submitButton' className='py-3 px-sm-5 px-3' onClick={handleShowModal}>Submit Exam</button>
                                             </div>
-                                        </div> */}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -238,6 +303,47 @@ export default class Pastquestions extends Component {
                     </div >
                 </Modal>
 
+                <Modal aria-labelledby="contained-modal-title-vcenter" centered show={this.state.showModal} onHide={handleCloseModal} className="">
+                    <Modal.Body className="submitModal">
+                        <h6 className='text-center'>Are you sure you want to submit?</h6>
+                        <div className='d-flex justify-content-between mt-4 px-5 modal-submit-btns'>
+                            <button onClick={handleCloseModal}>No</button>
+                            <button onClick={() => { submitExamFunction(); }}>Yes</button>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+
+                <div className='display-score'>
+                    <div className=''>
+                        <div className='display-scorediv'>
+                            <div className='pt-4 pb-3'>
+                                <h2 className='text-center mb-0'>Result</h2>
+                            </div>
+                            <div className='px-4 mb-4'>
+                                <p className='fw-semibold h5'><span className='score-info'>Name: </span><span className='score-info-info'>Egondu</span></p>
+                            </div>
+                            <div className='px-sm-4 px-2'>
+                                <Table striped>
+                                    <thead>
+                                        <tr>
+                                            <th>Subjects</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>{localStorage.getItem('subjectTitle')}</th>
+                                            <th>{this.state.cummulativeScore}</th>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </div>
+                            <div className='submitbtn-div'>
+                                <button className=''><Link to="/preview" state={{ questions: this.state.updatedQuestions }} className='text-decoration-none w-100 h-100 d-inline-block py-3 px-sm-5 px-3 text-white'>Preview Answers</Link></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

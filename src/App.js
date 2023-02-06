@@ -13,6 +13,7 @@ import PreviewAnswer from './pages/PreviewAnswer';
 import SelectStudySubject from './pages/SelectStudySubject';
 import StudyInstruction from './pages/StudyInstruction';
 import Pastquestions from './pages/Pastquestions';
+import PreviewPractiveAnswers from './pages/PreviewPractiveAnswers';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path='/select subject' element={<ProtectedRoute><SelectStudySubject /></ProtectedRoute>} />
             <Route path='/instructions' element={<ProtectedRoute><StudyInstruction /></ProtectedRoute>} />
             <Route path='/practice questions' element={<ProtectedRoute><Pastquestions /></ProtectedRoute>} />
+            <Route path='/preview' element={<ProtectedRoute><PreviewPractiveAnswers /></ProtectedRoute>} />
           </Routes>
         </UserAuthContextProvider>
       </Router>
