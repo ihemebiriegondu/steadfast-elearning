@@ -23,106 +23,112 @@ const AllQuestions = () => {
         const subjects = JSON.parse(localStorage.getItem("subjects"));
         localStorage.removeItem("subjects")
 
-        const getQuestionsone = async () => {
-            setLoader(true);
+        try {
+            const getQuestionsone = async () => {
+                setLoader(true);
 
-            let questionsone;
-            questionsone = await fetch("https://questions.aloc.com.ng/api/v2/m?subject=" + subjects[0],
-                {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'AccessToken': 'ALOC-79089b2860a0a328f46c'
-                    },
-                    method: "GET",
-                }).catch((err) => console.log(err))
-            const quesJSONone = await questionsone.json();
+                let questionsone;
+                questionsone = await fetch("https://questions.aloc.com.ng/api/v2/m?subject=" + subjects[0],
+                    {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'AccessToken': 'ALOC-79089b2860a0a328f46c'
+                        },
+                        method: "GET",
+                    }).catch((err) => console.log(err))
+                const quesJSONone = await questionsone.json();
 
-            //console.log(quesJSONone.data)
-            setQuestionsone(quesJSONone.data)
+                //console.log(quesJSONone.data)
+                setQuestionsone(quesJSONone.data)
 
-            setLoader(false);
+                setLoader(false);
 
-            /*.then(function (res) { console.log(res) })
-            .catch(function (res) { console.log(res) })*/
-            return questionsone
+                /*.then(function (res) { console.log(res) })
+                .catch(function (res) { console.log(res) })*/
+                return questionsone
+            }
+
+
+            const getQuestionstwo = async () => {
+
+                let questionstwo;
+                questionstwo = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[1],
+                    {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'AccessToken': 'ALOC-79089b2860a0a328f46c'
+                        },
+                        method: "GET",
+                    }).catch((err) => console.log(err))
+                const quesJSONtwo = await questionstwo.json();
+
+                //console.log(quesJSONtwo.data)
+                setQuestionstwo(quesJSONtwo.data)
+
+                /*.then(function (res) { console.log(res) })
+                .catch(function (res) { console.log(res) })*/
+                return questionstwo
+            }
+
+
+            const getQuestionsthree = async () => {
+
+                let questionsthree;
+                questionsthree = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[2],
+                    {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'AccessToken': 'ALOC-79089b2860a0a328f46c'
+                        },
+                        method: "GET",
+                    }).catch((err) => console.log(err))
+                const quesJSONthree = await questionsthree.json();
+
+                //console.log(quesJSONthree.data)
+                setQuestionsthree(quesJSONthree.data)
+
+                /*.then(function (res) { console.log(res) })
+                .catch(function (res) { console.log(res) })*/
+                return questionsthree
+            }
+
+
+            const getQuestionsfour = async () => {
+
+                let questionsfour;
+                questionsfour = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[3],
+                    {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'AccessToken': 'ALOC-79089b2860a0a328f46c'
+                        },
+                        method: "GET",
+                    }).catch((err) => console.log(err))
+                const quesJSONfour = await questionsfour.json();
+
+                //console.log(quesJSONfour.data)
+                setQuestionsfour(quesJSONfour.data)
+
+                /*.then(function (res) { console.log(res) })
+                .catch(function (res) { console.log(res) })*/
+                return questionsfour
+
+            }
+            
+            getQuestionsone()
+            //.then(console.log(questionsone))
+            getQuestionstwo()
+            getQuestionsthree()
+            getQuestionsfour()
+
+        } catch (error) {
+            console.log(error)
         }
 
-
-        const getQuestionstwo = async () => {
-
-            let questionstwo;
-            questionstwo = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[1],
-                {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'AccessToken': 'ALOC-79089b2860a0a328f46c'
-                    },
-                    method: "GET",
-                }).catch((err) => console.log(err))
-            const quesJSONtwo = await questionstwo.json();
-
-            //console.log(quesJSONtwo.data)
-            setQuestionstwo(quesJSONtwo.data)
-
-            /*.then(function (res) { console.log(res) })
-            .catch(function (res) { console.log(res) })*/
-            return questionstwo
-        }
-
-
-        const getQuestionsthree = async () => {
-
-            let questionsthree;
-            questionsthree = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[2],
-                {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'AccessToken': 'ALOC-79089b2860a0a328f46c'
-                    },
-                    method: "GET",
-                }).catch((err) => console.log(err))
-            const quesJSONthree = await questionsthree.json();
-
-            //console.log(quesJSONthree.data)
-            setQuestionsthree(quesJSONthree.data)
-
-            /*.then(function (res) { console.log(res) })
-            .catch(function (res) { console.log(res) })*/
-            return questionsthree
-        }
-
-
-        const getQuestionsfour = async () => {
-
-            let questionsfour;
-            questionsfour = await fetch("https://questions.aloc.com.ng/api/v2/q/20?subject=" + subjects[3],
-                {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'AccessToken': 'ALOC-79089b2860a0a328f46c'
-                    },
-                    method: "GET",
-                }).catch((err) => console.log(err))
-            const quesJSONfour = await questionsfour.json();
-
-            //console.log(quesJSONfour.data)
-            setQuestionsfour(quesJSONfour.data)
-
-            /*.then(function (res) { console.log(res) })
-            .catch(function (res) { console.log(res) })*/
-            return questionsfour
-        }
-
-
-        getQuestionsone()
-        //.then(console.log(questionsone))
-        getQuestionstwo()
-        getQuestionsthree()
-        getQuestionsfour()
 
     }, [setQuestionsone, setQuestionstwo, setQuestionsthree])
 

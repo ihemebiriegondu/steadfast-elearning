@@ -53,7 +53,9 @@
 }
 
 .info-div .alertTime .timer-icon,
-.info-div .alertTime .timer {
+.info-div .alertTime .timer, 
+.question-header .alertTime .timer,
+.question-header .alertTime .timer-icon {
     animation-name: alert;
     animation-iteration-count: infinite;
     animation-duration: 2s;

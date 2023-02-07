@@ -7,6 +7,8 @@ import { BsCalculator, BsAlarm } from 'react-icons/bs'
 import { TiArrowLeftThick, TiArrowRightThick } from 'react-icons/ti'
 import Calculator from '../components/Calculator';
 
+import axios from 'axios';
+
 import '../css/Jamb.css'
 import '../css/QuesTemp.css'
 
@@ -38,7 +40,7 @@ export default class Pastquestions extends Component {
             this.setState({ loader: true })
             let subject = localStorage.getItem('subjectApiName')
             let question;
-            question = await fetch("https://questions.aloc.com.ng/api/v2/q/30?subject=" + subject,
+            question = await axios("https://questions.aloc.com.ng/api/v2/q/30?subject=" + subject,
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -46,8 +48,16 @@ export default class Pastquestions extends Component {
                         'AccessToken': 'ALOC-79089b2860a0a328f46c'
                     },
                     method: "GET",
+                    onDownloadProgress: (progressEvent) => {
+                        const { loaded, total } = progressEvent.event;
+                        let percentage = Math.floor((loaded / total) * 100);
+                        console.log(loaded)
+                        console.log(total)
+                        console.log('percentage => ', percentage);
+                        console.log(progressEvent);
+                    }
                 }).catch((err) => console.log(err))
-            const JSONquestion = await question.json();
+            const JSONquestion = await question.data;
 
             this.setState({ questions: JSONquestion.data });
 
@@ -99,7 +109,7 @@ export default class Pastquestions extends Component {
                 this.state.updatedQuestions.push(questionObject)
                 this.setState({ loader: false });
 
-                /*let startTime = new Date(new Date().setMinutes(new Date().getMinutes() + 20));
+                let startTime = new Date(new Date().setMinutes(new Date().getMinutes() + 20));
 
                 const startTimer = () => {
                     const total = Date.parse(startTime) - Date.parse(new Date());
@@ -129,7 +139,7 @@ export default class Pastquestions extends Component {
 
                 setInterval(() => {
                     startTimer();
-                }, 1000)*/
+                }, 1000)
             });
 
             //console.log(questionArray)
@@ -155,7 +165,7 @@ export default class Pastquestions extends Component {
     isSubmitted = () => {
         let allQuestions = this.state.updatedQuestions
 
-        let totalScore = ''
+        let totalScore = 0
 
         allQuestions.forEach(question => {
             question.isCorrect = question.options.every(x => x.selected === x.isAnswer);
@@ -164,7 +174,7 @@ export default class Pastquestions extends Component {
                 totalScore += 1;
             }
         })
-        
+
         const cummulativeScore = parseFloat(totalScore / 30 * 100).toFixed(0);
         this.setState({ cummulativeScore: cummulativeScore })
 
