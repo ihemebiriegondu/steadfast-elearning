@@ -99,7 +99,7 @@ export default class Pastquestions extends Component {
                 this.state.updatedQuestions.push(questionObject)
                 this.setState({ loader: false });
 
-                let startTime = new Date(new Date().setMinutes(new Date().getMinutes() + 20));
+                /*let startTime = new Date(new Date().setMinutes(new Date().getMinutes() + 20));
 
                 const startTimer = () => {
                     const total = Date.parse(startTime) - Date.parse(new Date());
@@ -129,7 +129,7 @@ export default class Pastquestions extends Component {
 
                 setInterval(() => {
                     startTimer();
-                }, 1000)
+                }, 1000)*/
             });
 
             //console.log(questionArray)
