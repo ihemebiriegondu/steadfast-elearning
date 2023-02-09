@@ -17,10 +17,12 @@ const Home = () => {
   const handleShow = () => setShow(true);
 
   const { logOut, user } = useUserAuth();
+  localStorage.setItem("userName", user.displayName)
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
+      localStorage.clear()
       await logOut();
       navigate("/");
     } catch (error) {

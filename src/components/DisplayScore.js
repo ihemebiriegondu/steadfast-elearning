@@ -19,7 +19,7 @@ export class DisplayScore extends Component {
                         <h2 className='text-center mb-0'>Result</h2>
                     </div>
                     <div className='px-4 mb-4'>
-                        <p className='fw-semibold h5'><span className='score-info'>Name: </span><span className='score-info-info'>Egondu</span></p>
+                        <p className='fw-semibold h5'><span className='score-info'>Name: </span><span className='score-info-info'>{localStorage.getItem("userName")}</span></p>
                     </div>
                     <div className='px-sm-4 px-2'>
                         <Table striped>
