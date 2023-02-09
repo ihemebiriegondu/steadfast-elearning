@@ -61,10 +61,10 @@ export default class Pastquestions extends Component {
 
             this.setState({ questions: JSONquestion.data });
 
-            console.log(this.state.questions)
+            //console.log(this.state.questions)
 
-            let questionSample = this.state.questions
-            let questionArray = []
+            let questionSample = JSONquestion.data;
+            let questionArray = [];
 
             questionSample.forEach(question => {
 
