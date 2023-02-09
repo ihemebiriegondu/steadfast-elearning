@@ -27,6 +27,8 @@ export default class Pastquestions extends Component {
             loadingPercent: 0,
             questions: [],
             updatedQuestions: [],
+            alert: '',
+            showAlert: false,
 
             totalScore: 0,
             cummulativeScore: 0,
@@ -39,6 +41,7 @@ export default class Pastquestions extends Component {
     componentDidMount() {
         const getQuestions = async () => {
             this.setState({ loader: true })
+            this.setState({ showAlert: false })
             let subject = localStorage.getItem('subjectApiName')
             let question;
             question = await axios("https://questions.aloc.com.ng/api/v2/q/30?subject=" + subject,
@@ -55,7 +58,11 @@ export default class Pastquestions extends Component {
                         //console.log(percentage)
                         this.setState({ loadingPercent: percentage })
                     }
-                }).catch((err) => console.log(err))
+                }).catch((err) => {
+                    this.setState({ alert: err.message });
+                    this.setState({ showAlert: true });
+                    console.log(err.message)
+                })
             const JSONquestion = await question.data;
 
             this.setState({ questions: JSONquestion.data });
@@ -232,7 +239,12 @@ export default class Pastquestions extends Component {
                     <div>
                         {
                             this.state.loader && (
-                                <div className="text-center pt-5">Loading {this.state.loadingPercent + '%'}...</div>
+                                <div className='pt-5 mx-4'>
+                                    <div className={`alert alert-danger alert-dismissible fade ${this.state.showAlert === true ? 'show' : ''} `} role="alert">
+                                        <p className='pb-0 mb-0'>{this.state.alert}</p>
+                                    </div>
+                                    <div className="text-center pt-5">Loading {this.state.loadingPercent + '%'}...</div>
+                                </div>
                             )
                         }
                         <div className={`${this.state.loader === true ? 'd-none' : 'd-block'}`}>

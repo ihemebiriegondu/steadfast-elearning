@@ -25,7 +25,6 @@ const AllQuestions = () => {
         const subjects = JSON.parse(localStorage.getItem("subjects"));
 
         try {
-            console.log(subjects)
             const getQuestionsone = async () => {
                 setLoader(true);
 
@@ -45,7 +44,7 @@ const AllQuestions = () => {
                             //console.log(loaded)
                             setLoadingPercent(percentage)
                         }
-                    }).catch((err) => console.log(err.message))
+                    }).catch((err) => console.log(err))
                 const quesJSONone = await questionsone.data;
 
                 //console.log(quesJSONone.data)
@@ -357,12 +356,6 @@ const AllQuestions = () => {
 
     return (
         <div>
-            <div>
-                <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
             {
                 loader && (
                     <div className="text-center pt-5">Loading {loadingPercent + '%'} ...</div>
