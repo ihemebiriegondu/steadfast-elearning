@@ -52,8 +52,8 @@ export default class Pastquestions extends Component {
                     onDownloadProgress: (progressEvent) => {
                         const { loaded } = progressEvent.event;
                         let percentage = Math.floor((loaded / 20000) * 100);
-                        console.log(percentage)
-                        this.setState({loadingPercent: percentage})
+                        //console.log(percentage)
+                        this.setState({ loadingPercent: percentage })
                     }
                 }).catch((err) => console.log(err))
             const JSONquestion = await question.data;
@@ -232,7 +232,7 @@ export default class Pastquestions extends Component {
                     <div>
                         {
                             this.state.loader && (
-                                <div className="text-center pt-5">Loading { this.state.loadingPercent + '%' }...</div>
+                                <div className="text-center pt-5">Loading {this.state.loadingPercent + '%'}...</div>
                             )
                         }
                         <div className={`${this.state.loader === true ? 'd-none' : 'd-block'}`}>

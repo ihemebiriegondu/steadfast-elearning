@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
+import axios from 'axios'
 
 const AllQuestions = () => {
 
@@ -12,6 +13,7 @@ const AllQuestions = () => {
     const [questionsthree, setQuestionsthree] = useState([])
     const [questionsfour, setQuestionsfour] = useState([])
     const [loader, setLoader] = useState(false);
+    const [loadingPercent, setLoadingPercent] = useState(0);
 
     const allQuestions = []
     let firstQuestion = []
@@ -21,14 +23,14 @@ const AllQuestions = () => {
 
     useEffect(() => {
         const subjects = JSON.parse(localStorage.getItem("subjects"));
-        localStorage.removeItem("subjects")
 
         try {
+            console.log(subjects)
             const getQuestionsone = async () => {
                 setLoader(true);
 
                 let questionsone;
-                questionsone = await fetch("https://questions.aloc.com.ng/api/v2/m?subject=" + subjects[0],
+                questionsone = await axios("https://questions.aloc.com.ng/api/v2/m?subject=" + subjects[0],
                     {
                         headers: {
                             'Accept': 'application/json',
@@ -36,8 +38,15 @@ const AllQuestions = () => {
                             'AccessToken': 'ALOC-79089b2860a0a328f46c'
                         },
                         method: "GET",
-                    }).catch((err) => console.log(err))
-                const quesJSONone = await questionsone.json();
+                        onDownloadProgress: (progressEvent) => {
+                            const { loaded } = progressEvent.event;
+                            let percentage = Math.floor((loaded / 25000) * 100);
+                            //console.log(percentage)
+                            //console.log(loaded)
+                            setLoadingPercent(percentage)
+                        }
+                    }).catch((err) => console.log(err.message))
+                const quesJSONone = await questionsone.data;
 
                 //console.log(quesJSONone.data)
                 setQuestionsone(quesJSONone.data)
@@ -118,12 +127,13 @@ const AllQuestions = () => {
                 return questionsfour
 
             }
-            
+
             getQuestionsone()
             //.then(console.log(questionsone))
             getQuestionstwo()
             getQuestionsthree()
             getQuestionsfour()
+            //localStorage.removeItem("subjects")
 
         } catch (error) {
             console.log(error)
@@ -347,9 +357,15 @@ const AllQuestions = () => {
 
     return (
         <div>
+            <div>
+                <div className="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
             {
                 loader && (
-                    <div className="text-center pt-5">Loading...</div>
+                    <div className="text-center pt-5">Loading {loadingPercent + '%'} ...</div>
                 )
             }
             <div className={`${loader === true ? 'd-none' : 'd-block'}`}>
