@@ -2,7 +2,10 @@ import React from 'react'
 import { useUserAuth } from "../context/UserAuthContext";
 import { HiOutlineSun } from 'react-icons/hi'
 import { GiLaurelsTrophy } from 'react-icons/gi'
-import { RiTimerFlashLine } from 'react-icons/ri'
+import { FaMedal } from 'react-icons/fa'
+import { BiBadge } from 'react-icons/bi'
+import { TbCheckbox } from 'react-icons/tb'
+import { MdSpeed } from 'react-icons/md'
 
 import '../css/dashboard.css'
 
@@ -20,7 +23,7 @@ const Dashboard = () => {
                             <p className='mb-0'>Good Afternoon</p>
                         </div>
                         <div>
-                            <h6>{user.displayName}</h6>
+                            <h6 className='mb-0'>{user.displayName}</h6>
                         </div>
                     </div>
                     <div className='userImg'>
@@ -43,7 +46,7 @@ const Dashboard = () => {
                             </div>
                             <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm'>
                                 <div className='detailImgDiv'>
-                                    <GiLaurelsTrophy className='detailImg' />
+                                    <BiBadge className='detailImg' />
                                 </div>
                                 <div className='detailInfo'>
                                     <p className='mb-0'>Average Score</p>
@@ -52,7 +55,7 @@ const Dashboard = () => {
                             </div>
                             <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm'>
                                 <div className='detailImgDiv'>
-                                    <RiTimerFlashLine className='detailImg' />
+                                    <MdSpeed className='detailImg' />
                                 </div>
                                 <div className='detailInfo'>
                                     <p className='mb-0'>Average Time</p>
@@ -61,7 +64,7 @@ const Dashboard = () => {
                             </div>
                             <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm'>
                                 <div className='detailImgDiv'>
-                                    <GiLaurelsTrophy className='detailImg' />
+                                    <TbCheckbox className='detailImg' />
                                 </div>
                                 <div className='detailInfo'>
                                     <p className='mb-0'>Number of exams taken</p>
@@ -73,14 +76,15 @@ const Dashboard = () => {
                 </div>
 
                 <div className='leaderboard'>
-                    <h6 className='mb-3 ms-2'>Leaderboard</h6>
+                    <h5 className='mb-4 ms-2 text-center'>Leaderboard</h5>
                     <div className='top3 d-flex justify-content-center align-items-end'>
                         <div className='top3-Student second d-flex flex-column justify-content-center'>
                             <div className='d-flex flex-column justify-content-center align-items-center px-2'>
+                                <FaMedal className='fs-1 medal mb-2' style={({ color: '#C0C0C0' })} />
                                 <div className='img mb-3'>
                                     <img src={user.photoURL} alt=''></img>
                                 </div>
-                                <p className='name mb-1'>Ihemebiri Egondu</p>
+                                <p className='name mb-1 text-center'>Ihemebiri Egondu</p>
                                 <div className='score mb-2'><p className='mb-0'>350</p></div>
 
                             </div>
@@ -95,10 +99,11 @@ const Dashboard = () => {
                         </div>
                         <div className='top3-Student first d-flex flex-column justify-content-center'>
                             <div className='d-flex flex-column justify-content-center align-items-center px-2'>
+                                <FaMedal className='fs-1 medal mb-2' style={({ color: '#FFD700' })} />
                                 <div className='img mb-3'>
                                     <img src={user.photoURL} alt=''></img>
                                 </div>
-                                <p className='name mb-1'>Ihemebiri Egondu</p>
+                                <p className='name mb-1 text-center'>Ihemebiri Egondu</p>
                                 <div className='score mb-2'><p className='mb-0'>350</p></div>
                             </div>
                             <div className='ratingDiv'>
@@ -112,10 +117,11 @@ const Dashboard = () => {
                         </div>
                         <div className='top3-Student third d-flex flex-column justify-content-center'>
                             <div className='d-flex flex-column justify-content-center align-items-center px-2'>
+                                <FaMedal className='fs-1 medal mb-2' style={({ color: '#CD7F32' })} />
                                 <div className='img mb-3'>
                                     <img src={user.photoURL} alt=''></img>
                                 </div>
-                                <p className='name mb-1'>Ihemebiri Egondu</p>
+                                <p className='name mb-1 text-center'>Ihemebiri Egondu</p>
                                 <div className='score mb-2'><p className='mb-0'>350</p></div>
                             </div>
                             <div className='ratingDiv'>
