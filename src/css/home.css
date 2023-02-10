@@ -8,16 +8,17 @@
 }*/
 
 .dashboard {
-    background: rgb(255, 236, 236);
+    background: rgb(75, 5, 5);
     position: absolute;
     top: 0;
     bottom: 0;
     width: 100%;
     height: auto;
+    color: white;
 }
 
 .dashboard .top-nav {
-    background: rgb(250, 193, 193);
+    background: rgb(75, 5, 5);
     padding: 1rem 1.5rem;
 }
 
@@ -36,7 +37,7 @@
 }
 
 .dashboard .top-nav .menubar {
-    color: rgb(75, 5, 5);
+    color: white;
 }
 
 .dashboard .top-nav .menubar:hover {

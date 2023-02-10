@@ -8,6 +8,7 @@ import { MdMenu } from 'react-icons/md'
 import { BiLogOutCircle } from 'react-icons/bi'
 import '../css/home.css'
 import Settings from '../components/Settings';
+import Dashboard from '../components/Dashboard';
 
 const Home = () => {
 
@@ -34,25 +35,12 @@ const Home = () => {
   return (
     <div className='dashboard'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="home">
+        <div className='top-nav d-flex justify-content-between align-items-center'>
+          <MdMenu className='menubar fs-2' onClick={handleShow} />
+        </div>
         <Tab.Content>
           <Tab.Pane eventKey="home">
-            <div className='top-nav d-flex justify-content-between align-items-center'>
-              <h5 className='mb-0'>Hello, <span>{user.displayName}</span></h5>
-              <MdMenu className='menubar fs-2' onClick={handleShow} />
-            </div>
-            <div className='middle-div'>
-              <h4>Exam history</h4>
-              <div>
-                <ul>
-                  <li>
-                    <p className='m-0'>12/9/2022</p>
-                    <p className='m-0'>English, Mathematics, Chemistry, Physics</p>
-                    <p className='m-0'>270</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
+            <Dashboard />
           </Tab.Pane>
 
           <Tab.Pane eventKey="exams">
@@ -63,12 +51,7 @@ const Home = () => {
           </Tab.Pane>
 
           <Tab.Pane eventKey="settings">
-            <div>
-              <div className='top-nav d-flex justify-content-end align-items-center'>
-                <MdMenu className='menubar fs-1' onClick={handleShow} />
-              </div>
-              <Settings />
-            </div>
+            <Settings />
           </Tab.Pane>
         </Tab.Content>
 
@@ -117,7 +100,7 @@ const Home = () => {
               </Nav.Item>
             </Nav>
             <div>
-              <p onClick={() => handleLogout()} className='d-inline' style={({cursor: 'pointer'})} ><BiLogOutCircle className='me-3' />Logout</p>
+              <p onClick={() => handleLogout()} className='d-inline' style={({ cursor: 'pointer' })} ><BiLogOutCircle className='me-3' />Logout</p>
             </div>
           </Offcanvas.Body>
         </Offcanvas>
