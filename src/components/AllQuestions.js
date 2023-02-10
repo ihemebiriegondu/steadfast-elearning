@@ -12,7 +12,7 @@ const AllQuestions = () => {
     const [questionstwo, setQuestionstwo] = useState([])
     const [questionsthree, setQuestionsthree] = useState([])
     const [questionsfour, setQuestionsfour] = useState([])
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState('');
     const [loadingPercent, setLoadingPercent] = useState(0);
 
     const allQuestions = []

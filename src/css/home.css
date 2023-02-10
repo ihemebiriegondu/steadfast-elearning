@@ -28,11 +28,11 @@
 }
 
 .dashboard .top-nav h5 span {
-    font-family: 'Italianno', cursive !important;
-    font-size: 35px;
+    font-family: 'Charm', cursive !important;
+    font-size: 30px;
     letter-spacing: 3px;
     font-weight: 600;
-    color: rgb(138, 25, 25);
+    color: rgb(75, 5, 5)
 }
 
 .dashboard .top-nav .menubar {
@@ -129,7 +129,7 @@ button, .btn {
     }
 
     .dashboard .top-nav h5 span {
-        font-size: 30px;
+        font-size: 20px;
         letter-spacing: 2px;
     }
 
@@ -149,7 +149,7 @@ button, .btn {
     }
 
     .dashboard .top-nav h5 span {
-        font-size: 25px;
+        font-size: 19px;
         letter-spacing: 2px;
     }
 }

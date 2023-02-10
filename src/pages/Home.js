@@ -117,7 +117,7 @@ const Home = () => {
               </Nav.Item>
             </Nav>
             <div>
-              <p onClick={() => handleLogout()} className='d-inline'><BiLogOutCircle className='me-3' />Logout</p>
+              <p onClick={() => handleLogout()} className='d-inline' style={({cursor: 'pointer'})} ><BiLogOutCircle className='me-3' />Logout</p>
             </div>
           </Offcanvas.Body>
         </Offcanvas>
