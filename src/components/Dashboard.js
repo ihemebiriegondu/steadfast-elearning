@@ -76,8 +76,8 @@ const Dashboard = () => {
                 </div>
 
                 <div className='leaderboard'>
-                    <h5 className='mb-4 ms-2 text-center'>Leaderboard</h5>
-                    <div className='top3 d-flex justify-content-center align-items-end'>
+                    <h5 className='mb-4 ms-2 text-center'>Top Students</h5>
+                    <div className='top3 d-flex justify-content-center align-items-end ms-3'>
                         <div className='top3-Student second d-flex flex-column justify-content-center'>
                             <div className='d-flex flex-column justify-content-center align-items-center px-2'>
                                 <FaMedal className='fs-1 medal mb-2' style={({ color: '#C0C0C0' })} />
@@ -131,6 +131,78 @@ const Dashboard = () => {
                                 <div className='ratings-bottom'>
                                     <h1 className='text-center'>3</h1>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='other-ranks mx-2 py-3'>
+                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
+                            <div className='rank me-3'><span className='pb-1'>4</span></div>
+                            <div className='detailImgDiv'>
+                                <img src={user.photoURL} alt=''></img>
+                            </div>
+                            <div className='detailInfo'>
+                                <p className='mb-0'>Ihemebiri Egondu</p>
+                                <h5 className='mb-0'>240</h5>
+                            </div>
+                        </div>
+                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
+                            <div className='rank me-3'><span className='pb-1'>5</span></div>
+                            <div className='detailImgDiv'>
+                                <img src={user.photoURL} alt=''></img>
+                            </div>
+                            <div className='detailInfo'>
+                                <p className='mb-0'>Ihemebiri Egondu</p>
+                                <h5 className='mb-0'>240</h5>
+                            </div>
+                        </div>
+                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
+                            <div className='rank me-3'><span className='pb-1'>6</span></div>
+                            <div className='detailImgDiv'>
+                                <img src={user.photoURL} alt=''></img>
+                            </div>
+                            <div className='detailInfo'>
+                                <p className='mb-0'>Ihemebiri Egondu</p>
+                                <h5 className='mb-0'>240</h5>
+                            </div>
+                        </div>
+                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
+                            <div className='rank me-3'><span className='pb-1'>7</span></div>
+                            <div className='detailImgDiv'>
+                                <img src={user.photoURL} alt=''></img>
+                            </div>
+                            <div className='detailInfo'>
+                                <p className='mb-0'>Ihemebiri Egondu</p>
+                                <h5 className='mb-0'>240</h5>
+                            </div>
+                        </div>
+                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
+                            <div className='rank me-3'><span className='pb-1'>8</span></div>
+                            <div className='detailImgDiv'>
+                                <img src={user.photoURL} alt=''></img>
+                            </div>
+                            <div className='detailInfo'>
+                                <p className='mb-0'>Ihemebiri Egondu</p>
+                                <h5 className='mb-0'>240</h5>
+                            </div>
+                        </div>
+                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
+                            <div className='rank me-3'><span className='pb-1'>9</span></div>
+                            <div className='detailImgDiv'>
+                                <img src={user.photoURL} alt=''></img>
+                            </div>
+                            <div className='detailInfo'>
+                                <p className='mb-0'>Ihemebiri Egondu</p>
+                                <h5 className='mb-0'>240</h5>
+                            </div>
+                        </div>
+                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
+                            <div className='rank me-3'><span className='pb-1'>10</span></div>
+                            <div className='detailImgDiv'>
+                                <img src={user.photoURL} alt=''></img>
+                            </div>
+                            <div className='detailInfo'>
+                                <p className='mb-0'>Ihemebiri Egondu</p>
+                                <h5 className='mb-0'>240</h5>
                             </div>
                         </div>
                     </div>

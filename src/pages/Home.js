@@ -43,9 +43,6 @@ const Home = () => {
             <Dashboard />
           </Tab.Pane>
 
-          <Tab.Pane eventKey="exams">
-          </Tab.Pane>
-
           <Tab.Pane eventKey="history">
 
           </Tab.Pane>
