@@ -17,6 +17,11 @@
     color: white;
 }
 
+.dashboard .school-name {
+    font-family: 'Vesper Libre', serif !important;
+    color: rgb(250, 193, 193);
+}
+
 .dashboard .top-nav {
     background: rgb(75, 5, 5);
     padding: 1rem 1.5rem;

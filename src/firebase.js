@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth } from 'firebase/auth'
 import { getStorage } from "firebase/storage";
+import { getFirestore } from 'firebase/firestore'
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,10 +21,24 @@ const firebaseConfig = {
   measurementId: "G-8WTZSTF3D8"
 };
 
+const secondaryAppConfig = {
+  apiKey: "AIzaSyD6z-NHLx-jHtua5qxsRYXB6tQ52RJ1QvU",
+  authDomain: "steadfastprivateschools-admin.firebaseapp.com",
+  projectId: "steadfastprivateschools-admin",
+  storageBucket: "steadfastprivateschools-admin.appspot.com",
+  messagingSenderId: "283296008725",
+  appId: "1:283296008725:web:6d1fca5d8cf93930ba1c1c",
+  measurementId: "G-0FX402CLGG"
+};
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const secondaryApp = initializeApp(secondaryAppConfig, 'secondary');
+
+
 export const auth = getAuth(app);
-export const storage = getStorage(app)
+export const storage = getStorage(app);
+export const firestore = getFirestore(secondaryApp);
 
 //const analytics = getAnalytics(app);
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useUserAuth } from '../context/UserAuthContext'
 import { updateProfile } from 'firebase/auth'
-import { auth } from "../firebase";
-import { storage } from '../firebase';
+import { auth, storage, firestore } from "../firebase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
+import { collection, onSnapshot, addDoc, deleteDoc, doc, query, orderBy, updateDoc } from "firebase/firestore"
 import "../css/settings.css"
 import { BiPlus } from 'react-icons/bi'
 import { BsFillExclamationCircleFill } from 'react-icons/bs'
@@ -15,6 +15,9 @@ const Settings = () => {
     const { user } = useUserAuth();
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+
+    //const studentLists = collection(firestore, "student-list");
+    //console.log(user)
 
     //alerts
     const alertDiv = document.querySelectorAll(".error-div")
@@ -33,6 +36,10 @@ const Settings = () => {
         let reader = new FileReader();
         let imgInputFile = imgInput.files[0]
         let imgInputFileName = imgInputFile.name
+
+        let docID = user.uid
+        const studentInfo = doc(firestore, "student-list", docID);
+
 
         //console.log(imgInputFileName)
         reader.readAsDataURL(imgInputFile);
@@ -54,7 +61,7 @@ const Settings = () => {
                             alertDiv.forEach(alert => {
                                 alert.classList.remove("d-none")
                             });
-
+                            document.getElementById('displayPicture').src = link
                             setSuccess("Updated successfully")
                             setTimeout(hideAlertFunction, 5000)
                         }).catch((error) => {
@@ -64,6 +71,10 @@ const Settings = () => {
 
                             setError(error.code)
                             setTimeout(hideAlertFunction, 5000)
+                        });
+
+                        updateDoc(studentInfo, {
+                            imageURL: link
                         });
                     })
                 })

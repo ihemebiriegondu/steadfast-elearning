@@ -9,6 +9,8 @@ import { BiLogOutCircle } from 'react-icons/bi'
 import '../css/home.css'
 import Settings from '../components/Settings';
 import Dashboard from '../components/Dashboard';
+import logo from '../assets/wine_logo-removebg-preview.png'
+
 
 const Home = () => {
 
@@ -35,8 +37,10 @@ const Home = () => {
   return (
     <div className='dashboard'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="home">
-        <div className='top-nav d-flex justify-content-between align-items-center'>
+        <div className='top-nav d-flex align-items-center'>
           <MdMenu className='menubar fs-2' onClick={handleShow} />
+          <h2 className="mb-0 mt-2 fw-normal me-1 ms-4 school-name">SPS</h2>
+          <img src={logo} alt="" className='mt-1' style={({width: '30px', height: '30px', objectFit: 'cover'})}></img>
         </div>
         <Tab.Content>
           <Tab.Pane eventKey="home">
