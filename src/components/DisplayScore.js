@@ -6,7 +6,6 @@ import '../css/displayscore.css'
 export class DisplayScore extends Component {
     render() {
 
-        //const { user } = useUserAuth();
         let scoresArray = this.props.scores
         let totalScore = this.props.total
         let allSubjects = this.props.subjects

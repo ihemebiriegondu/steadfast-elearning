@@ -6,6 +6,8 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import DisplayScore from './DisplayScore';
 import { BsAlarm } from 'react-icons/bs'
 
+import { auth, firestore } from "../firebase";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore"
 
 
 export default class QuestionsDisplayTemp extends Component {
@@ -292,6 +294,7 @@ export default class QuestionsDisplayTemp extends Component {
     const handleShowModal = () => this.setState({ showModal: true })
 
 
+
     const submitExamFunction = () => {
 
       let totalScoreArray = []
@@ -381,6 +384,18 @@ export default class QuestionsDisplayTemp extends Component {
 
       this.setState({ totalScore: newtotalScore });
       this.setState({ newtotalScoreArray: totalScoreArray });
+
+      let user = auth.currentUser;
+      const docID = user.uid;
+      let maxScore = localStorage.getItem('maxscore');
+      //console.log(user);
+      const studentInfo = doc(firestore, "student-list", docID);
+
+      updateDoc(studentInfo ,{
+        scores: arrayUnion(newtotalScore),
+        maxScore: maxScore
+      })
+
 
       let scoreOffcanvas = document.querySelector(".display-score")
       scoreOffcanvas.classList.add("active")

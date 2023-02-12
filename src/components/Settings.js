@@ -3,7 +3,7 @@ import { useUserAuth } from '../context/UserAuthContext'
 import { updateProfile } from 'firebase/auth'
 import { auth, storage, firestore } from "../firebase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
-import { collection, onSnapshot, addDoc, deleteDoc, doc, query, orderBy, updateDoc } from "firebase/firestore"
+import { doc, updateDoc } from "firebase/firestore"
 import "../css/settings.css"
 import { BiPlus } from 'react-icons/bi'
 import { BsFillExclamationCircleFill } from 'react-icons/bs'

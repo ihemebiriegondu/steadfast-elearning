@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useUserAuth } from "../context/UserAuthContext";
 import { HiOutlineSun } from 'react-icons/hi'
 import { GiLaurelsTrophy } from 'react-icons/gi'
@@ -7,12 +7,60 @@ import { BiBadge } from 'react-icons/bi'
 import { TbCheckbox } from 'react-icons/tb'
 import { MdSpeed } from 'react-icons/md'
 
+import { firestore } from "../firebase";
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
+
 import '../css/dashboard.css'
 
 const Dashboard = () => {
 
-    const { user } = useUserAuth();
+    const [averageScore, setAverageScore] = useState(0);
+    const [maxScore, setMaxScore] = useState(0);
+    const [totalScoresLength, setTotalScoresLength] = useState(0);
 
+    const { user } = useUserAuth();
+    const studentLists = collection(firestore, "student-list");
+    const qStudent = query(studentLists, orderBy('Username', 'asc'))
+
+    onSnapshot(qStudent, (student) => {
+        let students = []
+        student.docs.forEach((doc) => {
+            students.push({ ...doc.data(), id: doc.id })
+        });
+        //console.log(students)
+        students.forEach(student => {
+
+            //updating students person score informations
+            if (student.id === user.uid) {
+                //console.log(student)
+                let scoresArray = student.scores
+                //console.log(scoresArray)
+                let totalScore = 0;
+                let maximumScore = 0;
+
+                for (let i = 0; i < scoresArray.length; i++) {
+                    //console.log(i)
+                    totalScore = totalScore + scoresArray[i]
+                    //console.log(totalScore)
+                    if (scoresArray[i] > maximumScore) {
+                        maximumScore = scoresArray[i]
+                    }
+                }
+                if (scoresArray.length === 0) {
+                    setAverageScore(0)
+                } else {
+                    setAverageScore(parseFloat(totalScore / scoresArray.length).toFixed(0));
+                }
+                setTotalScoresLength(scoresArray.length);
+                setMaxScore(maximumScore)
+            }
+
+            console.log(student)
+        });
+        localStorage.setItem('maxscore', maxScore)
+    })
+
+    
     return (
         <div className='dashboard-component'>
             <div className='dashboard-componentDiv'>
@@ -41,7 +89,7 @@ const Dashboard = () => {
                                 </div>
                                 <div className='detailInfo'>
                                     <p className='mb-0'>Highest Score</p>
-                                    <h5 className='mb-0'>300</h5>
+                                    <h5 className='mb-0'>{maxScore}</h5>
                                 </div>
                             </div>
                             <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm'>
@@ -50,7 +98,7 @@ const Dashboard = () => {
                                 </div>
                                 <div className='detailInfo'>
                                     <p className='mb-0'>Average Score</p>
-                                    <h5 className='mb-0'>300</h5>
+                                    <h5 className='mb-0'>{averageScore}</h5>
                                 </div>
                             </div>
                             <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm'>
@@ -68,7 +116,7 @@ const Dashboard = () => {
                                 </div>
                                 <div className='detailInfo'>
                                     <p className='mb-0'>Number of exams taken</p>
-                                    <h5 className='mb-0'>5</h5>
+                                    <h5 className='mb-0'>{totalScoresLength}</h5>
                                 </div>
                             </div>
                         </div>
