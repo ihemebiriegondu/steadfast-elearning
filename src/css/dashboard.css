@@ -136,25 +136,29 @@
     font-weight: bolder;
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.second .ratingDiv .ratings-top {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student{
+    width: 130px;
+}
+
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(1) .ratingDiv .ratings-top {
     background: rgba(255, 255, 255, 0.544);
     height: 10px;
     transform: skew(-50deg);
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.second .ratingDiv .ratings-bottom {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(1) .ratingDiv .ratings-bottom {
     background: rgba(255, 255, 255, 0.411);
     transform: translate(-7px);
     padding: 15px 0;
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.second .ratingDiv .ratings-bottom h1 {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(1) .ratingDiv .ratings-bottom h1 {
     font-size: 45px;
     font-weight: bold;
     margin-bottom: 0 !important;
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.first .ratingDiv .ratings-top {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(2) .ratingDiv .ratings-top {
     background: rgb(249, 215, 215);
     height: 20px;
     transform: perspective(100px) rotateX(50deg) translate(-6px);
@@ -163,7 +167,7 @@
     margin-bottom: -5px;
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.first .ratingDiv .ratings-bottom {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(2) .ratingDiv .ratings-bottom {
     background: rgb(247, 214, 214);
     transform: translate(-7px);
     padding: 20px 0;
@@ -171,25 +175,25 @@
     z-index: 10;
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.first .ratingDiv .ratings-bottom h1 {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(2) .ratingDiv .ratings-bottom h1 {
     font-size: 55px;
     font-weight: bold;
     margin-bottom: 0 !important;
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.third .ratingDiv .ratings-top {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(3) .ratingDiv .ratings-top {
     background: rgba(255, 255, 255, 0.544);
     height: 10px;
     transform: skew(50deg) translate(-13px);
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.third .ratingDiv .ratings-bottom {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(3) .ratingDiv .ratings-bottom {
     background: rgba(255, 255, 255, 0.411);
     transform: translate(-7px);
     padding: 10px 0;
 }
 
-.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student.third .ratingDiv .ratings-bottom h1 {
+.dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student:nth-of-type(3) .ratingDiv .ratings-bottom h1 {
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 0 !important;
@@ -266,5 +270,9 @@
 
     .dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student .score p {
         font-size: 12px;
+    }
+
+    .dashboard-component .dashboard-componentDiv .leaderboard .top3 .top3-Student{
+        width: 100px;
     }
 }
