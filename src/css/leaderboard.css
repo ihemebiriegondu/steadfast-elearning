@@ -1,0 +1,195 @@
+.leaderboardTab {
+    background: linear-gradient(90deg, #720808 0%, #130101 100%) !important;
+    font-family: 'Vesper Libre', serif !important;
+}
+
+.leaderboardTab .tops {
+    padding-top: 45px;
+    background: #4B0505;
+    border-radius: 0 0 20% 20%;
+    padding-bottom: 45px;
+}
+
+.leaderboardTab .topsTitle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    font-family: 'Vesper Libre', serif !important;
+    margin-bottom: 1px;
+}
+
+.leaderboardTab .top2nd,
+.leaderboardTab .top3rd {
+    margin-top: 50px;
+}
+
+.leaderboardTab .allstars {
+    display: inline-block;
+    color: red;
+    filter: url(#round);
+}
+
+.leaderboardTab .starImgs::before {
+    border: 3px solid #4B0505;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    content: '';
+    display: block;
+    clip-path: polygon(78.88% 90.82%, 49.62% 80.00%, 20.10% 90.08%, 21.35% 58.91%, 2.65% 33.95%, 32.67% 25.51%, 50.63% 0.00%, 67.94% 25.95%, 97.74% 35.15%, 78.41% 59.63%);
+    -webkit-clip-path: polygon(78.88% 90.82%, 49.62% 80.00%, 20.10% 90.08%, 21.35% 58.91%, 2.65% 33.95%, 32.67% 25.51%, 50.63% 0.00%, 67.94% 25.95%, 97.74% 35.15%, 78.41% 59.63%);
+}
+
+.leaderboardTab .rateStar::before {
+    content: '2';
+    display: block;
+    background-size: cover;
+    width: 55px;
+    height: 55px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.leaderboardTab .rateStar {
+    margin-bottom: -50px;
+    z-index: 10;
+}
+
+.leaderboardTab .secondStar::before {
+    background: #FB8A4A;
+}
+
+.leaderboardTab .firstStar::before {
+    background: #FFB800;
+}
+
+.leaderboardTab .thirdStar::before {
+    background: #84DE8D;
+}
+
+.leaderboardTab .secondStarImg::before {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg) center center;
+    background-size: cover;
+    width: 95px;
+    height: 95px;
+}
+
+.leaderboardTab .firstStarImg::before {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg) center center;
+    background-size: cover;
+    width: 125px;
+    height: 125px;
+}
+
+.leaderboardTab .thirdStarImg::before {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg) center center;
+    background-size: cover;
+    width: 95px;
+    height: 95px;
+}
+
+.leaderboardTab .top3 p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    margin-bottom: 0 !important;
+    margin-right: 5px;
+}
+
+.leaderboardTab .top3 span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #FFB800;
+}
+
+.leaderboardTab .others {
+    padding: 0 20px 18px 20px;
+}
+
+.leaderboardTab .others-subdiv {
+    background: white;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 22px 17px;
+    margin-top: -30px;
+}
+
+.leaderboardTab .others-subdiv img {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+}
+
+.leaderboardTab .otherStar {
+    display: inline-block;
+    color: red;
+    filter: url(#smallround);
+    margin-bottom: -30px;
+    margin-right: 10px;
+}
+
+.leaderboardTab .otherStar::before {
+    content: '';
+    display: block;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background: #FFB800;
+}
+
+.leaderboardTab .others-subdiv p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 13px;
+    color: #000000;
+    margin-left: 11px;
+}
+
+.leaderboardTab .others-subdiv span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+    color: #4B0505;
+}
+
+
+
+@media (max-width: 350px) {
+    .leaderboardTab .rateStar::before {
+        width: 45px;
+        height: 45px;
+    }
+
+    .leaderboardTab .rateStar {
+        margin-bottom: -50px;
+        z-index: 10;
+    }
+
+    .leaderboardTab .secondStarImg::before {
+        width: 75px;
+        height: 75px;
+    }
+
+    .leaderboardTab .firstStarImg::before {
+        width: 105px;
+        height: 105px;
+    }
+
+    .leaderboardTab .thirdStarImg::before {
+        width: 75px;
+        height: 75px;
+    }
+
+}

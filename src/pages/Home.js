@@ -10,6 +10,7 @@ import '../css/home.css'
 import Settings from '../components/Settings';
 import Dashboard from '../components/Dashboard';
 import logo from '../assets/wine_logo-removebg-preview.png'
+import Leaderboard from '../components/Leaderboard';
 
 
 const Home = () => {
@@ -40,21 +41,31 @@ const Home = () => {
         <div className='top-nav d-flex align-items-center'>
           <MdMenu className='menubar fs-2' onClick={handleShow} />
           <h2 className="mb-0 mt-2 fw-normal me-1 ms-4 school-name">SPS</h2>
-          <img src={logo} alt="" className='mt-1' style={({width: '30px', height: '30px', objectFit: 'cover'})}></img>
+          <img src={logo} alt="" className='mt-1' style={({ width: '30px', height: '30px', objectFit: 'cover' })}></img>
         </div>
         <Tab.Content>
           <Tab.Pane eventKey="home">
-            <Dashboard />
+            <div>
+              <Dashboard />
+              <Nav className='pb-4 justify-content-center' style={({ background: 'rgb(75, 5, 5)' })}>
+                <Nav.Item className='mb-3 mt-4 text-center'>
+                  <Nav.Link eventKey="leaderboard" className='p-0' onClick={handleClose}>
+                    <p className='d-flex flex-column align-items-center m-0 text-decoration-underline' style={({ color: 'rgb(247, 219, 219)' })}><span>View leaderboard</span></p>
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </div>
           </Tab.Pane>
 
-          <Tab.Pane eventKey="history">
-
+          <Tab.Pane eventKey="leaderboard">
+              <Leaderboard />
           </Tab.Pane>
 
           <Tab.Pane eventKey="settings">
             <Settings />
           </Tab.Pane>
         </Tab.Content>
+
 
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
@@ -89,8 +100,8 @@ const Home = () => {
               </Nav.Item>
 
               <Nav.Item className='mb-3'>
-                <Nav.Link eventKey="history" className='p-0' onClick={handleClose}>
-                  <p className='d-flex flex-column align-items-center m-0'><span>Exam History</span></p>
+                <Nav.Link eventKey="leaderboard" className='p-0' onClick={handleClose}>
+                  <p className='d-flex flex-column align-items-center m-0'><span>Leaderboard</span></p>
                 </Nav.Link>
               </Nav.Item>
 

@@ -202,7 +202,7 @@ const Dashboard = () => {
                             </div>
                         )
                     }
-                    <div className='other-ranks mx-2 py-3'>
+                    {/*<div className='other-ranks mx-2 py-3'>
                         <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
                             <div className='rank me-3'><span className='pb-1'>4</span></div>
                             <div className='detailImgDiv'>
@@ -273,7 +273,7 @@ const Dashboard = () => {
                                 <h5 className='mb-0'>240</h5>
                             </div>
                         </div>
-                    </div>
+                </div>*/}
                 </div>
             </div>
         </div>
