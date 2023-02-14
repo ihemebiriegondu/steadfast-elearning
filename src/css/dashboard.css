@@ -97,6 +97,20 @@
     font-weight: bold;
 }
 
+.dashboard-component .top3 {
+    padding: 0 27px;
+}
+
+.dashboard-component .top3-students {
+    flex: 1 1 0;
+    margin-top: 106px;
+    padding: 0 10px;
+}
+
+.dashboard-component .top3-students.first {
+    margin-top: 0;
+}
+
 .dashboard-component .top3-students .img-div {
     width: 68px;
     height: 68px;
@@ -112,6 +126,81 @@
 .dashboard-component .top3-students.second .img-div {
     border: 3px solid #C0C0C0;
     border-radius: 50%;
+}
+
+.dashboard-component .top3-students.first .img-div {
+    width: 82px;
+    height: 82px;
+    border: 3px solid #FFAA00;
+    border-radius: 50%;
+}
+
+.dashboard-component .top3-students.third .img-div {
+    border: 3px solid #FB8A4A;
+    border-radius: 50%;
+}
+
+.dashboard-component .top3-students.first .winner-crown {
+    color: #FFAA00;
+    font-size: 34px;
+    margin-bottom: 4.18px;
+}
+
+.dashboard-component .top3-students .position {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    transform: rotate(45deg);
+    margin-top: -10px;
+}
+
+.dashboard-component .top3-students.second .position {
+    background: #C0C0C0;
+}
+
+.dashboard-component .top3-students.first .position {
+    background: #FFAA00;
+}
+
+.dashboard-component .top3-students.third .position {
+    background: #FB8A4A;
+}
+
+.dashboard-component .top3-students .position p {
+    font-family: 'Vesper Libre', serif !important;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    color: #FFFFFF;
+    margin: 0 !important;
+    transform: rotate(-45deg);
+    text-align: center !important;
+}
+
+.dashboard-component .top3-students .student-info h5 {
+    margin-top: 15.96px;
+    font-size: 16px;
+    line-height: 15px;
+    margin-bottom: 13px;
+    font-weight: 500;
+}
+
+.dashboard-component .top3-students .student-info p {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 700;
+}
+
+.dashboard-component .top3-students.first .student-info p {
+    color: #FFAA00;
+}
+
+.dashboard-component .top3-students.second .student-info p {
+    color: #C0C0C0;
+}
+
+.dashboard-component .top3-students.third .student-info p {
+    color: #FB8A4A;
 }
 
 

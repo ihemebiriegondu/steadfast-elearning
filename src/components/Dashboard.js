@@ -4,7 +4,7 @@ import { HiOutlineSun } from 'react-icons/hi'
 import { GiLaurelsTrophy } from 'react-icons/gi'
 import { BiBadge } from 'react-icons/bi'
 import { TbCheckbox } from 'react-icons/tb'
-import { AiTwotoneCrown } from 'react-icons/ai'
+import { FaCrown } from 'react-icons/fa'
 import { MdSpeed } from 'react-icons/md'
 
 import { firestore } from "../firebase";
@@ -146,42 +146,48 @@ const Dashboard = () => {
                         TopStudentsArrayLongerThan3 && (
                             <div className='top3 d-flex justify-content-center align-items-center'>
                                 <div className='top3-students second d-flex flex-column justify-content-center align-items-center'>
-                                    <div className=''>
+                                    <div className='d-flex flex-column justify-content-center align-items-center'>
                                         <div className='img-div'>
                                             <img src={ascTopStudentsArray[1].picture} alt='' />
                                         </div>
-                                        <div className='position'>2</div>
+                                        <div className='position'>
+                                            <p>2</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h5>{ascTopStudentsArray[1].name}</h5>
-                                        <p>{ascTopStudentsArray[1].score}</p>
+                                    <div className='student-info d-flex flex-column justify-content-center align-items-center'>
+                                        <h5 className='text-center'>{ascTopStudentsArray[1].name}</h5>
+                                        <p className='text-center'>{ascTopStudentsArray[1].score}</p>
                                     </div>
                                 </div>
 
                                 <div className='top3-students first d-flex flex-column justify-content-center align-items-center'>
-                                    <div className=''>
-                                        <AiTwotoneCrown />
+                                    <div className='d-flex flex-column justify-content-center align-items-center'>
+                                        <FaCrown className='winner-crown' />
                                         <div className='img-div'>
                                             <img src={ascTopStudentsArray[0].picture} alt='' />
                                         </div>
-                                        <div className='position'>1</div>
+                                        <div className='position'>
+                                            <p>1</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h5>{ascTopStudentsArray[0].name}</h5>
-                                        <p>{ascTopStudentsArray[0].score}</p>
+                                    <div className='student-info d-flex flex-column justify-content-center align-items-center'>
+                                        <h5 className='text-center'>{ascTopStudentsArray[0].name}</h5>
+                                        <p className='text-center'>{ascTopStudentsArray[0].score}</p>
                                     </div>
                                 </div>
 
                                 <div className='top3-students third d-flex flex-column justify-content-center align-items-center'>
-                                    <div className=''>
+                                    <div className='d-flex flex-column justify-content-center align-items-center'>
                                         <div className='img-div'>
                                             <img src={ascTopStudentsArray[2].picture} alt='' />
                                         </div>
-                                        <div className='position'>3</div>
+                                        <div className='position'>
+                                            <p>3</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h5>{ascTopStudentsArray[2].name}</h5>
-                                        <p>{ascTopStudentsArray[2].score}</p>
+                                    <div className='student-info d-flex flex-column justify-content-center align-items-center'>
+                                        <h5 className='text-center'>{ascTopStudentsArray[2].name}</h5>
+                                        <p className='text-center'>{ascTopStudentsArray[2].score}</p>
                                     </div>
                                 </div>
                             </div>
