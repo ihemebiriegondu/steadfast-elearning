@@ -10,7 +10,7 @@
     padding-bottom: 45px;
 }
 
-.leaderboardTab .topsTitle {
+.leaderboardTab .topsTitle h5 {
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -18,6 +18,13 @@
     letter-spacing: 0.03em;
     font-family: 'Vesper Libre', serif !important;
     margin-bottom: 1px;
+}
+
+.leaderboardTab .topsTitle p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
 }
 
 .leaderboardTab .top2nd,
@@ -32,9 +39,8 @@
 }
 
 .leaderboardTab .starImgs::before {
-    border: 3px solid #4B0505;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
     content: '';
+    background: rgb(250, 193, 193);
     display: block;
     clip-path: polygon(78.88% 90.82%, 49.62% 80.00%, 20.10% 90.08%, 21.35% 58.91%, 2.65% 33.95%, 32.67% 25.51%, 50.63% 0.00%, 67.94% 25.95%, 97.74% 35.15%, 78.41% 59.63%);
     -webkit-clip-path: polygon(78.88% 90.82%, 49.62% 80.00%, 20.10% 90.08%, 21.35% 58.91%, 2.65% 33.95%, 32.67% 25.51%, 50.63% 0.00%, 67.94% 25.95%, 97.74% 35.15%, 78.41% 59.63%);
@@ -51,39 +57,45 @@
 }
 
 .leaderboardTab .rateStar {
-    margin-bottom: -50px;
+    margin-bottom: -55px;
     z-index: 10;
 }
 
 .leaderboardTab .secondStar::before {
-    background: #FB8A4A;
+    background: #C0C0C0;
 }
 
 .leaderboardTab .firstStar::before {
-    background: #FFB800;
+    background: #FFD700;
 }
 
 .leaderboardTab .thirdStar::before {
-    background: #84DE8D;
+    background: #FB8A4A;
+}
+
+.leaderboardTab .secondStarImg {
+    filter: url(#roundImg1);
 }
 
 .leaderboardTab .secondStarImg::before {
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg) center center;
-    background-size: cover;
     width: 95px;
     height: 95px;
 }
 
+.leaderboardTab .firstStarImg {
+    filter: url(#roundImg2);
+}
+
 .leaderboardTab .firstStarImg::before {
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg) center center;
-    background-size: cover;
     width: 125px;
     height: 125px;
 }
 
+.leaderboardTab .thirdStarImg {
+    filter: url(#roundImg3);
+}
+
 .leaderboardTab .thirdStarImg::before {
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg) center center;
-    background-size: cover;
     width: 95px;
     height: 95px;
 }
@@ -173,7 +185,7 @@
     }
 
     .leaderboardTab .rateStar {
-        margin-bottom: -50px;
+        margin-bottom: -55px;
         z-index: 10;
     }
 

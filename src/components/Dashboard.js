@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useUserAuth } from "../context/UserAuthContext";
 import { HiOutlineSun } from 'react-icons/hi'
 import { GiLaurelsTrophy } from 'react-icons/gi'
-import { FaMedal } from 'react-icons/fa'
 import { BiBadge } from 'react-icons/bi'
 import { TbCheckbox } from 'react-icons/tb'
+import { AiTwotoneCrown } from 'react-icons/ai'
 import { MdSpeed } from 'react-icons/md'
 
 import { firestore } from "../firebase";
@@ -96,7 +96,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className='testInfoDiv'>
-                    <h6 className='mb-3 ms-2'>Exam Statistics</h6>
+                    <h6 className='mb-3 ms-2'>Weekly Statistics</h6>
                     <div className='exam-details'>
                         <div className='row row-cols-sm-2 row-cols-xl-4 m-0 g-2'>
                             <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm'>
@@ -141,139 +141,52 @@ const Dashboard = () => {
 
                 <div className='leaderboard'>
                     <h5 className='mb-4 ms-2 text-center'>Top Students</h5>
+
                     {
                         TopStudentsArrayLongerThan3 && (
-                            <div className='top3 d-flex justify-content-center align-items-end ms-3'>
-                                <div className='top3-Student second d-flex flex-column justify-content-center'>
-                                    <div className='d-flex flex-column justify-content-center align-items-center px-2'>
-                                        <FaMedal className='fs-1 medal mb-2' style={({ color: '#C0C0C0' })} />
-                                        <div className='img mb-3'>
-                                            <img src={ascTopStudentsArray[1].picture} alt=''></img>
+                            <div className='top3 d-flex justify-content-center align-items-center'>
+                                <div className='top3-students second d-flex flex-column justify-content-center align-items-center'>
+                                    <div className=''>
+                                        <div className='img-div'>
+                                            <img src={ascTopStudentsArray[1].picture} alt='' />
                                         </div>
-                                        <p className='name mb-1 text-center'>{ascTopStudentsArray[1].name}</p>
-                                        <div className='score mb-2'><p className='mb-0'>{ascTopStudentsArray[1].score}</p></div>
-
+                                        <div className='position'>2</div>
                                     </div>
-                                    <div className='ratingDiv'>
-                                        <div className='ratings-top'>
-
-                                        </div>
-                                        <div className='ratings-bottom'>
-                                            <h1 className='text-center'>2</h1>
-                                        </div>
+                                    <div>
+                                        <h5>{ascTopStudentsArray[1].name}</h5>
+                                        <p>{ascTopStudentsArray[1].score}</p>
                                     </div>
                                 </div>
-                                <div className='top3-Student first d-flex flex-column justify-content-center'>
-                                    <div className='d-flex flex-column justify-content-center align-items-center px-2'>
-                                        <FaMedal className='fs-1 medal mb-2' style={({ color: '#FFD700' })} />
-                                        <div className='img mb-3'>
-                                            <img src={ascTopStudentsArray[0].picture} alt=''></img>
-                                        </div>
-                                        <p className='name mb-1 text-center'>{ascTopStudentsArray[0].name}</p>
-                                        <div className='score mb-2'><p className='mb-0'>{ascTopStudentsArray[0].score}</p></div>
-                                    </div>
-                                    <div className='ratingDiv'>
-                                        <div className='ratings-top'>
 
+                                <div className='top3-students first d-flex flex-column justify-content-center align-items-center'>
+                                    <div className=''>
+                                        <AiTwotoneCrown />
+                                        <div className='img-div'>
+                                            <img src={ascTopStudentsArray[0].picture} alt='' />
                                         </div>
-                                        <div className='ratings-bottom'>
-                                            <h1 className='text-center'>1</h1>
-                                        </div>
+                                        <div className='position'>1</div>
+                                    </div>
+                                    <div>
+                                        <h5>{ascTopStudentsArray[0].name}</h5>
+                                        <p>{ascTopStudentsArray[0].score}</p>
                                     </div>
                                 </div>
-                                <div className='top3-Student third d-flex flex-column justify-content-center'>
-                                    <div className='d-flex flex-column justify-content-center align-items-center px-2'>
-                                        <FaMedal className='fs-1 medal mb-2' style={({ color: '#CD7F32' })} />
-                                        <div className='img mb-3'>
-                                            <img src={ascTopStudentsArray[2].picture} alt=''></img>
-                                        </div>
-                                        <p className='name mb-1 text-center'>{ascTopStudentsArray[2].name}</p>
-                                        <div className='score mb-2'><p className='mb-0'>{ascTopStudentsArray[2].score}</p></div>
-                                    </div>
-                                    <div className='ratingDiv'>
-                                        <div className='ratings-top'>
 
+                                <div className='top3-students third d-flex flex-column justify-content-center align-items-center'>
+                                    <div className=''>
+                                        <div className='img-div'>
+                                            <img src={ascTopStudentsArray[2].picture} alt='' />
                                         </div>
-                                        <div className='ratings-bottom'>
-                                            <h1 className='text-center'>3</h1>
-                                        </div>
+                                        <div className='position'>3</div>
+                                    </div>
+                                    <div>
+                                        <h5>{ascTopStudentsArray[2].name}</h5>
+                                        <p>{ascTopStudentsArray[2].score}</p>
                                     </div>
                                 </div>
                             </div>
                         )
                     }
-                    {/*<div className='other-ranks mx-2 py-3'>
-                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
-                            <div className='rank me-3'><span className='pb-1'>4</span></div>
-                            <div className='detailImgDiv'>
-                                <img src={user.photoURL} alt=''></img>
-                            </div>
-                            <div className='detailInfo'>
-                                <p className='mb-0'>Ihemebiri Egondu</p>
-                                <h5 className='mb-0'>240</h5>
-                            </div>
-                        </div>
-                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
-                            <div className='rank me-3'><span className='pb-1'>5</span></div>
-                            <div className='detailImgDiv'>
-                                <img src={user.photoURL} alt=''></img>
-                            </div>
-                            <div className='detailInfo'>
-                                <p className='mb-0'>Ihemebiri Egondu</p>
-                                <h5 className='mb-0'>240</h5>
-                            </div>
-                        </div>
-                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
-                            <div className='rank me-3'><span className='pb-1'>6</span></div>
-                            <div className='detailImgDiv'>
-                                <img src={user.photoURL} alt=''></img>
-                            </div>
-                            <div className='detailInfo'>
-                                <p className='mb-0'>Ihemebiri Egondu</p>
-                                <h5 className='mb-0'>240</h5>
-                            </div>
-                        </div>
-                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
-                            <div className='rank me-3'><span className='pb-1'>7</span></div>
-                            <div className='detailImgDiv'>
-                                <img src={user.photoURL} alt=''></img>
-                            </div>
-                            <div className='detailInfo'>
-                                <p className='mb-0'>Ihemebiri Egondu</p>
-                                <h5 className='mb-0'>240</h5>
-                            </div>
-                        </div>
-                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
-                            <div className='rank me-3'><span className='pb-1'>8</span></div>
-                            <div className='detailImgDiv'>
-                                <img src={user.photoURL} alt=''></img>
-                            </div>
-                            <div className='detailInfo'>
-                                <p className='mb-0'>Ihemebiri Egondu</p>
-                                <h5 className='mb-0'>240</h5>
-                            </div>
-                        </div>
-                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
-                            <div className='rank me-3'><span className='pb-1'>9</span></div>
-                            <div className='detailImgDiv'>
-                                <img src={user.photoURL} alt=''></img>
-                            </div>
-                            <div className='detailInfo'>
-                                <p className='mb-0'>Ihemebiri Egondu</p>
-                                <h5 className='mb-0'>240</h5>
-                            </div>
-                        </div>
-                        <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm mx-3 mb-3'>
-                            <div className='rank me-3'><span className='pb-1'>10</span></div>
-                            <div className='detailImgDiv'>
-                                <img src={user.photoURL} alt=''></img>
-                            </div>
-                            <div className='detailInfo'>
-                                <p className='mb-0'>Ihemebiri Egondu</p>
-                                <h5 className='mb-0'>240</h5>
-                            </div>
-                        </div>
-                </div>*/}
                 </div>
             </div>
         </div>
