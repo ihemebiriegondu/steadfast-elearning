@@ -133,10 +133,17 @@
     margin-top: -30px;
 }
 
-.leaderboardTab .others-subdiv img {
+.leaderboardTab .others-subdiv .img-div {
     width: 42px;
     height: 42px;
     border-radius: 12px;
+    overflow: hidden;
+}
+
+.leaderboardTab .others-subdiv .img-div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .leaderboardTab .otherStar {

@@ -142,56 +142,23 @@ const Leaderboard = () => {
                 <div className='others-subdiv'>
                     <div className='navtab'></div>
 
-                    <div className='d-flex align-items-center justify-content-between mb-3'>
-                        <div className='d-flex align-items-center'>
-                            <div className='otherStar'>4</div>
-                            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg' alt='' />
-                            <p className='mb-0'>Ihemebiri Egondu</p>
-                        </div>
-                        <div>
-                            <span>350</span>
-                        </div>
-                    </div>
-                    <div className='d-flex align-items-center justify-content-between mb-3'>
-                        <div className='d-flex align-items-center'>
-                            <div className='otherStar'>4</div>
-                            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg' alt='' />
-                            <p className='mb-0'>Ihemebiri Egondu</p>
-                        </div>
-                        <div>
-                            <span>350</span>
-                        </div>
-                    </div>
-                    <div className='d-flex align-items-center justify-content-between mb-3'>
-                        <div className='d-flex align-items-center'>
-                            <div className='otherStar'>4</div>
-                            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg' alt='' />
-                            <p className='mb-0'>Ihemebiri Egondu</p>
-                        </div>
-                        <div>
-                            <span>350</span>
-                        </div>
-                    </div>
-                    <div className='d-flex align-items-center justify-content-between mb-3'>
-                        <div className='d-flex align-items-center'>
-                            <div className='otherStar'>4</div>
-                            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg' alt='' />
-                            <p className='mb-0'>Ihemebiri Egondu</p>
-                        </div>
-                        <div>
-                            <span>350</span>
-                        </div>
-                    </div>
-                    <div className='d-flex align-items-center justify-content-between mb-3'>
-                        <div className='d-flex align-items-center'>
-                            <div className='otherStar'>4</div>
-                            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg' alt='' />
-                            <p className='mb-0'>Ihemebiri Egondu</p>
-                        </div>
-                        <div>
-                            <span>350</span>
-                        </div>
-                    </div>
+                    {
+                        ascTopStudentsArray.slice(3).map((user, index) => (
+                            <div className='d-flex align-items-center justify-content-between mb-3'>
+                                <div className='d-flex align-items-center'>
+                                    <div className='otherStar'>{index + 1}</div>
+                                    <div className='img-div'>
+                                        <img src={user.picture} alt='' />
+                                    </div>
+                                    <p className='mb-0'>{user.name}</p>
+                                </div>
+                                <div>
+                                    <span>{user.score}</span>
+                                </div>
+                            </div>
+                        ))
+                    }
+
                 </div>
 
                 <svg style={({ visibility: 'hidden', position: 'absolute' })} width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
