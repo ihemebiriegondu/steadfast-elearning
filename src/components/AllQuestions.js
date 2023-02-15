@@ -44,12 +44,13 @@ const AllQuestions = () => {
                             //console.log(loaded)
                             setLoadingPercent(percentage)
                         }
-                    }).catch((err) => console.log(err))
+                    }).catch((err) => alert(err.message))
                 const quesJSONone = await questionsone.data;
 
                 //console.log(quesJSONone.data)
                 setQuestionsone(quesJSONone.data)
 
+                localStorage.setItem('loading', 'false')
                 setLoader(false);
 
                 /*.then(function (res) { console.log(res) })
@@ -362,7 +363,7 @@ const AllQuestions = () => {
                 )
             }
             <div className={`${loader === true ? 'd-none' : 'd-block'}`}>
-                <QuestionsDisplayTemp datas={allQuestions} loading={loader} />
+                <QuestionsDisplayTemp datas={allQuestions} />
             </div>
         </div>
     )

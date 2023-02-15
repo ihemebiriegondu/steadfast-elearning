@@ -73,11 +73,13 @@ export default class QuestionsDisplayTemp extends Component {
 
     this.setState({ timer: '01:00:00' });
 
-    if (this.props.loading === false) {
+    if (localStorage.getItem('loading') === 'false') {
       setInterval(() => {
         startTimer();
       }, 1000)
     }
+
+    //console.log(localStorage.getItem('loading'))
   }
 
   //To keep selected options after pressing the next or previous button
@@ -391,7 +393,7 @@ export default class QuestionsDisplayTemp extends Component {
       //console.log(user);
       const studentInfo = doc(firestore, "student-list", docID);
 
-      updateDoc(studentInfo ,{
+      updateDoc(studentInfo, {
         scores: arrayUnion(newtotalScore),
         maxScore: maxScore
       })
@@ -399,6 +401,7 @@ export default class QuestionsDisplayTemp extends Component {
 
       let scoreOffcanvas = document.querySelector(".display-score")
       scoreOffcanvas.classList.add("active")
+      localStorage.removeItem('loading')
 
       handleCloseModal()
     }
