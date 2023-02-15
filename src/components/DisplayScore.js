@@ -49,10 +49,11 @@ export class DisplayScore extends Component {
                         </Table>
                         <div className='py-5'>
                             <p className='text-center'><span className='fw-semibold'>Total Score: </span> <span className='fw-bold fs-5'> {totalScore}</span></p>
+                            <p className='text-center'>Time Used: {localStorage.getItem('timeUsed')}</p>
                         </div>
                     </div>
                     <div className='submitbtn-div'>
-                        <button className=''><Link to="/preview answers" state= {{questions: this.props.newdatas}} className='text-decoration-none w-100 h-100 d-inline-block py-3 px-sm-5 px-3 text-white'>Preview Answers</Link></button>
+                        <button className=''><Link to="/preview answers" state={{ questions: this.props.newdatas }} className='text-decoration-none w-100 h-100 d-inline-block py-3 px-sm-5 px-3 text-white'>Preview Answers</Link></button>
                     </div>
                 </div>
             </div>

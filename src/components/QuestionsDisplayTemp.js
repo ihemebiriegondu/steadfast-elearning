@@ -39,6 +39,8 @@ export default class QuestionsDisplayTemp extends Component {
 
       timer: '00:00:00',
       alertTimer: false,
+
+      otherTimer: ''
     };
   }
 
@@ -77,6 +79,9 @@ export default class QuestionsDisplayTemp extends Component {
       setInterval(() => {
         startTimer();
       }, 1000)
+
+      let otherstartTime = performance.now();
+      this.setState({ otherTimer: otherstartTime })
     }
 
     //console.log(localStorage.getItem('loading'))
@@ -387,9 +392,23 @@ export default class QuestionsDisplayTemp extends Component {
       this.setState({ totalScore: newtotalScore });
       this.setState({ newtotalScoreArray: totalScoreArray });
 
+      let endTime = performance.now();
+      let timeDiff = this.state.otherTimer - endTime
+      //let timeDiffInSec = Math.round((timeDiff / 1000) % 60);
+      const timeDiffInMinutes = Math.floor((timeDiff / 1000 / 60) % 60);
+      const timeDiffInHours = Math.floor((timeDiff / 1000 / 60 / 60) % 24);
+
+      let hoursInWords = timeDiffInHours.toString() + 'hrs'
+      let minsInWords = timeDiffInMinutes.toString() + 'mins'
+
+      let totalUsedTime = hoursInWords + ' ' + minsInWords
+
       let user = auth.currentUser;
       const docID = user.uid;
       let maxScore = localStorage.getItem('maxscore');
+      
+      localStorage.setItem('timeUsed', totalUsedTime)
+
       //console.log(user);
       const studentInfo = doc(firestore, "student-list", docID);
 
