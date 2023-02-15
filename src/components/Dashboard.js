@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useUserAuth } from "../context/UserAuthContext";
 import { HiOutlineSun } from 'react-icons/hi'
 import { GiLaurelsTrophy } from 'react-icons/gi'
 import { BiBadge } from 'react-icons/bi'
+import { BsFillCloudSunFill, BsCloudMoonFill, BsMoonStars } from 'react-icons/bs'
 import { TbCheckbox } from 'react-icons/tb'
 import { FaCrown } from 'react-icons/fa'
 import { MdSpeed } from 'react-icons/md'
@@ -19,11 +20,34 @@ const Dashboard = () => {
     const [totalScoresLength, setTotalScoresLength] = useState(0);
     const [ascTopStudentsArray, setAscTopStudentsArray] = useState([]);
     const [TopStudentsArrayLongerThan3, setAscTopStudentsArrayLongerThan3] = useState(false);
+    const [timeOfTheDay, setTimeOfTheDay] = useState('')
 
     const { user } = useUserAuth();
     const studentLists = collection(firestore, "student-list");
     const qStudent = query(studentLists, orderBy('Username', 'asc'))
     const topStudentsArray = []
+
+    useEffect(() => {
+        const getTimeOfTheDay = () => {
+            let date = new Date();
+            let time = date.getHours()
+            //console.log(date)
+            //console.log(time)
+            if (time < 12) {
+                setTimeOfTheDay('Morning')
+            } else if (time >= 12 && time < 16) {
+                setTimeOfTheDay('Afternoon')
+            } else if (time >= 16 && time < 19) {
+                setTimeOfTheDay('Evening')
+            } else if (time >= 19) {
+                setTimeOfTheDay('Night')
+            }
+        }
+
+        getTimeOfTheDay()
+
+    }, [setTimeOfTheDay])
+
 
     onSnapshot(qStudent, (student) => {
         let students = []
@@ -83,8 +107,11 @@ const Dashboard = () => {
                 <div className='userIntroDiv d-flex justify-content-between align-items-center'>
                     <div className='d-flex flex-column justify-content-start'>
                         <div className='greeting-div d-flex align-items-center mb-1'>
-                            <HiOutlineSun className='me-2' />
-                            <p className='mb-0'>Good Afternoon</p>
+                            <BsFillCloudSunFill className={`me-2 mb-1 ${timeOfTheDay === 'Morning' ? 'd-inline-block' : 'd-none'}`} />
+                            <HiOutlineSun className={`me-2 ${timeOfTheDay === 'Afternoon' ? 'd-inline-block' : 'd-none'}`} />
+                            <BsCloudMoonFill className={`me-2 mb-1 ${timeOfTheDay === 'Evening' ? 'd-inline-block' : 'd-none'}`} />
+                            <BsMoonStars className={`me-2 mb-1 ${timeOfTheDay === 'Night' ? 'd-inline-block' : 'd-none'}`} />
+                            <p className='mb-0'>Good {timeOfTheDay}</p>
                         </div>
                         <div>
                             <h6 className='mb-0'>{user.displayName}</h6>
@@ -140,7 +167,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className='leaderboard'>
-                    <h5 className='mb-4 ms-2 text-center'>Top Students</h5>
+                    <h5 className='text-center'>Top students for this week</h5>
 
                     {
                         TopStudentsArrayLongerThan3 && (

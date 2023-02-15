@@ -16,6 +16,7 @@ import Leaderboard from '../components/Leaderboard';
 const Home = () => {
 
   const [show, setShow] = useState(false);
+  const [key, setKey] = useState('home');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -37,7 +38,7 @@ const Home = () => {
   /*{user.displayName.split(" ")[0]} */
   return (
     <div className='dashboard'>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="home">
+      <Tab.Container id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)}>
         <div className='top-nav d-flex align-items-center'>
           <MdMenu className='menubar fs-2' onClick={handleShow} />
           <h2 className="mb-0 mt-2 fw-normal me-1 ms-4 school-name">SPS</h2>
@@ -47,18 +48,14 @@ const Home = () => {
           <Tab.Pane eventKey="home">
             <div>
               <Dashboard />
-              <Nav className='pb-4 justify-content-center' style={({ background: 'rgb(75, 5, 5)' })}>
-                <Nav.Item className='mb-3 mt-4 text-center'>
-                  <Nav.Link eventKey="leaderboard" className='p-0' onClick={handleClose}>
-                    <p className='d-flex flex-column align-items-center m-0 text-decoration-underline' style={({ color: 'rgb(247, 219, 219)' })}><span>View leaderboard</span></p>
-                  </Nav.Link>
-                </Nav.Item>
-              </Nav>
+              <div className='pb-4 mb-4 pt-3' style={({ background: 'rgb(75, 5, 5)' })}>
+                <p onClick={() => { setKey('leaderboard'); handleClose() }} className='d-flex flex-column align-items-center m-0 text-decoration-underline' style={({ color: 'rgb(247, 219, 219)' })}><span>View leaderboard</span></p>
+              </div>
             </div>
           </Tab.Pane>
 
           <Tab.Pane eventKey="leaderboard">
-              <Leaderboard />
+            <Leaderboard />
           </Tab.Pane>
 
           <Tab.Pane eventKey="settings">

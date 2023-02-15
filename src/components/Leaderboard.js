@@ -9,10 +9,20 @@ const Leaderboard = () => {
 
     const [ascTopStudentsArray, setAscTopStudentsArray] = useState([]);
     const [TopStudentsArrayLongerThan3, setAscTopStudentsArrayLongerThan3] = useState(false);
+    const [TopStudentsArrayLongerThan4, setAscTopStudentsArrayLongerThan4] = useState(false);
+    const [months] = useState(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
 
     const studentLists = collection(firestore, "student-list");
     const qStudent = query(studentLists, orderBy('Username', 'asc'))
     const topStudentsArray = []
+
+    const startOfWeek = (date) => {
+        var diff = date.getDate() - date.getDay() + (date.getDay() === 0 ? -6 : 1);
+        return new Date(date.setDate(diff));
+    }
+    let dt = new Date();
+    let weekBegins = startOfWeek(dt)
+
 
     onSnapshot(qStudent, (student) => {
         let students = []
@@ -34,6 +44,10 @@ const Leaderboard = () => {
             setAscTopStudentsArray(topStudentsArray.sort((a, b) => parseFloat(b.score) - parseFloat(a.score)));
         }
 
+        if (topStudentsArray.length >= 4) {
+            setAscTopStudentsArrayLongerThan4(true)
+        }
+
         //console.log(topStudentsArray)
         //console.log(ascTopStudentsArray)
     })
@@ -44,7 +58,7 @@ const Leaderboard = () => {
 
                 <div className='topsTitle'>
                     <h5 className='text-center'>Leaderboards</h5>
-                    <p className='text-center'>October 13 - 18, 2021</p>
+                    <p className='text-center'>{months[weekBegins.getMonth()]} {weekBegins.getDate()} - {weekBegins.getDate() + 6}, {weekBegins.getFullYear()}</p>
                 </div>
 
                 {
@@ -143,20 +157,24 @@ const Leaderboard = () => {
                     <div className='navtab'></div>
 
                     {
-                        ascTopStudentsArray.slice(3).map((user, index) => (
-                            <div className='d-flex align-items-center justify-content-between mb-3'>
-                                <div className='d-flex align-items-center'>
-                                    <div className='otherStar'>{index + 1}</div>
-                                    <div className='img-div'>
-                                        <img src={user.picture} alt='' />
+                        TopStudentsArrayLongerThan4 && (
+
+                            ascTopStudentsArray.slice(3).map((user, index) => (
+                                <div key={index} className='d-flex align-items-center justify-content-between mb-3'>
+                                    <div className='d-flex align-items-center'>
+                                        <div className='otherStar'>{index + 1}</div>
+                                        <div className='img-div'>
+                                            <img src={user.picture} alt='' />
+                                        </div>
+                                        <p className='mb-0'>{user.name}</p>
                                     </div>
-                                    <p className='mb-0'>{user.name}</p>
+                                    <div>
+                                        <span>{user.score}</span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span>{user.score}</span>
-                                </div>
-                            </div>
-                        ))
+                            ))
+
+                        )
                     }
 
                 </div>
