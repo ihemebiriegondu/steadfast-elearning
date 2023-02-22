@@ -49,7 +49,7 @@ export default class Pastquestions extends Component {
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
-                        'AccessToken': 'ALOC-79089b2860a0a328f46c'
+                        'AccessToken': 'QB-4574212e169b8f95e68a'
                     },
                     method: "GET",
                     onDownloadProgress: (progressEvent) => {

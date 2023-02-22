@@ -75,7 +75,8 @@ export default class QuestionsDisplayTemp extends Component {
 
     this.setState({ timer: '01:00:00' });
 
-    if (localStorage.getItem('loading') === 'false') {
+    let start = localStorage.getItem('loading')
+    if (start === 'false') {
       setInterval(() => {
         startTimer();
       }, 1000)
@@ -393,7 +394,7 @@ export default class QuestionsDisplayTemp extends Component {
       this.setState({ newtotalScoreArray: totalScoreArray });
 
       let endTime = performance.now();
-      let timeDiff =  endTime - this.state.otherTimer
+      let timeDiff = endTime - this.state.otherTimer
       let timeDiffInSec = Math.round((timeDiff / 1000) % 60);
       //console.log(timeDiffInSec)
       const timeDiffInMinutes = Math.floor((timeDiffInSec % (60 * 60)) / 60);
@@ -408,7 +409,7 @@ export default class QuestionsDisplayTemp extends Component {
       let user = auth.currentUser;
       const docID = user.uid;
       let maxScore = localStorage.getItem('maxscore');
-      
+
       localStorage.setItem('timeUsed', totalUsedTime)
 
       //console.log(user);
