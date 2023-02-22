@@ -393,10 +393,12 @@ export default class QuestionsDisplayTemp extends Component {
       this.setState({ newtotalScoreArray: totalScoreArray });
 
       let endTime = performance.now();
-      let timeDiff = this.state.otherTimer - endTime
-      //let timeDiffInSec = Math.round((timeDiff / 1000) % 60);
-      const timeDiffInMinutes = Math.floor((timeDiff / 1000 / 60) % 60);
-      const timeDiffInHours = Math.floor((timeDiff / 1000 / 60 / 60) % 24);
+      let timeDiff =  endTime - this.state.otherTimer
+      let timeDiffInSec = Math.round((timeDiff / 1000) % 60);
+      //console.log(timeDiffInSec)
+      const timeDiffInMinutes = Math.floor((timeDiffInSec % (60 * 60)) / 60);
+      //console.log(timeDiffInMinutes)
+      const timeDiffInHours = Math.floor(timeDiffInSec / (60 * 60));
 
       let hoursInWords = timeDiffInHours.toString() + 'hrs'
       let minsInWords = timeDiffInMinutes.toString() + 'mins'
@@ -414,7 +416,8 @@ export default class QuestionsDisplayTemp extends Component {
 
       updateDoc(studentInfo, {
         scores: arrayUnion(newtotalScore),
-        maxScore: maxScore
+        maxScore: maxScore,
+        timeTaken: arrayUnion(timeDiffInSec)
       })
 
 

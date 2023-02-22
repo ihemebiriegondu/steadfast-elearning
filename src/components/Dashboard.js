@@ -15,6 +15,7 @@ import '../css/dashboard.css'
 
 const Dashboard = () => {
 
+    const [averageTime, setAverageTime] = useState('');
     const [averageScore, setAverageScore] = useState(0);
     const [maxScore, setMaxScore] = useState(0);
     const [totalScoresLength, setTotalScoresLength] = useState(0);
@@ -61,8 +62,10 @@ const Dashboard = () => {
             if (student.id === user.uid) {
                 //console.log(student)
                 let scoresArray = student.scores
-                //console.log(scoresArray)
+                let timeArray = student.timeTaken
+                //console.log(timeArray)
                 let totalScore = 0;
+                let totalTime = 0;
                 let maximumScore = 0;
 
                 for (let i = 0; i < scoresArray.length; i++) {
@@ -73,11 +76,35 @@ const Dashboard = () => {
                         maximumScore = scoresArray[i]
                     }
                 }
+
+                for (let i = 0; i < timeArray.length; i++) {
+                    totalTime = totalTime + timeArray[i];
+                    //console.log(totalTime)
+                }
+
                 if (scoresArray.length === 0) {
                     setAverageScore(0)
                 } else {
                     setAverageScore(parseFloat(totalScore / scoresArray.length).toFixed(0));
                 }
+
+                if (timeArray.length === 0) {
+                    setAverageTime(0)
+                } else {
+                    let averageTimer = parseFloat(totalTime / timeArray.length).toFixed(0);
+                    let averageHour = Math.floor(averageTimer / (60 * 60));
+                    let averageMinute = Math.floor((averageTimer % (60 * 60)) / 60);
+                    let HourInWords = averageHour + ' hr'
+                    let MinInWords = averageMinute + ' mins'
+                    let timeInWords = HourInWords + ' ' + MinInWords;
+
+                    if (averageHour === 0) {
+                        setAverageTime(MinInWords)
+                    } else {
+                        setAverageTime(timeInWords)
+                    }
+                }
+
                 setTotalScoresLength(scoresArray.length);
                 setMaxScore(maximumScore)
             }
@@ -150,7 +177,7 @@ const Dashboard = () => {
                                 </div>
                                 <div className='detailInfo'>
                                     <p className='mb-0'>Average Time</p>
-                                    <h5 className='mb-0'>1hr 20mins</h5>
+                                    <h5 className='mb-0'>{averageTime}</h5>
                                 </div>
                             </div>
                             <div className='d-flex align-items-center py-3 px-3 info-card shadow-sm'>
