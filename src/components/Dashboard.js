@@ -9,7 +9,7 @@ import { FaCrown } from 'react-icons/fa'
 import { MdSpeed } from 'react-icons/md'
 
 import { firestore } from "../firebase";
-import { collection, onSnapshot, query, orderBy, deleteField, updateDoc, doc } from "firebase/firestore"
+import { collection, onSnapshot, query, orderBy, updateDoc, doc } from "firebase/firestore"
 
 import '../css/dashboard.css'
 
@@ -52,18 +52,18 @@ const Dashboard = () => {
             const day = new Date();
             const dayOfTheWeek = days[day.getDay()];
             const time = day.getHours();
+            const minute = day.getMinutes();
             //console.log(dayOfTheWeek)
             if (dayOfTheWeek === 'Sunday') {
-                if (time === '0') {
-
-                    const studentInfo = doc(firestore, "student-list", docID);
-
-                    updateDoc(studentInfo, {
-                        scores: [],
-                        maxScore: '',
-                        timeTaken: []
-                    })
-
+                if (time === 23) {
+                    if (minute === 59) {
+                        const studentInfo = doc(firestore, "student-list", docID);
+                        updateDoc(studentInfo, {
+                            scores: [],
+                            maxScore: '',
+                            timeTaken: []
+                        })
+                    }
                 }
             }
         }
@@ -128,6 +128,12 @@ const Dashboard = () => {
                         setAverageTime(timeInWords)
                     }
                 }
+
+                const studentInfo = doc(firestore, "student-list", docID);
+
+                updateDoc(studentInfo, {
+                    maxScore: maximumScore,
+                })
 
                 setTotalScoresLength(scoresArray.length);
                 setMaxScore(maximumScore)
