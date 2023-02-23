@@ -9,7 +9,7 @@ import { FaCrown } from 'react-icons/fa'
 import { MdSpeed } from 'react-icons/md'
 
 import { firestore } from "../firebase";
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
+import { collection, onSnapshot, query, orderBy, deleteField, updateDoc, doc } from "firebase/firestore"
 
 import '../css/dashboard.css'
 
@@ -27,6 +27,7 @@ const Dashboard = () => {
     const studentLists = collection(firestore, "student-list");
     const qStudent = query(studentLists, orderBy('Username', 'asc'))
     const topStudentsArray = []
+    const docID = user.uid;
 
     useEffect(() => {
         const getTimeOfTheDay = () => {
@@ -45,9 +46,32 @@ const Dashboard = () => {
             }
         }
 
-        getTimeOfTheDay()
+        const deleteWeeklyStats = () => {
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-    }, [setTimeOfTheDay])
+            const day = new Date();
+            const dayOfTheWeek = days[day.getDay()];
+            const time = day.getHours();
+            //console.log(dayOfTheWeek)
+            if (dayOfTheWeek === 'Sunday') {
+                if (time === '0') {
+
+                    const studentInfo = doc(firestore, "student-list", docID);
+
+                    updateDoc(studentInfo, {
+                        scores: [],
+                        maxScore: '',
+                        timeTaken: []
+                    })
+
+                }
+            }
+        }
+
+        getTimeOfTheDay()
+        deleteWeeklyStats()
+
+    }, [setTimeOfTheDay, docID])
 
 
     onSnapshot(qStudent, (student) => {
@@ -107,6 +131,8 @@ const Dashboard = () => {
 
                 setTotalScoresLength(scoresArray.length);
                 setMaxScore(maximumScore)
+
+
             }
 
             //console.log(student)
