@@ -1,6 +1,7 @@
 .leaderboardTab {
     background: linear-gradient(90deg, #720808 0%, #130101 100%) !important;
     font-family: 'Vesper Libre', serif !important;
+    overflow-x: hidden;
 }
 
 .leaderboardTab .tops {
@@ -8,6 +9,8 @@
     background: #4B0505;
     border-radius: 0 0 20% 20%;
     padding-bottom: 45px;
+    position: relative;
+    z-index: 0;
 }
 
 .leaderboardTab .topsTitle h5 {
@@ -30,6 +33,16 @@
 .leaderboardTab .top2nd,
 .leaderboardTab .top3rd {
     margin-top: 50px;
+    position: relative;
+    z-index: 4;
+}
+
+.leaderboardTab .top2nd .index {
+    margin: 0 !important;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #000000;
 }
 
 .leaderboardTab .allstars {
@@ -123,6 +136,8 @@
 
 .leaderboardTab .others {
     padding: 0 20px 18px 20px;
+    position: relative;
+    z-index: 4;
 }
 
 .leaderboardTab .others-subdiv {
@@ -156,6 +171,7 @@
 
 .leaderboardTab .otherStar::before {
     content: '';
+    color: black;
     display: block;
     background-size: cover;
     width: 32px;
@@ -163,6 +179,18 @@
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     background: #FFB800;
+}
+
+.leaderboardTab .others-subdiv .index {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    color: #000000;
+    margin: 0;
+    position: absolute;
+    z-index: 10;
+    left: 49px;
 }
 
 .leaderboardTab .others-subdiv p {
@@ -181,6 +209,90 @@
     line-height: 21px;
     text-align: right;
     color: #4B0505;
+}
+
+.leaderboardTab .top1st {
+    position: relative;
+}
+
+.leaderboardTab .popper-div {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    right: 0;
+    top: 25px;
+}
+
+.leaderboardTab .popper-div img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.leaderboardTab .backgroundIcon1 {
+    color: rgba(247, 219, 219, 0.1);
+    position: absolute;
+    width: 55px;
+    height: 50px;
+    left: 40px;
+    top: 76px;
+}
+
+.leaderboardTab .backgroundIcon2 {
+    color: rgba(247, 219, 219, 0.1);
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 40px;
+    top: 83px;
+}
+
+.leaderboardTab .backgroundIcon3 {
+    color: rgba(247, 219, 219, 0.05);
+    position: absolute;
+    width: 209px;
+    height: 209px;
+    left: -43px;
+    top: -120px;
+}
+
+.leaderboardTab .backgroundIcon4 {
+    color: rgba(247, 219, 219, 0.05);
+    position: absolute;
+    width: 126px;
+    height: 126px;
+    right: 60px;
+    top: -20px;
+}
+
+.leaderboardTab .backgroundIcon5 {
+    color: rgba(247, 219, 219, 0.05);
+    position: absolute;
+    z-index: 1;
+    width: 182px;
+    height: 182px;
+    right: -100px;
+    top: 131px;
+}
+
+.leaderboardTab .backgroundIcon6 {
+    color: rgba(247, 219, 219, 0.05);
+    position: absolute;
+    z-index: 1;
+    width: 192px;
+    height: 192px;
+    left: -53px;
+    top: 188px;
+}
+
+.leaderboardTab .backgroundIcon7 {
+    color: rgba(247, 219, 219, 0.05);
+    position: absolute;
+    z-index: 1;
+    width: 72px;
+    height: 72px;
+    left: 185px;
+    top: 279px;
 }
 
 
@@ -209,6 +321,23 @@
     .leaderboardTab .thirdStarImg::before {
         width: 75px;
         height: 75px;
+    }
+
+    .leaderboardTab .popper-div {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: 0;
+        top: 20px;
+    }
+
+    .leaderboardTab .backgroundIcon3 {
+        color: rgba(247, 219, 219, 0.05);
+        position: absolute;
+        width: 209px;
+        height: 209px;
+        left: -43px;
+        top: -160px;
     }
 
 }

@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { firestore } from "../firebase";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
 
+import { GiPartyPopper } from 'react-icons/gi'
+import { TbBallon } from 'react-icons/tb'
+import { IoStarSharp } from 'react-icons/io5'
+import popper from '../assets/twemoji_party-popper.png'
 import '../css/leaderboard.css'
 
 const Leaderboard = () => {
@@ -22,6 +26,10 @@ const Leaderboard = () => {
     }
     let dt = new Date();
     let weekBegins = startOfWeek(dt)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
 
     onSnapshot(qStudent, (student) => {
@@ -65,9 +73,9 @@ const Leaderboard = () => {
                     TopStudentsArrayLongerThan3 && (
                         <div className='top3 d-flex justify-content-center'>
                             <div className='top2nd d-flex justify-content-center flex-column mx-2 align-items-center'>
+                                <p className='index'>2</p>
                                 <div className='rateStar secondStar allstars'>2</div>
-                                <div className='secondStarImg allstarsImg starImgs'>
-                                </div>
+                                <div className='secondStarImg allstarsImg starImgs'></div>
                                 <div className='d-flex flex-column align-items-center justify-content-center'>
                                     <p>{ascTopStudentsArray[1].name}</p>
                                     <span>{ascTopStudentsArray[1].score}</span>
@@ -90,6 +98,9 @@ const Leaderboard = () => {
 
                             <div className='top1st d-flex justify-content-center flex-column mx-2 align-items-center'>
                                 <div className='rateStar firstStar allstars'>2</div>
+                                <div className='popper-div'>
+                                    <img src={popper} alt='' />
+                                </div>
                                 <div className='firstStarImg allstarsImg starImgs'></div>
                                 <div className='d-flex flex-column align-items-center justify-content-center'>
                                     <p>{ascTopStudentsArray[0].name}</p>
@@ -147,6 +158,16 @@ const Leaderboard = () => {
 
                                 </defs>
                             </svg>
+
+                            <div className='backgroundIcons'>
+                                <GiPartyPopper className='backgroundIcon1' />
+                                <TbBallon className='backgroundIcon2' />
+                                <IoStarSharp className='backgroundIcon3' />
+                                <IoStarSharp className='backgroundIcon4' />
+                                <IoStarSharp className='backgroundIcon5' />
+                                <IoStarSharp className='backgroundIcon6' />
+                                <IoStarSharp className='backgroundIcon7' />
+                            </div>
                         </div>
                     )}
 
@@ -162,7 +183,10 @@ const Leaderboard = () => {
                             ascTopStudentsArray.slice(3).map((user, index) => (
                                 <div key={index} className='d-flex align-items-center justify-content-between mb-3'>
                                     <div className='d-flex align-items-center'>
-                                        <div className='otherStar'>{index + 1}</div>
+                                        <p className='index mt-1'>{index + 4}</p>
+                                        <div className='otherStar'>
+                                            <p>{index + 1}</p>
+                                        </div>
                                         <div className='img-div'>
                                             <img src={user.picture} alt='' />
                                         </div>

@@ -49,7 +49,7 @@ const Home = () => {
             <div>
               <Dashboard />
               <div className='pb-4 mb-4 pt-3' style={({ background: 'rgb(75, 5, 5)' })}>
-                <p onClick={() => { setKey('leaderboard'); handleClose() }} className='d-flex flex-column align-items-center m-0 text-decoration-underline' style={({ color: 'rgb(247, 219, 219)' })}><span>View leaderboard</span></p>
+                <p onClick={() => { setKey('leaderboard'); handleClose() }} className='d-flex flex-column align-items-center m-0 text-decoration-underline' style={({ color: 'rgb(247, 219, 219)', cursor: 'pointer' })}><span>View leaderboard</span></p>
               </div>
             </div>
           </Tab.Pane>
