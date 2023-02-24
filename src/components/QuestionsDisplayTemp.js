@@ -263,6 +263,37 @@ export default class QuestionsDisplayTemp extends Component {
     this.setState({ totalScore: newtotalScore });
     this.setState({ newtotalScoreArray: totalScoreArray });
 
+    let endTime = Date.now();
+      //console.log(this.state.otherTimer)
+      //console.log(endTime)
+      let timeDiff = endTime - this.state.otherTimer
+      //console.log(timeDiff)
+      let timeDiffInSec = Math.round((timeDiff / 1000));
+      //console.log(timeDiffInSec)
+      const timeDiffInMinutes = Math.floor((timeDiffInSec % (60 * 60)) / 60);
+      //console.log(timeDiffInMinutes)
+      const timeDiffInHours = Math.floor(timeDiffInSec / (60 * 60));
+
+      let hoursInWords = timeDiffInHours.toString() + 'hrs'
+      let minsInWords = timeDiffInMinutes.toString() + 'mins'
+
+      let totalUsedTime = hoursInWords + ' ' + minsInWords
+
+      let user = auth.currentUser;
+      const docID = user.uid;
+      let maxScore = localStorage.getItem('maxscore');
+
+      localStorage.setItem('timeUsed', totalUsedTime)
+
+      //console.log(user);
+      const studentInfo = doc(firestore, "student-list", docID);
+
+      updateDoc(studentInfo, {
+        scores: arrayUnion(newtotalScore),
+        maxScore: maxScore,
+        timeTaken: arrayUnion(timeDiffInSec)
+      })
+
     let scoreOffcanvas = document.querySelector(".display-score")
     scoreOffcanvas.classList.add("active")
   }
