@@ -49,9 +49,7 @@ const Calculator = () => {
                 case "√":
                     computation = Math.sqrt(current)
                     break
-                case "cube":
-                    computation = current * current * current
-                    break
+                
                 default:
                     return
             }
@@ -83,6 +81,13 @@ const Calculator = () => {
         if (document.querySelector(".prevValue").classList.contains("d-none")) {
             document.querySelector(".prevValue").classList.remove("d-none")
         }
+    }
+
+    const joinSqrt = (e) => {
+        let button = e.target;
+
+        setPrevValue(button.value);
+        setOperator(button.value);
     }
 
     const updateAnswer = (e) => {
@@ -142,12 +147,11 @@ const Calculator = () => {
                 <div className='calculator-btndivs d-flex flex-column'>
                     <button value='/' onClick={(e) => { joinOperator(e) }}>/</button>
                     <button value='×' onClick={(e) => { joinOperator(e) }}>&times;</button>
-                    <button value='cube' onClick={(e) => { joinOperator(e) }}>&times;&#179;</button>
-                    <button value='√' onClick={(e) => { joinOperator(e) }}>√</button>
+                    <button value='√' onClick={(e) => { joinSqrt(e) }}>√</button>
+                    <button value='+' onClick={(e) => { joinOperator(e) }}>+</button>
                 </div>
                 <div className='calculator-btndivs d-flex flex-column'>
                     <button value='C' onClick={() => { clearAllEntries() }}>C</button>
-                    <button value='+' onClick={(e) => { joinOperator(e) }}>+</button>
                     <button value='=' className='flex-fill fs-4 last-btn' onClick={(e) => { updateAnswer(e) }}>=</button>
                 </div>
             </div>

@@ -3,8 +3,9 @@ import { TiArrowLeftThick, TiArrowRightThick } from 'react-icons/ti'
 import '../css/QuesTemp.css'
 import { Tabs, Tab, Modal } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import Calculator from './Calculator';
 import DisplayScore from './DisplayScore';
-import { BsAlarm } from 'react-icons/bs'
+import { BsAlarm, BsCalculator } from 'react-icons/bs'
 
 import { auth, firestore } from "../firebase";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore"
@@ -19,6 +20,7 @@ export default class QuestionsDisplayTemp extends Component {
       show2: false,
       show3: false,
       show4: false,
+      showCalc: false,
       //const [key, setKey] = useState('firstPaper');
       //const [show, setShow] = useState(false);
       showModal: false,
@@ -264,35 +266,35 @@ export default class QuestionsDisplayTemp extends Component {
     this.setState({ newtotalScoreArray: totalScoreArray });
 
     let endTime = Date.now();
-      //console.log(this.state.otherTimer)
-      //console.log(endTime)
-      let timeDiff = endTime - this.state.otherTimer
-      //console.log(timeDiff)
-      let timeDiffInSec = Math.round((timeDiff / 1000));
-      //console.log(timeDiffInSec)
-      const timeDiffInMinutes = Math.floor((timeDiffInSec % (60 * 60)) / 60);
-      //console.log(timeDiffInMinutes)
-      const timeDiffInHours = Math.floor(timeDiffInSec / (60 * 60));
+    //console.log(this.state.otherTimer)
+    //console.log(endTime)
+    let timeDiff = endTime - this.state.otherTimer
+    //console.log(timeDiff)
+    let timeDiffInSec = Math.round((timeDiff / 1000));
+    //console.log(timeDiffInSec)
+    const timeDiffInMinutes = Math.floor((timeDiffInSec % (60 * 60)) / 60);
+    //console.log(timeDiffInMinutes)
+    const timeDiffInHours = Math.floor(timeDiffInSec / (60 * 60));
 
-      let hoursInWords = timeDiffInHours.toString() + 'hrs'
-      let minsInWords = timeDiffInMinutes.toString() + 'mins'
+    let hoursInWords = timeDiffInHours.toString() + 'hrs'
+    let minsInWords = timeDiffInMinutes.toString() + 'mins'
 
-      let totalUsedTime = hoursInWords + ' ' + minsInWords
+    let totalUsedTime = hoursInWords + ' ' + minsInWords
 
-      let user = auth.currentUser;
-      const docID = user.uid;
-      let maxScore = localStorage.getItem('maxscore');
+    let user = auth.currentUser;
+    const docID = user.uid;
+    let maxScore = localStorage.getItem('maxscore');
 
-      localStorage.setItem('timeUsed', totalUsedTime)
+    localStorage.setItem('timeUsed', totalUsedTime)
 
-      //console.log(user);
-      const studentInfo = doc(firestore, "student-list", docID);
+    //console.log(user);
+    const studentInfo = doc(firestore, "student-list", docID);
 
-      updateDoc(studentInfo, {
-        scores: arrayUnion(newtotalScore),
-        maxScore: maxScore,
-        timeTaken: arrayUnion(timeDiffInSec)
-      })
+    updateDoc(studentInfo, {
+      scores: arrayUnion(newtotalScore),
+      maxScore: maxScore,
+      timeTaken: arrayUnion(timeDiffInSec)
+    })
 
     let scoreOffcanvas = document.querySelector(".display-score")
     scoreOffcanvas.classList.add("active")
@@ -333,6 +335,9 @@ export default class QuestionsDisplayTemp extends Component {
 
     const handleCloseModal = () => this.setState({ showModal: false })
     const handleShowModal = () => this.setState({ showModal: true })
+
+    const handleCloseCalc = () => this.setState({ showCalc: false });
+    const handleShowCalc = () => this.setState({ showCalc: true });
 
 
 
@@ -469,12 +474,20 @@ export default class QuestionsDisplayTemp extends Component {
 
     return (
       <div>
+        <div className='d-flex justify-content-between align-items-center question-header py-2 px-3'>
+          <div className='' id='user-img'>
+            <img src={auth.currentUser.photoURL} alt='' />
+          </div>
+          <p className='mb-0 me-2 mt-1' onClick={handleShowCalc}><BsCalculator className='me-2' />Calculator</p>
+        </div>
+
         <div className='info-div d-flex justify-content-center align-items-center py-2'>
           <div className={`d-flex align-items-center ${this.state.alertTimer === true ? 'alertTime' : 'normalTime'}`}>
             <BsAlarm className='me-3 timer-icon mb-1' />
             <p className='timer'>{this.state.timer}</p>
           </div>
         </div>
+
         <div className='quesTemp'>
           <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={(k) => this.setState({ key: k })} className="mb-3">
             <Tab eventKey="firstPaper" title="English">
@@ -721,6 +734,17 @@ export default class QuestionsDisplayTemp extends Component {
                 <button onClick={() => { submitExamFunction(); }}>Yes</button>
               </div>
             </Modal.Body>
+          </Modal>
+
+          <Modal show={this.state.showCalc} onHide={handleCloseCalc} className='calc mx-auto'>
+            <div className='calculator-body mx-auto'>
+              <div className='calculator-subdiv px-3 py-4'>
+                <Modal.Header closeButton className='pt-0 px-0'>
+                  <Modal.Title className='pt-0'><h6 className=''>Calculator</h6></Modal.Title>
+                </Modal.Header>
+                <Calculator />
+              </div>
+            </div >
           </Modal>
 
 
