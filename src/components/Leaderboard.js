@@ -97,7 +97,8 @@ const Leaderboard = () => {
                             </div>
 
                             <div className='top1st d-flex justify-content-center flex-column mx-2 align-items-center'>
-                                <div className='rateStar firstStar allstars'>2</div>
+                                <p className='index'>1</p>
+                                <div className='rateStar firstStar allstars'>1</div>
                                 <div className='popper-div'>
                                     <img src={popper} alt='' />
                                 </div>
@@ -123,7 +124,8 @@ const Leaderboard = () => {
                             </div>
 
                             <div className='top3rd d-flex justify-content-center flex-column mx-2 align-items-center'>
-                                <div className='rateStar thirdStar allstars'>2</div>
+                                <p className='index'>3</p>
+                                <div className='rateStar thirdStar allstars'>3</div>
                                 <div className='thirdStarImg allstarsImg starImgs'></div>
                                 <div className='d-flex flex-column align-items-center justify-content-center'>
                                     <p>{ascTopStudentsArray[2].name}</p>

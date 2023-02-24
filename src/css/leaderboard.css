@@ -37,12 +37,27 @@
     z-index: 4;
 }
 
-.leaderboardTab .top2nd .index {
+.leaderboardTab .top2nd .index,
+.leaderboardTab .top3rd .index {
     margin: 0 !important;
     font-weight: 700;
     font-size: 16px;
     line-height: 16px;
     color: #000000;
+    position: absolute;
+    z-index: 12;
+    top: 22px;
+}
+
+.leaderboardTab .top1st .index {
+    margin: 0 !important;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #000000;
+    position: absolute;
+    z-index: 12;
+    top: 30px;
 }
 
 .leaderboardTab .allstars {
@@ -254,6 +269,7 @@
     height: 209px;
     left: -43px;
     top: -120px;
+    z-index: 10;
 }
 
 .leaderboardTab .backgroundIcon4 {
