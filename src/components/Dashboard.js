@@ -225,11 +225,11 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className='leaderboard'>
-                    <h5 className='text-center'>Top students for this week</h5>
+                {
+                    TopStudentsArrayLongerThan3 && (
+                        <div className='leaderboard'>
+                            <h5 className='text-center'>Top students for this week</h5>
 
-                    {
-                        TopStudentsArrayLongerThan3 && (
                             <div className='top3 d-flex justify-content-center align-items-center'>
                                 <div className='top3-students second d-flex flex-column justify-content-center align-items-center'>
                                     <div className='d-flex flex-column justify-content-center align-items-center'>
@@ -277,9 +277,9 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                        )
-                    }
-                </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     )
