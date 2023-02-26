@@ -10,6 +10,7 @@ import {
     GoogleAuthProvider,
     FacebookAuthProvider,
     signInWithPopup,
+    verifyPasswordResetCode
 } from "firebase/auth";
 import { auth, firestore } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore"
@@ -135,10 +136,14 @@ export function UserAuthContextProvider({ children }) {
                 // An error ocurred
                 // ...
             });*/
-        return confirmPasswordReset(auth, oobCode, password)
-            .then(() => {
+        return verifyPasswordResetCode(auth, oobCode).then((email) => {
+            //const accountEmail = email;
 
-            })
+            confirmPasswordReset(auth, oobCode, password)
+                .then(() => {
+
+                })
+        })
     }
 
     useEffect(() => {
