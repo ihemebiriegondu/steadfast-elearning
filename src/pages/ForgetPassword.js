@@ -134,7 +134,7 @@ const ForgetPassword = () => {
 
       {showSuccess &&
         (
-          <SuccessPopUp message={`A verification mail has been sent to ${email}`} link={'/forget password'} />
+          <SuccessPopUp message={`A verification mail has been sent to ${email}`} link={'/'} />
         )
       }
     </div>
