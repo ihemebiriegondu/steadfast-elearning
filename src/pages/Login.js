@@ -16,7 +16,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { logIn } = useUserAuth();
+    const { logIn, facebookSignUp, googleSignIn } = useUserAuth();
     const navigate = useNavigate();
 
 
@@ -46,6 +46,62 @@ const Login = () => {
                 setError(err.message);
             }
         }
+    }
+
+    const handleGoogleSignIn = async (e) => {
+        try {
+            await googleSignIn();
+            navigate("/dashboard");
+        }
+        catch (err) {
+            if (err.code === 'auth/invalid-email') {
+                setError('Invalid email address')
+            } else if (err.code === 'auth/user-disabled') {
+                setError('User disabled')
+            } else if (err.code === 'auth/user-not-found') {
+                setError('User not found')
+            } else if (err.code === 'auth/internal-error') {
+                setError('Invalid Student ID')
+            } else if (err.code === "auth/missing-email") {
+                setError('Missing email address')
+            } else if (err.code === 'auth/wrong-password') {
+                setError('Wrong Student ID')
+            } else if (err.code === 'auth/operation-not-allowed') {
+                setError('Operation not allowed')
+            } else {
+                setError(err.message);
+            }
+        }
+    }
+
+    const handleFbSignIn = async (e) => {
+        try {
+            await facebookSignUp();
+            navigate("/dashboard");
+        }
+        catch (err) {
+            if (err.code === 'auth/invalid-email') {
+                setError('Invalid email address')
+            } else if (err.code === 'auth/user-disabled') {
+                setError('User disabled')
+            } else if (err.code === 'auth/user-not-found') {
+                setError('User not found')
+            } else if (err.code === 'auth/internal-error') {
+                setError('Invalid Student ID')
+            } else if (err.code === "auth/missing-email") {
+                setError('Missing email address')
+            } else if (err.code === 'auth/wrong-password') {
+                setError('Wrong Student ID')
+            } else if (err.code === 'auth/operation-not-allowed') {
+                setError('Operation not allowed')
+            } else {
+                setError(err.message);
+            }
+        }
+    }
+
+    const handleAppleSignIn = async (e) => {
+
     }
 
 
@@ -78,9 +134,9 @@ const Login = () => {
                             <Link className='forget' to={'/forget password'}>Forgot Password?</Link>
                         </div>
                         <div className='d-flex justify-content-center align-items-center loginOpts'>
-                            <div className='loginOptDiv mx-1 px-3 py-1 shadow'><BsApple className='loginOpt mb-1' /></div>
-                            <div className='loginOptDiv mx-1 px-3 py-1 shadow'><GrFacebookOption className='loginOpt mb-1 opt2' /></div>
-                            <div className='loginOptDiv mx-1 px-3 py-1 shadow'><FcGoogle className='loginOpt mb-1' /></div>
+                            <div className='loginOptDiv mx-1 px-3 py-1 shadow' onClick={() => { handleAppleSignIn() }}><BsApple className='loginOpt mb-1' /></div>
+                            <div className='loginOptDiv mx-1 px-3 py-1 shadow' onClick={() => { handleFbSignIn() }}><GrFacebookOption className='loginOpt mb-1 opt2' /></div>
+                            <div className='loginOptDiv mx-1 px-3 py-1 shadow' onClick={() => { handleGoogleSignIn() }}><FcGoogle className='loginOpt mb-1' /></div>
                         </div>
                         <div className='create d-flex justify-content-center align-items-baseline'>
                             <p className='mb-0 me-2'>Don't have an account?</p>

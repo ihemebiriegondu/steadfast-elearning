@@ -25,8 +25,12 @@ const SignUp = () => {
         setError("");
 
         try {
-            await signUp(email, username, password);
-            //navigate("/");
+            if (username === '') {
+                setError("Invalid Username")
+            } else {
+                await signUp(email, username, password);
+                //navigate("/");
+            }
         } catch (err) {
             if (err.code === 'auth/invalid-email') {
                 setError('Invalid email address')

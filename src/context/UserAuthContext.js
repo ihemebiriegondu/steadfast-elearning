@@ -12,7 +12,7 @@ import {
     signInWithPopup,
 } from "firebase/auth";
 import { auth, firestore } from "../firebase";
-import { doc, setDoc, collection, onSnapshot, query, orderBy } from "firebase/firestore"
+import { doc, setDoc, getDoc } from "firebase/firestore"
 
 const userAuthContext = createContext();
 
@@ -58,34 +58,27 @@ export function UserAuthContextProvider({ children }) {
             .then((userCredential) => {
                 const user = userCredential.user
 
-                const studentLists = collection(firestore, "student-list");
-                const qStudent = query(studentLists, orderBy('Username', 'asc'))
+                const userUpdate = async (e) => {
+                    const userRef = doc(firestore, "student-list", user.uid);
+                    const userSnap = await getDoc(userRef);
 
-                onSnapshot(qStudent, (student) => {
-                    let students = []
-                    student.docs.forEach((doc) => {
-                        students.push({ ...doc.data(), id: doc.id })
-                    });
-                    //console.log(students)
-                    students.forEach(student => {
-                        if (student.id === user.uid) {
-                            updateProfile(user, {
-                                photoURL: user.photoURL,
-                            })
-                        } else {
-                            setDoc(doc(firestore, "student-list", user.uid), {
-                                Username: user.displayName,
-                                email: user.email,
-                                imageURL: user.photoURL,
-                                UserID: user.uid,
-                                password: "No password",
-                                scores: [],
-                                maxScore: 0,
-                                timeTaken: []
-                            })
-                        }
-                    })
-                })
+                    if (userSnap.exists) {
+                        console.log('user already exists')
+                        //console.log(userSnap.data())
+                    } else {
+                        setDoc(doc(firestore, "student-list", user.uid), {
+                            Username: user.displayName,
+                            email: user.email,
+                            imageURL: user.photoURL,
+                            UserID: user.uid,
+                            password: 'none',
+                            scores: [],
+                            maxScore: 0,
+                            timeTaken: []
+                        })
+                    }
+                }
+                userUpdate()
             })
     }
 
@@ -96,34 +89,28 @@ export function UserAuthContextProvider({ children }) {
             .then((userCredential) => {
                 const user = userCredential.user
 
-                const studentLists = collection(firestore, "student-list");
-                const qStudent = query(studentLists, orderBy('Username', 'asc'))
+                const userUpdate = async (e) => {
+                    const userRef = doc(firestore, "student-list", user.uid);
+                    const userSnap = await getDoc(userRef);
 
-                onSnapshot(qStudent, (student) => {
-                    let students = []
-                    student.docs.forEach((doc) => {
-                        students.push({ ...doc.data(), id: doc.id })
-                    });
-                    //console.log(students)
-                    students.forEach(student => {
-                        if (student.id === user.uid) {
-                            updateProfile(user, {
-                                photoURL: user.photoURL,
-                            })
-                        } else {
-                            setDoc(doc(firestore, "student-list", user.uid), {
-                                Username: user.displayName,
-                                email: user.email,
-                                imageURL: user.photoURL,
-                                UserID: user.uid,
-                                password: "No password",
-                                scores: [],
-                                maxScore: 0,
-                                timeTaken: []
-                            })
-                        }
-                    })
-                })
+                    if (userSnap.exists) {
+                        console.log('user already exists')
+                        //console.log(userSnap.data())
+                    } else {
+                        setDoc(doc(firestore, "student-list", user.uid), {
+                            Username: user.displayName,
+                            email: user.email,
+                            imageURL: user.photoURL,
+                            UserID: user.uid,
+                            password: 'none',
+                            scores: [],
+                            maxScore: 0,
+                            timeTaken: []
+                        })
+                    }
+                }
+
+                userUpdate()
             })
     }
 
