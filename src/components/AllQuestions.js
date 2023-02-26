@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import QuestionsDisplayTemp from '../components/QuestionsDisplayTemp'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { FaQuoteLeft, FaQuoteRight, FaHeart } from 'react-icons/fa'
+import { BsDash } from 'react-icons/bs'
 
 const AllQuestions = () => {
 
@@ -14,6 +17,10 @@ const AllQuestions = () => {
     const [questionsfour, setQuestionsfour] = useState([])
     const [loader, setLoader] = useState('');
     const [loadingPercent, setLoadingPercent] = useState(0);
+    const [motQuotes, setMotQuotes] = useState('')
+    const [showQuote, setShowQuote] = useState(false)
+
+    const navigate = useNavigate();
 
     const allQuestions = []
     let firstQuestion = []
@@ -21,12 +28,31 @@ const AllQuestions = () => {
     let thirdQuestion = []
     let forthQuestion = []
 
+    const getMotivationalQuote = () => {
+
+        let randomNo = Math.floor(Math.random() * 1642);
+
+        fetch("https://type.fit/api/quotes")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                //console.log(randomNo)
+                //console.log(data)
+                //console.log(data[randomNo]);
+                setMotQuotes(data[randomNo])
+                setShowQuote(true)
+            });
+    }
+
     useEffect(() => {
         const subjects = JSON.parse(localStorage.getItem("subjects"));
 
         try {
             const getQuestionsone = async () => {
                 setLoader(true);
+
+                getMotivationalQuote()
 
                 let questionsone;
                 questionsone = await axios("https://questions.aloc.com.ng/api/v2/m?subject=" + subjects[0],
@@ -44,7 +70,10 @@ const AllQuestions = () => {
                             //console.log(loaded)
                             setLoadingPercent(percentage)
                         }
-                    }).catch((err) => alert(err.message))
+                    }).catch((err) => {
+                        alert(err.message)
+                        navigate("/dashboard");
+                    })
                 const quesJSONone = await questionsone.data;
 
                 //console.log(quesJSONone.data)
@@ -140,7 +169,7 @@ const AllQuestions = () => {
         }
 
 
-    }, [setQuestionsone, setQuestionstwo, setQuestionsthree])
+    }, [setQuestionsone, setQuestionstwo, setQuestionsthree, navigate])
 
     const questionOne = () => {
         let firstQuestionSample = questionsone
@@ -359,7 +388,21 @@ const AllQuestions = () => {
         <div>
             {
                 loader && (
-                    <div className="text-center pt-5">Loading {loadingPercent + '%'} ...</div>
+                    <div>
+                        <div className="text-center pt-5">Loading {loadingPercent + '%'} ...</div>
+                        <div className={`quotes ${showQuote === true ? 'show' : 'hide'}`}>
+                            <h5>Quotes of the day</h5>
+                            <div>
+                                <FaQuoteLeft className='mb-2' />
+                                <p>{motQuotes.text}</p>
+                                <FaQuoteRight className='right ms-auto' />
+                                <span><BsDash /> {motQuotes.author}</span>
+                            </div>
+                            <p className='made mb-0'>Made with <FaHeart className='text-danger ms-1 fs-5' /></p>
+                            <hr className='mt-0' />
+                            <button className='mt-4 d-flex justify-content-center mx-auto' onClick={() => getMotivationalQuote()}>New Quote</button>
+                        </div>
+                    </div>
                 )
             }
             <div className={`${loader === true ? 'd-none' : 'd-block'}`}>

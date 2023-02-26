@@ -3,7 +3,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { HiOutlineSun } from 'react-icons/hi'
 import { GiLaurelsTrophy } from 'react-icons/gi'
 import { BiBadge } from 'react-icons/bi'
-import { BsFillCloudSunFill, BsCloudMoonFill, BsMoonStars } from 'react-icons/bs'
+import { BsFillCloudSunFill, BsCloudMoonFill, BsMoonStars} from 'react-icons/bs'
 import { TbCheckbox } from 'react-icons/tb'
 import { FaCrown } from 'react-icons/fa'
 import { MdSpeed } from 'react-icons/md'
