@@ -9,11 +9,13 @@ import { Alert } from 'react-bootstrap';
 import { useUserAuth } from '../context/UserAuthContext';
 
 import '../css/forgetpassword.css'
+import SuccessPopUp from '../components/SuccessPopUp';
 
 const ForgetPassword = () => {
 
   const [email, setEmail] = useState('')
   const [error, setError] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false)
   const { facebookSignUp, googleSignIn, forgetpassword } = useUserAuth();
   const navigate = useNavigate();
 
@@ -24,7 +26,7 @@ const ForgetPassword = () => {
     try {
       await forgetpassword(email);
       sessionStorage.setItem('resetEmail', email);
-      navigate('/forgetpasswordcode')
+      setShowSuccess(true)
     } catch (err) {
       if (err.code === 'auth/invalid-email') {
         setError('Invalid email address')
@@ -99,14 +101,14 @@ const ForgetPassword = () => {
 
   return (
     <div className='forgetPasswordDiv'>
-      <h1 className='mx-auto text-center mb-5'>Forgot Password</h1>
+      <h1 className='mx-auto text-center mb-5 forgetH1'>Forgot Password</h1>
       <div className='sizeable mx-auto'>
         <form className='pb-4' onSubmit={(e) => { handleSubmit(e) }} id='signup-form'>
           <div className='d-flex flex-column'>
             <label htmlFor='email' className='text-center mb-3'>Enter Email Address: </label>
             <input id='email' name='email' type='email' placeholder='example@gmail.com' onChange={(e) => { setEmail(e.target.value) }}></input>
           </div>
-          <button>Send</button>
+          <button className='btn'>Send</button>
         </form>
       </div>
 
@@ -129,6 +131,12 @@ const ForgetPassword = () => {
       <div className='error-div'>
         {error && <Alert variant='danger' className='error'><BsFillExclamationCircleFill className='text-danger me-4 fs-4' />{error}</Alert>}
       </div>
+
+      {showSuccess &&
+        (
+          <SuccessPopUp message={`A verification mail has been sent to ${email}`} link={'/forget password'} />
+        )
+      }
     </div>
   )
 }

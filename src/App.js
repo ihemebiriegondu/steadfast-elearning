@@ -16,6 +16,7 @@ import Pastquestions from './pages/Pastquestions';
 import PreviewPractiveAnswers from './pages/PreviewPractiveAnswers';
 import SignUp from './pages/Signup';
 import ForgetPassword from './pages/ForgetPassword';
+import NewPassword from './pages/NewPassword';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route path='/preview' element={<ProtectedRoute><PreviewPractiveAnswers /></ProtectedRoute>} />
 
             <Route path='/forget password' element={<ForgetPassword />} />
+            <Route path='/newpassword' element={<NewPassword />} />
           </Routes>
         </UserAuthContextProvider>
       </Router>

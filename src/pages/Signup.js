@@ -9,6 +9,7 @@ import logo from '../assets/logo-removebg-preview.png'
 import '../css/login.css'
 
 import { useUserAuth } from '../context/UserAuthContext';
+import SuccessPopUp from '../components/SuccessPopUp';
 
 const SignUp = () => {
 
@@ -16,6 +17,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [showSucces, setShowSuccess] = useState(false)
     const { signUp, googleSignIn, facebookSignUp } = useUserAuth();
     const navigate = useNavigate();
 
@@ -29,6 +31,7 @@ const SignUp = () => {
                 setError("Invalid Username")
             } else {
                 await signUp(email, username, password);
+                setShowSuccess(true);
                 //navigate("/");
             }
         } catch (err) {
@@ -159,6 +162,11 @@ const SignUp = () => {
                 <div className='error-div'>
                     {error && <Alert variant='danger' className='error'><BsFillExclamationCircleFill className='text-danger me-4 fs-4' />{error}</Alert>}
                 </div>
+                { showSucces &&
+                    (
+                        <SuccessPopUp message={'Your account has been created'} link={'/'} />
+                    )
+                }
             </div>
         </div>
     )
