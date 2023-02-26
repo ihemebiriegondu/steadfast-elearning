@@ -15,7 +15,7 @@ import '../css/dashboard.css'
 
 const Dashboard = () => {
 
-    const [averageTime, setAverageTime] = useState('');
+    const [averageTime, setAverageTime] = useState(0);
     const [averageScore, setAverageScore] = useState(0);
     const [maxScore, setMaxScore] = useState(0);
     const [totalScoresLength, setTotalScoresLength] = useState(0);

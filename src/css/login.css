@@ -147,10 +147,12 @@ $light: rgb(255, 236, 236);*/
 
 .intro-page .login-intro form {
     width: 30%;
+    background: rgb(98, 23, 23);
 }
 
 .intro-page .login-intro form div {
     margin-bottom: 40px;
+    background: rgb(98, 23, 23);
 }
 
 .intro-page .login-intro form label {
@@ -185,7 +187,7 @@ $light: rgb(255, 236, 236);*/
     font-size: 16px;
     line-height: 15px;
     color: rgb(255, 236, 236);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     margin-top: 2rem;
     transition: all 0.5s ease-in-out;
 }
@@ -209,10 +211,64 @@ $light: rgb(255, 236, 236);*/
     margin-bottom: 0 !important;
 }
 
+.intro-page .login-intro .otherLoginOpt {
+    background: rgb(98, 23, 23);
+}
+
+.intro-page .login-intro .otherLoginOpt .forget {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Vesper Libre', serif !important;
+    font-weight: 600;
+    transition: all 0.5s ease-in-out;
+    margin-bottom: 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.intro-page .login-intro .otherLoginOpt .forget:hover {
+    color: rgb(255, 236, 236);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.intro-page .loginOpts .loginOptDiv {
+    background: rgb(250, 193, 193);
+    border-radius: 8px;
+    border: 3px solid rgb(98, 23, 23);
+    margin-bottom: 50px;
+}
+
+.intro-page .loginOpts .loginOpt {
+    font-size: 20px;
+}
+
+.intro-page .loginOpts .loginOpt.opt2 {
+    color: #3b5998 ;
+}
+
+.intro-page .otherLoginOpt .create {
+    padding-bottom: 30px;
+}
+
+.intro-page .otherLoginOpt .create p {
+    color: #F9F9F9;
+    font-size: 14px;
+}
+
+.intro-page .otherLoginOpt .create span .link {
+    color: rgb(250, 193, 193);
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+}
+
 .intro-page .copyright {
-    margin-top: 40px;
+    padding-top: 40px;
     align-content: center;
     width: 100%;
+    background: rgb(98, 23, 23);
     padding-bottom: 4rem;
 }
 
@@ -223,6 +279,7 @@ $light: rgb(255, 236, 236);*/
     display: inline-block !important;
     text-decoration: none;
 }
+
 
 
 @media (max-width: 1200px) {
@@ -254,6 +311,22 @@ $light: rgb(255, 236, 236);*/
     .intro-page .login-intro form button {
         padding: 10px;
         font-size: 14px;
+    }
+
+    .intro-page .login-intro .otherLoginOpt .forget {
+        font-size: 13px;
+    }
+
+    .intro-page .loginOpts .loginOpt {
+        font-size: 16px;
+    }
+
+    .intro-page .otherLoginOpt .create p {
+        font-size: 13px;
+    }
+
+    .intro-page .otherLoginOpt .create span .link {
+        font-size: 13px;
     }
 }
 

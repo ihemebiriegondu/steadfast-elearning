@@ -14,6 +14,8 @@ import SelectStudySubject from './pages/SelectStudySubject';
 import StudyInstruction from './pages/StudyInstruction';
 import Pastquestions from './pages/Pastquestions';
 import PreviewPractiveAnswers from './pages/PreviewPractiveAnswers';
+import SignUp from './pages/Signup';
+import ForgetPassword from './pages/ForgetPassword';
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
         <UserAuthContextProvider>
           <Routes>
             <Route path='/' element={<Login />} />
+            <Route path='/create account' element={<SignUp />} />
             <Route path='/dashboard' element={<ProtectedRoute><Home /></ProtectedRoute>} />
 
             <Route path='/select subjects' element={<ProtectedRoute><SelectSubjects /></ProtectedRoute>} />
@@ -34,6 +37,8 @@ function App() {
             <Route path='/instructions' element={<ProtectedRoute><StudyInstruction /></ProtectedRoute>} />
             <Route path='/practice questions' element={<ProtectedRoute><Pastquestions /></ProtectedRoute>} />
             <Route path='/preview' element={<ProtectedRoute><PreviewPractiveAnswers /></ProtectedRoute>} />
+
+            <Route path='/forget password' element={<ProtectedRoute><ForgetPassword /></ProtectedRoute>} />
           </Routes>
         </UserAuthContextProvider>
       </Router>

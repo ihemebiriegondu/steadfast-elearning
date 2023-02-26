@@ -8,9 +8,11 @@ import {
     sendPasswordResetEmail,
     confirmPasswordReset,
     GoogleAuthProvider,
+    FacebookAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, firestore } from "../firebase";
+import { doc, setDoc, collection, onSnapshot, query, orderBy } from "firebase/firestore"
 
 const userAuthContext = createContext();
 
@@ -26,17 +28,103 @@ export function UserAuthContextProvider({ children }) {
     function signUp(email, name, password) {
 
         return createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                return updateProfile(auth.currentUser, {
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+
+                updateProfile(user, {
                     displayName: name,
+                    photoURL: "https://firebasestorage.googleapis.com/v0/b/steadfastprivateschools-admin.appspot.com/o/images%2Fuser.png?alt=media&token=f2be9e1d-7260-49c2-aed2-8032acea012c",
+                })
+
+                //console.log(user)
+
+                setDoc(doc(firestore, "student-list", user.uid), {
+                    Username: name,
+                    email: email,
+                    imageURL: "https://firebasestorage.googleapis.com/v0/b/steadfastprivateschools-admin.appspot.com/o/images%2Fuser.png?alt=media&token=f2be9e1d-7260-49c2-aed2-8032acea012c",
+                    UserID: user.uid,
+                    password: password,
+                    scores: [],
+                    maxScore: 0,
+                    timeTaken: []
                 })
             })
-            .then((currentuser) => console.log(currentuser))
     }
 
     function googleSignIn() {
         const provider = new GoogleAuthProvider();
         return signInWithPopup(auth, provider)
+            .then((userCredential) => {
+                const user = userCredential.user
+
+                const studentLists = collection(firestore, "student-list");
+                const qStudent = query(studentLists, orderBy('Username', 'asc'))
+
+                onSnapshot(qStudent, (student) => {
+                    let students = []
+                    student.docs.forEach((doc) => {
+                        students.push({ ...doc.data(), id: doc.id })
+                    });
+                    //console.log(students)
+                    students.forEach(student => {
+                        if (student.id === user.uid) {
+                            updateProfile(user, {
+                                photoURL: user.photoURL,
+                            })
+                        } else {
+                            setDoc(doc(firestore, "student-list", user.uid), {
+                                Username: user.displayName,
+                                email: user.email,
+                                imageURL: user.photoURL,
+                                UserID: user.uid,
+                                password: "No password",
+                                scores: [],
+                                maxScore: 0,
+                                timeTaken: []
+                            })
+                        }
+                    })
+                })
+            })
+    }
+
+    function facebookSignUp() {
+        const provider = new FacebookAuthProvider();
+
+        return signInWithPopup(auth, provider)
+            .then((userCredential) => {
+                const user = userCredential.user
+
+                const studentLists = collection(firestore, "student-list");
+                const qStudent = query(studentLists, orderBy('Username', 'asc'))
+
+                onSnapshot(qStudent, (student) => {
+                    let students = []
+                    student.docs.forEach((doc) => {
+                        students.push({ ...doc.data(), id: doc.id })
+                    });
+                    //console.log(students)
+                    students.forEach(student => {
+                        if (student.id === user.uid) {
+                            updateProfile(user, {
+                                photoURL: user.photoURL,
+                            })
+                        } else {
+                            setDoc(doc(firestore, "student-list", user.uid), {
+                                Username: user.displayName,
+                                email: user.email,
+                                imageURL: user.photoURL,
+                                UserID: user.uid,
+                                password: "No password",
+                                scores: [],
+                                maxScore: 0,
+                                timeTaken: []
+                            })
+                        }
+                    })
+                })
+            })
     }
 
     function logOut() {
@@ -79,7 +167,7 @@ export function UserAuthContextProvider({ children }) {
 
     return (
         <userAuthContext.Provider
-            value={{ user, logIn, signUp, googleSignIn, logOut, forgetpassword, changepassword }}
+            value={{ user, logIn, signUp, googleSignIn, facebookSignUp, logOut, forgetpassword, changepassword }}
         >
             {children}
         </userAuthContext.Provider>
