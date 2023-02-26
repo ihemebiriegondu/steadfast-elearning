@@ -38,7 +38,7 @@ function App() {
             <Route path='/practice questions' element={<ProtectedRoute><Pastquestions /></ProtectedRoute>} />
             <Route path='/preview' element={<ProtectedRoute><PreviewPractiveAnswers /></ProtectedRoute>} />
 
-            <Route path='/forget password' element={<ProtectedRoute><ForgetPassword /></ProtectedRoute>} />
+            <Route path='/forget password' element={<ForgetPassword />} />
           </Routes>
         </UserAuthContextProvider>
       </Router>

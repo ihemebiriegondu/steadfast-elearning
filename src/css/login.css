@@ -198,7 +198,7 @@ $light: rgb(255, 236, 236);*/
     transition: all 0.5s ease-in-out;
 }
 
-.intro-page .error-div {
+.error-div {
     position: absolute;
     width: auto !important;
     right: 20px !important;
@@ -206,16 +206,16 @@ $light: rgb(255, 236, 236);*/
     z-index: 2000;
 }
 
-.intro-page .error-div .alert.alert-danger {
+.error-div .alert.alert-danger {
     width: 100% !important;
     margin-bottom: 0 !important;
 }
 
-.intro-page .login-intro .otherLoginOpt {
+.otherLoginOpt {
     background: rgb(98, 23, 23);
 }
 
-.intro-page .login-intro .otherLoginOpt .forget {
+.otherLoginOpt .forget {
     color: white;
     text-align: center;
     font-size: 14px;
@@ -227,48 +227,48 @@ $light: rgb(255, 236, 236);*/
     display: block;
 }
 
-.intro-page .login-intro .otherLoginOpt .forget:hover {
+.otherLoginOpt .forget:hover {
     color: rgb(255, 236, 236);
     transition: all 0.5s ease-in-out;
     cursor: pointer;
 }
 
-.intro-page .loginOpts .loginOptDiv {
+.loginOpts .loginOptDiv {
     background: rgb(250, 193, 193);
     border-radius: 8px;
     border: 3px solid rgb(98, 23, 23);
     margin-bottom: 50px;
 }
 
-.intro-page .loginOpts .loginOptDiv:hover {
+.loginOpts .loginOptDiv:hover {
     cursor: pointer;
 }
 
-.intro-page .loginOpts .loginOpt {
+.loginOpts .loginOpt {
     font-size: 20px;
 }
 
-.intro-page .loginOpts .loginOpt.opt2 {
-    color: #3b5998 ;
+.loginOpts .loginOpt.opt2 {
+    color: #3b5998;
 }
 
-.intro-page .otherLoginOpt .create {
+.otherLoginOpt .create {
     padding-bottom: 30px;
 }
 
-.intro-page .otherLoginOpt .create p {
+.otherLoginOpt .create p {
     color: #F9F9F9;
     font-size: 14px;
 }
 
-.intro-page .otherLoginOpt .create span .link {
+.otherLoginOpt .create span .link {
     color: rgb(250, 193, 193);
     font-size: 14px;
     text-decoration: none;
     display: inline-block;
 }
 
-.intro-page .copyright {
+.copyright {
     padding-top: 40px;
     align-content: center;
     width: 100%;
@@ -276,7 +276,7 @@ $light: rgb(255, 236, 236);*/
     padding-bottom: 4rem;
 }
 
-.intro-page .copyright a {
+.copyright a {
     color: rgb(255, 236, 236);
     font-size: 12px;
     text-align: center !important;
@@ -317,19 +317,19 @@ $light: rgb(255, 236, 236);*/
         font-size: 14px;
     }
 
-    .intro-page .login-intro .otherLoginOpt .forget {
+    .otherLoginOpt .forget {
         font-size: 13px;
     }
 
-    .intro-page .loginOpts .loginOpt {
+    .loginOpts .loginOpt {
         font-size: 16px;
     }
 
-    .intro-page .otherLoginOpt .create p {
+    .otherLoginOpt .create p {
         font-size: 13px;
     }
 
-    .intro-page .otherLoginOpt .create span .link {
+    .otherLoginOpt .create span .link {
         font-size: 13px;
     }
 }
