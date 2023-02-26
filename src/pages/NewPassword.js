@@ -83,7 +83,7 @@ const NewPassword = () => {
           </div>
         </div>
         <div className='login-intro'>
-          <h1 className='mx-auto text-center mb-5'>Student Login</h1>
+          <h1 className='mx-auto text-center mb-5'>Reset Password</h1>
 
           <div className='login-intro-div d-flex justify-content-center mx-auto'>
             <form className='pb-4' onSubmit={(e) => { handleSubmit(e) }} id='signup-form'>
