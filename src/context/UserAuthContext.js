@@ -120,7 +120,7 @@ export function UserAuthContextProvider({ children }) {
 
     function forgetpassword(email) {
         return sendPasswordResetEmail(auth, email, {
-            url: 'http://localhost:3000/newpassword'
+            url: 'https://steadfastprivateschool-elearning.netlify.app/newpassword'
         });
     }
 
