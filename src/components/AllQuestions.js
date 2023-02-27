@@ -52,7 +52,8 @@ const AllQuestions = () => {
             const getQuestionsone = async () => {
                 setLoader(true);
 
-                getMotivationalQuote()
+                setTimeout(getMotivationalQuote(), 10000);
+       
 
                 let questionsone;
                 questionsone = await axios("https://questions.aloc.com.ng/api/v2/m?subject=" + subjects[0],
