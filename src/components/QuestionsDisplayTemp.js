@@ -47,7 +47,7 @@ export default class QuestionsDisplayTemp extends Component {
   }
 
 
-  componentDidMount() {
+  async componentDidMount() {
 
     let startTime = new Date(new Date().setHours(new Date().getHours() + 1));
 
@@ -90,6 +90,57 @@ export default class QuestionsDisplayTemp extends Component {
     this.setState({ otherTimer: otherstartTime })
 
     //console.log(localStorage.getItem('loading'))
+
+    const handleKey = (e) => {
+      let allQuestions = this.props.datas
+      //console.log(allQuestions)
+      let questionOne = allQuestions[0]
+      //console.log(questionOne)
+      let questionTwo = allQuestions[1]
+      let questionThree = allQuestions[2]
+      let questionFour = allQuestions[3]
+
+      //console.log(e.key)
+
+      if (e.key === 'p') {
+        switch (this.state.key) {
+          case "firstPaper":
+            if (this.state.index1 > 0) { this.setState({ index1: this.state.index1 - 1 }) }
+            break;
+          case "secondPaper":
+            if (this.state.index2 > 0) { this.setState({ index2: this.state.index2 - 1 }) }
+            break;
+          case "thirdPaper":
+            if (this.state.index3 > 0) { this.setState({ index3: this.state.index3 - 1 }) }
+            break;
+          case "forthPaper":
+            if (this.state.index4 > 0) { this.setState({ index4: this.state.index4 - 1 }) }
+            break;
+          default:
+            console.log('')
+        }
+      } else if (e.key === 'n') {
+        switch (this.state.key) {
+          case "firstPaper":
+            if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) }
+            break;
+          case "secondPaper":
+            if (this.state.index2 < (questionTwo.length - 1)) { this.setState({ index2: this.state.index2 + 1 }) }
+            break;
+          case "thirdPaper":
+            if (this.state.index3 < (questionThree.length - 1)) { this.setState({ index3: this.state.index3 + 1 }) }
+            break;
+          case "forthPaper":
+            if (this.state.index4 < (questionFour.length - 1)) { this.setState({ index4: this.state.index4 + 1 }) }
+            break;
+          default:
+            console.log('')
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKey);
+
   }
 
   //To keep selected options after pressing the next or previous button
@@ -469,6 +520,7 @@ export default class QuestionsDisplayTemp extends Component {
 
       handleCloseModal()
     }
+
 
 
 
