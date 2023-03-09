@@ -16,6 +16,7 @@ export default class QuestionsDisplayTemp extends Component {
     super(props);
     this.state = {
       key: "firstPaper",
+      keyPadValue: '',
       show1: false,
       show2: false,
       show3: false,
@@ -47,7 +48,7 @@ export default class QuestionsDisplayTemp extends Component {
   }
 
 
-  async componentDidMount() {
+  componentDidMount() {
 
     let startTime = new Date(new Date().setHours(new Date().getHours() + 1));
 
@@ -92,6 +93,9 @@ export default class QuestionsDisplayTemp extends Component {
     //console.log(localStorage.getItem('loading'))
 
     const handleKey = (e) => {
+
+      this.setState({ keyPadValue: e.key })
+
       let allQuestions = this.props.datas
       //console.log(allQuestions)
       let questionOne = allQuestions[0]
@@ -100,9 +104,9 @@ export default class QuestionsDisplayTemp extends Component {
       let questionThree = allQuestions[2]
       let questionFour = allQuestions[3]
 
-      //console.log(e.key)
+      console.log(this.state.keyPadValue)
 
-      if (e.key === 'p') {
+      if (this.state.keyPadValue === 'p') {
         switch (this.state.key) {
           case "firstPaper":
             if (this.state.index1 > 0) { this.setState({ index1: this.state.index1 - 1 }) }
@@ -119,7 +123,7 @@ export default class QuestionsDisplayTemp extends Component {
           default:
             console.log('')
         }
-      } else if (e.key === 'n') {
+      } else if (this.state.keyPadValue === 'n') {
         switch (this.state.key) {
           case "firstPaper":
             if (this.state.index1 < (questionOne.length - 1)) { this.setState({ index1: this.state.index1 + 1 }) }
@@ -140,6 +144,10 @@ export default class QuestionsDisplayTemp extends Component {
     }
 
     document.addEventListener('keydown', handleKey);
+    document.addEventListener('keyup', () => {
+      console.log('up')
+      this.setState({keyPadValue: ''})
+    })
 
   }
 

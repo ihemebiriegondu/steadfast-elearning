@@ -63,7 +63,7 @@ export function UserAuthContextProvider({ children }) {
                     const userRef = doc(firestore, "student-list", user.uid);
                     const userSnap = await getDoc(userRef);
 
-                    if (userSnap.exists) {
+                    if (userSnap.data() !== undefined) {
                         console.log('user already exists')
                         //console.log(userSnap.data())
                     } else {
